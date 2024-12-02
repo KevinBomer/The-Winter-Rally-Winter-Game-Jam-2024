@@ -1,4 +1,4 @@
-﻿######################### 
+######################### 
 # Character Declaration #
 #########################
 # Declare characters used by this game. The color argument colorizes the
@@ -39,11 +39,19 @@ define config.default_voice_volume = .5
 define config.default_text_cps = 0
 default preferences.afm_time = 7
 
+##########################
+# Point Tracking 
+#########################
+# Create a tracked relationship and set it's points to 0. 
+$game_player.addRelationship("LiName_Dynamic")
+
 
 #########################
 # The game starts here.
 #########################
 label start:
+
+
     # Enable the 3D stage and set the camera to it's defult position.
     camera:
         perspective True
@@ -67,6 +75,21 @@ label start:
     e "You've created a new Ren'Py game."
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
+
+    menu:
+        "e Good morning MC!"
+        "say it back":
+            "Hello, good mornin' LoveInterest"
+
+            "Yay! You said it back!!!"
+
+            $game_player.increaseRelationship("LiName_Dynamic",1)
+
+            "This conversation defenitely earned me some points."
+        "ignore her":
+            "Not winning any points by ignorning her..."
+
+
 
     # This ends the game.
 

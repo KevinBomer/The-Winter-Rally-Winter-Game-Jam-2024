@@ -1,4 +1,4 @@
-Sun Dec  1 12:09:14 2024
+Sun Dec  1 23:09:48 2024
 macOS-10.16-x86_64-i386-64bit
 Ren'Py 8.1.3.23091805
  
@@ -7,14 +7,18 @@ Bootstrap to the start of init.init. took 0.03s
 Early init. took 0.00s
 Loader init. took 0.01s
 Loading error handling. took 0.03s
-Loading script. took 0.09s
+Loading script. took 0.14s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
 Running init code. took 0.03s
-Loading analysis data. took 0.02s
+Loading analysis data. took 0.03s
 Analyze and compile ATL. took 0.00s
 Reloading save slot metadata. took 0.01s
 Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
 Dump and make backups. took 0.04s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
@@ -24,15 +28,15 @@ Creating interface object. took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.03s
 Build styles took 0.00s
-Load screen analysis took 0.04s
-Analyze screens took 0.00s
-Save screen analysis took 0.00s
-Prepare screens took 0.10s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.11s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.00s
+Save bytecode. took 0.03s
 Running _start took 0.00s
 Performance test:
-Interface start. took 0.28s
+Interface start. took 0.26s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 2560, 1440)
@@ -42,5 +46,28 @@ Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
 Version: b'2.1 ATI-6.1.13'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Screen sizes: virtual=(1920, 1080) physical=(1118, 629) drawable=(2236, 1258)
 Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Screen sizes: virtual=(1920, 1080) physical=(484, 400) drawable=(968, 800)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.00s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
