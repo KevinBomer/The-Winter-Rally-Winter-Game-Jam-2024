@@ -10,10 +10,10 @@ define mortis = Character("Death", color = "#000000ff")
 #CHARACTER SPRITESV
 
 #BACKGROUNDSV
-image nightsky = "bgs/Night_Sky.png"
-image purgatory = "bgs/Purgatory.png"
-image hilltop = "bgs/Top_of_the_world.png"
-image corridor = "bgs/Corridor.png"
+image nightsky = im.FactorScale("bgs/Night_Sky.png", 0.6)
+image purgatory = im.FactorScale("bgs/Purgatory.png", 0.6)
+image hilltop = im.FactorScale("bgs/Top_of_the_world.png", 0.6)
+image corridor = im.FactorScale("bgs/Corridor.png", 0.6)
 
 #CGSV
 
