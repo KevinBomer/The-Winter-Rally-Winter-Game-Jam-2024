@@ -13,16 +13,16 @@ label start:
     "Wise, wild workaholic Finn..." 
     #Enter MORGAN, in the middle of everyone else. 
     "And, of course, Morgan."
+    show fadetoblack with slowerdissolve
     "The five of us as a group ran like a clock, but life, as always..."
-
-    scene hilltop with fade
+    scene hilltop with slowdissolve
     "It mutated beyond our control and spread all of us thin." 
     #Fade out Mina. 
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 
     #Fade out Finn. 
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster." 
     "And Morgan?"
-    show corridor with dissolve
+    show corridor with slowdissolve
     "They all said it was the most aggressive case they'd ever seen in their years of practicing medicine."
     "It was so deep in her system they couldn't even pin down what kind of cancer it was to start with." 
     "Being bound to a bed with two of her friends basically vanishing off the radar, I thought she'd never smile again..." 
