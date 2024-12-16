@@ -13,7 +13,7 @@ define slowdissolve = Dissolve(1.0)
 #CHARACTER SPRITESV
 
 #BACKGROUNDSV
-image nightsky = Image("bgs/Night_Sky.png", oversample=2)
+image nightsky = Image("bgs/Night_Sky.png", oversample=1.8125)
 image purgatory = Image("bgs/Purgatory.png", oversample=2)
 image hilltop = Image("bgs/Top_of_the_world.png", oversample=2)
 image corridor = Image("bgs/Corridor.png", oversample=2)
