@@ -1,7 +1,7 @@
 label start:
 
 
-    scene nightsky with fade
+    scene nightsky with slowerdissolve
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
@@ -37,9 +37,7 @@ label start:
     ter "Hmmm..."
     ter "No time like the present though, right? She's waitin'!"
     ter "C'mon, Nigh Hill's just that way."
-    hide corridor with dissolve
-
-    scene purgatory
+    scene purgatory with dissolve
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
     mortis "You... you have a gift." 

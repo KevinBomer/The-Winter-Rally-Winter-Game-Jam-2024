@@ -1,8 +1,8 @@
     #FADE IN
     #INT. FINN'S DORM AREA - DAY
     #NARRATOR FADE IN:
-    "Believe it or not, Finn's living space was in surprisingly good shape 
-    for a struggling college student."
+label act2:
+    "Believe it or not, Finn's living space was in surprisingly good shape for a struggling college student."
     "Really nice place. Not a single cup, can or bottle in sight."
     "Well, in the common area, at least. Who knew what things were hiding on the other side of the door?
     All three of us were hoping we'd be able to find out. As long as Finn was all ears, of course."
@@ -41,15 +41,18 @@
     morg "Your breaks of... what, ten minutes each, I'm guessing?"
     ter "Yeah, that's gonna fry your brain no matter how ya look at it! You need some'a that crisp winter air in your lungs."
     ter "Which you definitely shoulda known, mister doctor."
-    #CHOICE1
-    "So, what, you don't do friends anymore?"
+    menu:
+        "So, what, you don't do friends anymore?":
+            jump coldshoulder
+        "We’ll study with you, then.":
+            jump studydate
+label coldshoulder:
     fin "Not during work hours, as has been the case since high school, anyway!"
     fin "If you all are so desperate for my company, try waiting several hours!"
-    #CHOICE 2
-    "We’ll study with you, then."
+label studydate:
     fin "Would you {i}really?{/i} On the one day you all have the time for each other?"
     ter "And for you, Finn. That always includes you."
-    #OPTIONS CONVERGE HERE
+label finnlament:
     fin "...Even with everything said and done, it's far from that simple, I fear."
     fin "Morgan. Think back to your initial diagnosis."
     fin "How rare did they tell you it was to encounter a tumor of the heart?"
@@ -74,7 +77,7 @@
     fin "Once more, I apologize. To you especially, Morgan."
     fin "It's good to see you again."
     morg "Likewise. Don't sweat it, mister doctor."
-    fin "So. Now that the doctor is metaphorically "in," I suppose it's time to recount the grand agenda."
+    fin "So. Now that the doctor is metaphorically “in,” I suppose it's time to recount the grand agenda."
     fin "Which we can find on Morgan's, uh..."
     morg "My bucket list! Congratulations on being the first item of order, by the way."
     fin "Hooray?"
