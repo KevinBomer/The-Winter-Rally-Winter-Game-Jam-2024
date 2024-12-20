@@ -1,10 +1,4 @@
- 本ライブラリでは、GUI上で設定できる演出エディターおよび画像ビューワーとサウンドビューワー、さらにATLのfunctionステートメントでの使用を意図した便利な関数群と多数のワーパー関数を追加します。
- 日本語マニュアルはドキュメント後半にあります。
-
- This script adds Ren'py the ability to adjust and view transform properties of images
- and camera by in-game Action Editor, Image Viewer and Sound Viewer.
- Many warpers and useful functions intended to be used in function statements in ATL are
- also added.
+#the-winter-rally-winter-game-jam-2024
 
  Ren'Py <http://www.renpy.org/>
 
