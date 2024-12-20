@@ -691,3 +691,6 @@ INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/
 
 --- launch game ---
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
