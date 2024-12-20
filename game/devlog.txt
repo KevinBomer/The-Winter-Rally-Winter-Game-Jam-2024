@@ -79,6 +79,7 @@ INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/
 
 --- launch game ---
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+<<<<<<< Updated upstream
 CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
 --- launch game ---
 
@@ -669,4 +670,24 @@ INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+=======
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+>>>>>>> Stashed changes
+
+--- launch game ---
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
