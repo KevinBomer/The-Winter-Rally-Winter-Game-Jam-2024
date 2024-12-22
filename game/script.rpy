@@ -7,6 +7,14 @@ label start:
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
     #Enter TERRIE. 
     "Practical, plucky, passionate Terrie..."
+    menu:
+        "This is a test"
+        "This is choice 1":
+            "do nothing"
+        "This is choice 2":
+            "do nothing"
+        "This is choice 3":
+            "do nothing"
     #Enter MINA. 
     "Silver-tongued, savvy, sociable Mina..."
     #Enter FINN. 
@@ -164,4 +172,4 @@ label start:
     ter "Now, if we're kickin' this mission Off…"
     ter "We gotta go back to school."
     #show school with dissolve
-    #jump ch2
+    jump act2

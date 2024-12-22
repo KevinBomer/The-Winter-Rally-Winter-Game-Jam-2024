@@ -205,13 +205,44 @@ style input:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+
+#Describes how choices will be animated when they appear, hovered, and idle
+transform choiceappear:
+    subpixel True
+    alpha 0.0 yoffset -20
+    pause 0.0
+    easein_cubic 1 alpha 1.0 yoffset 0
+    on idle:
+        easein 0.3 yoffset 0
+    on hover:
+        easein 0.3 yoffset -10
+transform snowflakerotation:
+    zoom .5
+    rotate 0
+    xanchor .5 yanchor .5
+    linear 10 rotate 360 #5 seconds, 360 degrees
+    repeat #infinity
+transform snowflakefalling:
+    subpixel True 
+    linear 5 ypos .7 zoom .2
+    easeout .5 alpha 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(1.00)*HueMatrix(0.0) 
+
+
+
+transform snowflakeblowing:
+    spring3 5 xpos .15
+
+transform minigame1background_transform:
+    blend "normal"
+
 screen choice(items):
+    add "images/Minigames/MinigameBG.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at minigame1background_transform
     style_prefix "choice"
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
-
+            textbutton i.caption action i.action at choiceappear
+    add "images/Minigames/1/Minigame1flamemeter.png" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling, snowflakeblowing
 
 style choice_vbox is vbox
 style choice_button is button
