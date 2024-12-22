@@ -1,5 +1,5 @@
-renpy.geometry renpy.solid
 renpy.geometry renpy.matrixcolor renpy.solid
+renpy.geometry renpy.solid
 renpy.alpha renpy.geometry renpy.matrixcolor renpy.texture
 renpy.solid
 renpy.alpha renpy.alpha renpy.texture

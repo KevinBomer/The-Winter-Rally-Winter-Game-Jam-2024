@@ -1,13 +1,20 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
+<<<<<<< Updated upstream
   File "game/script.rpy", line 10, in script
     menu:
 KeyError: 'Add'
+=======
+  File "game/script.rpy", line 108, in script
+    morg "Ah. Right. Only 1% left."
+TypeError: must be real number, not TagQuotingDict
+>>>>>>> Stashed changes
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
+<<<<<<< Updated upstream
   File "game/script.rpy", line 10, in script
     menu:
   File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1922, in execute
@@ -51,8 +58,21 @@ Full traceback:
   File "accelerator.pyx", line 1041, in renpy.display.accelerator.RenderTransform.render
   File "accelerator.pyx", line 905, in renpy.display.accelerator.RenderTransform.final_render
 KeyError: 'Add'
+=======
+  File "game/script.rpy", line 108, in script
+    morg "Ah. Right. Only 1% left."
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 930, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "/Applications/renpy-7.4.10-sdk/renpy/exports.py", line 1463, in say
+    what = what % tag_quoting_dict
+TypeError: must be real number, not TagQuotingDict
+>>>>>>> Stashed changes
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.1.3.23091805
 Winter Game Jam 2024 The Winter Rally 1.0
+<<<<<<< Updated upstream
 Sat Dec 21 19:44:09 2024
+=======
+Sat Dec 21 17:33:42 2024
+>>>>>>> Stashed changes
