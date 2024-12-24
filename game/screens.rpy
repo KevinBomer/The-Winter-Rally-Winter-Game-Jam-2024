@@ -115,7 +115,7 @@ screen say(who, what):
     ## phone variant - there's no room.
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
-
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
 
 ## Make the namebox available for styling through the Character object.
 init python:
@@ -266,30 +266,6 @@ style choice_button_text is default:
 ##
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
-
-screen quick_menu():
-
-    ## Ensure this appears on top of other screens.
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style_prefix "quick"
-
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
-
-
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
 init python:
@@ -305,6 +281,83 @@ style quick_button:
 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
+
+
+## This transform assigns position for the phone UI menu in it's idle an hovered states
+init:
+    transform phoneappear:
+        rotate 15
+        zoom .5
+        xpos .9
+        ypos .9
+        xanchor .5
+        yanchor .5
+        alpha 0
+        pause 0
+        easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.2)
+    transform phonebackground:
+        xpos .5
+        ypos .5
+        xanchor .5
+        yanchor .5
+        alpha .5
+        blend 'multiply'
+        matrixcolor BrightnessMatrix(1)
+        ease 1 matrixcolor BrightnessMatrix(0.0)
+    transform phonemenu_appear:
+        zoom .5
+        xpos .7
+        ypos .25
+        alpha 0
+        pause .5
+        matrixcolor BrightnessMatrix(.5)
+        easein 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
+    transform phonemenu_idle:
+        zoom .25
+        yanchor .5
+        xanchor .5
+        xpos .99
+        ypos .95
+        on hover:
+            easein .25 zoom .25 ypos .95 xpos .97
+        on idle:
+            easein .25 zoom .25 ypos .95 xpos 1.03
+
+
+screen phone_menu():
+    zorder 101
+    tag menu
+    modal True
+    add "images/GUI/bigphone.png" at phoneappear
+    vbox at phonemenu_appear:
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('save'):
+            hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('load'):
+            hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('preferences'):
+            hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#4f595e', size=80)
+
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
+
+screen phone_background():
+    zorder 100
+    add Solid("#2b4255", xsize=1920, ysize=1080) at phonebackground
+screen quick_menu():
+
+    ## Ensure this appears on top of other screens.
+    zorder 100
+
+    if quick_menu:
+        imagebutton:
+            focus_mask True
+            idle "images/gui/phone.png" at phonemenu_idle action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
+
+            
+
+
 
 
 ################################################################################
