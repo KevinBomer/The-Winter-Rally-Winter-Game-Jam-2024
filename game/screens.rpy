@@ -94,10 +94,15 @@ style frame:
 ## and id "window" to apply style properties.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
-
+transform quickmenu_hover:
+    on hover:
+        additive .5
+    on idle:
+        additive 0
 screen say(who, what):
     style_prefix "say"
-
+screen say(who, what):
+    style_prefix "say"
     window:
         id "window"
 
@@ -110,12 +115,74 @@ screen say(who, what):
 
         text what id "what"
 
+    ### Icons
+    fixed:
+        pos(1400, 980)
 
+        ## Rollback button
+        imagebutton:
+            at quickmenu_hover
+            focus_mask True
+            pos (0,31)
+            xysize (50, 50)
+            idle "images/gui/flowcontrol/back.png"
+            hover "images/gui/flowcontrol/back.png"
+            selected_idle "images/gui/flowcontrol/back.png"
+            selected_hover "images/gui/flowcontrol/back.png"
+            action Rollback()
+            tooltip "Show Previous."
+            alt "Show Previous"
+        #Auto Play
+        imagebutton:
+            at quickmenu_hover
+            focus_mask True
+            pos (75, 31)
+            xysize (50, 50)
+
+            idle "images/gui/flowcontrol/play.png"
+            hover "images/gui/flowcontrol/play.png"
+            selected_idle "images/gui/flowcontrol/stop.png"
+
+            selected_hover "images/gui/flowcontrol/stop.png"
+
+            action Preference("auto-forward", "toggle")
+            tooltip "AutoPlay"
+            alt "Auto Play"
+        ## Quick save button
+        imagebutton:
+            at quickmenu_hover
+            focus_mask True
+            pos (150, 31)
+            xysize (50, 50)
+
+            idle "images/gui/flowcontrol/quicksave.png"
+            hover "images/gui/flowcontrol/quicksave.png"
+            selected_idle "images/gui/flowcontrol/quicksave.png"
+            selected_hover "images/gui/flowcontrol/quicksave.png"
+            action QuickSave()
+            tooltip "Quick Save."
+            alt "Quick Save"
+        ##Skip Button
+        imagebutton:
+            at quickmenu_hover
+            focus_mask True
+            pos (225, 31)
+            xysize (50, 50)
+
+            idle "images/gui/flowcontrol/fastfoward.png"
+            hover "images/gui/flowcontrol/fastfoward.png"
+            selected_idle "images/gui/flowcontrol/fastfoward.png"
+            selected_hover "images/gui/flowcontrol/fastfoward.png"
+
+            action Skip() alternate Skip(fast=True, confirm=True)
+            tooltip "Fast Forward."
+            alt "Fast Forward"
+        
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
-
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
 
 ## Make the namebox available for styling through the Character object.
 init python:
@@ -266,30 +333,6 @@ style choice_button_text is default:
 ##
 ## The quick menu is displayed in-game to provide easy access to the out-of-game
 ## menus.
-
-screen quick_menu():
-
-    ## Ensure this appears on top of other screens.
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style_prefix "quick"
-
-            xalign 0.5
-            yalign 1.0
-
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
-
-
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
 ## the player has not explicitly hidden the interface.
 init python:
@@ -305,6 +348,82 @@ style quick_button:
 
 style quick_button_text:
     properties gui.button_text_properties("quick_button")
+
+
+## This transform assigns position for the phone UI menu in it's idle an hovered states
+init:
+    transform phoneappear:
+            rotate 15
+            zoom .5
+            xpos .9
+            ypos .9
+            xanchor .5
+            yanchor .5
+            alpha 0
+            pause 0
+            easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.2)
+    transform phonebackground:
+        xpos .5
+        ypos .5
+        xanchor .5
+        yanchor .5
+        alpha .5
+        blend 'multiply'
+        matrixcolor BrightnessMatrix(1)
+        ease 1 matrixcolor BrightnessMatrix(0.0)
+    transform phonemenu_appear:
+        zoom .5
+        xpos .7
+        ypos .25
+        alpha 0
+        pause .5
+        matrixcolor BrightnessMatrix(.5)
+        easein 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
+    transform phonemenu_idle:
+        zoom .25
+        yanchor .5
+        xanchor .5
+        xpos .99
+        ypos .95
+        on hover:
+            easein .25 zoom .25 ypos .95 xpos .97
+        on idle:
+            easein .25 zoom .25 ypos .95 xpos 1.03
+
+
+screen phone_menu():
+    zorder 101
+    modal True
+    add "images/GUI/bigphone.png" at phoneappear
+    vbox at phonemenu_appear:
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('save'):
+            hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('load'):
+            hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
+        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('preferences'):
+            hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=90)
+            idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#4f595e', size=80)
+
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
+
+screen phone_background():
+    zorder 100
+    add Solid("#2b4255", xsize=1920, ysize=1080) at phonebackground
+screen quick_menu():
+
+    ## Ensure this appears on top of other screens.
+    zorder 100
+
+    if quick_menu:
+        imagebutton:
+            focus_mask True
+            idle "images/gui/phone.png" at phonemenu_idle action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
+
+            
+
+
 
 
 ################################################################################
@@ -444,73 +563,22 @@ style main_menu_version:
 ## This screen is intended to be used with one or more children, which are
 ## transcluded (placed) inside it.
 
+transform settingscaling:
+    zoom .5
+    on hover:
+        matrixcolor TintMatrix('ddffdd')
+        matrixcolor ContrastMatrix(1.5)
+        additive .2
+    on idle:
+        matrixcolor TintMatrix('ffffff')
+        matrixcolor ContrastMatrix(.5)
+        additive 0
 screen game_menu(title, scroll=None, yinitial=0.0):
-
-    style_prefix "game_menu"
 
     if main_menu:
         add gui.main_menu_background
     else:
         add gui.game_menu_background
-
-    frame:
-        style "game_menu_outer_frame"
-
-        hbox:
-
-            ## Reserve space for the navigation section.
-            frame:
-                style "game_menu_navigation_frame"
-
-            frame:
-                style "game_menu_content_frame"
-
-                if scroll == "viewport":
-
-                    viewport:
-                        yinitial yinitial
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        vbox:
-                            transclude
-
-                elif scroll == "vpgrid":
-
-                    vpgrid:
-                        cols 1
-                        yinitial yinitial
-
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
-
-                        side_yfill True
-
-                        transclude
-
-                else:
-
-                    transclude
-
-    use navigation
-
-    textbutton _("Return"):
-        style "return_button"
-
-        action Return()
-
-    label title
-
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
-
-
 style game_menu_outer_frame is empty
 style game_menu_navigation_frame is empty
 style game_menu_content_frame is empty
@@ -524,11 +592,6 @@ style game_menu_label_text is gui_label_text
 style return_button is navigation_button
 style return_button_text is navigation_button_text
 
-style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
-
-    background "gui/overlay/game_menu.png"
 
 style game_menu_navigation_frame:
     xsize 420
@@ -753,84 +816,41 @@ style slot_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
 screen preferences():
-
-    tag menu
-
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu('preferences')
+    use phone_menu
+    hbox:
+        xpos 250
+        ypos 190
+        vbox:
+            spacing 55
+            add "images/GUI/settings/WindowMode.png":
+                xalign .5
+            add "images/GUI/settings/textsize.png":
+                xalign .5
+            add "images/GUI/settings/skiptext.png":
+                xalign .5
+            add "images/GUI/settings/longertimers.png":
+                xalign .5
+                yoffset -10
 
         vbox:
+            xpos 200
+            spacing 10
+            imagebutton auto "images/GUI/settings/windowed_%s.png" action Preference("display", "window")  xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/default_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/alltext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/on_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+        vbox:
+            xpos 250
+            spacing 10
+            imagebutton auto "images/GUI/settings/fullscreen_%s.png" action Preference("display", "fullscreen")  xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/large_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/readtext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/off_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+    if main_menu:
+        key "game_menu" action ShowMenu("main_menu")
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
 
-            hbox:
-                box_wrap True
-
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
-
-            hbox:
-                style_prefix "slider"
-                box_wrap True
-
-                vbox:
-
-                    label _("Text Speed")
-
-                    bar value Preference("text speed")
-
-                    label _("Auto-Forward Time")
-
-                    bar value Preference("auto-forward time")
-
-                vbox:
-
-                    if config.has_music:
-                        label _("Music Volume")
-
-                        hbox:
-                            bar value Preference("music volume")
-
-                    if config.has_sound:
-
-                        label _("Sound Volume")
-
-                        hbox:
-                            bar value Preference("sound volume")
-
-                            if config.sample_sound:
-                                textbutton _("Test") action Play("sound", config.sample_sound)
-
-
-                    if config.has_voice:
-                        label _("Voice Volume")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
-
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
-
-                        textbutton _("Mute All"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
 
 
 style pref_label is gui_label
