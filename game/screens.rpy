@@ -929,6 +929,13 @@ style slot_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
+transform sliderhover:
+    on hover:
+        additive 1
+
+    on idle:
+        additive 0
+
 screen preferences():
     use game_menu('preferences')
     add gui.game_menu_background at saveloadslide
@@ -962,6 +969,73 @@ screen preferences():
             imagebutton auto "images/GUI/settings/large_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
             imagebutton auto "images/GUI/settings/readtext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
             imagebutton auto "images/GUI/settings/off_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+
+
+    hbox at saveloadslide:
+        style_prefix "slider"
+        xpos 100
+        ypos 0.5
+        box_wrap True
+
+        vbox:
+            xoffset 200
+            yoffset 160
+            add "gui/slider/textspeed.png" xoffset 35
+            bar value Preference("text speed"):
+                at sliderhover
+                xsize 240
+                ysize 48
+
+
+
+
+            if config.has_music:
+                add "gui/slider/musicvolume.png" xoffset 35
+                hbox:
+                    bar value Preference("music volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+    ###################
+    #Removed to align voice acting
+    ###################
+            #label _("Auto-Forward Time"):
+            #    xalign .5
+            #bar value Preference("auto-forward time"):
+             #   xalign .5
+              #  xsize 240
+              # ysize 48
+
+        vbox:
+            yoffset 160
+            xoffset 20
+            if config.has_sound:
+                add "gui/slider/sfxvolume.png" xoffset 35
+                hbox:
+                    bar value Preference("sound volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+                    if config.sample_sound:
+                        textbutton _("Test") action Play("sound", config.sample_sound)
+
+
+            if config.has_voice:
+                add "gui/slider/voicevolume.png" xoffset 35
+                hbox:
+                    bar value Preference("voice volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+                    if config.sample_voice:
+                        textbutton _("Test") action Play("voice", config.sample_voice)
+
+            if config.has_music or config.has_sound or config.has_voice:
+                null height gui.pref_spacing
+
+                textbutton _("Mute All"):
+                    action Preference("all mute", "toggle")
+                    style "mute_all_button"
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
         key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
