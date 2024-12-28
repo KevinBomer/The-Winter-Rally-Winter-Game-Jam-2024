@@ -515,27 +515,115 @@ style navigation_button_text:
 ## Used to display the main menu when Ren'Py starts.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
+transform waveshader_ribbons:
+    parallel:
+        function WaveShader(speed=.1, amp=3, period=5)
+    parallel:
+        alpha 0
+        blend 'add'
+        easein 3 alpha 1
+transform waveshader_ribbons2:
 
+    alpha 0
+    blend 'add'
+    parallel:
+        function WaveShader(speed=.1, amp=3, period=5)
+    parallel:
+        zoom 1.2
+        easein 3 alpha 1
+transform waveshader_stars:
+    #initial setup
+    zoom 2
+    alpha 0
+    subpixel True
+    parallel:
+        pause 2
+        ease 2 alpha .7
+    #wave shader
+    parallel:
+        function WaveShader(speed=.1, amp=1, period=10)
+    #looping additive %
+    parallel:
+        ease 4 additive 1.0 
+        ease 4 additive 0 
+        repeat
+    #looping rotation
+    parallel:
+        linear 120 rotate 360
+transform waveshader_stars2:
+    alpha 0
+    subpixel True
+    xzoom -1
+    parallel:
+        easein 2 alpha 1
+    parallel:
+        function WaveShader(speed=.1, amp=1, period=10)
+    parallel:
+        ease 2 additive 1.0 
+        ease 2 additive 0 
+        repeat
+    parallel:
+        linear 60 rotate 360
+transform waveshader_clouds:
+    blend "add"
+    alpha 0 matrixcolor BrightnessMatrix(0)
+    easein 2 alpha 1 matrixcolor BrightnessMatrix(-.2)
+    
+transform waveshader_background:
+    alpha 0
+    pause 1
+    easein 5 alpha 1
+transform vignette:
+    matrixcolor BrightnessMatrix(-.5)
+transform waveshader_texture:
+    alpha 0
+    easein 1 alpha 1
+
+######
+##Transform for menu buttons. Each one is slightly different for different fade times
+######
+transform menubuttons1:
+    alpha 0 additive 0
+    pause .5
+    easein_cubic 3 alpha 1 additive 1
+transform menubuttons2:
+    alpha 0 additive 0
+    pause .7
+    easein_cubic 3 alpha 1 additive 1
+transform menubuttons3:
+    alpha 0 additive 0
+    pause .9
+    easein_cubic 3 alpha 1 additive 1
+transform menubuttons4:
+    alpha 0 additive 0
+    pause 1.1
+    easein_cubic 3 alpha 1 additive 1
+transform menubuttons5:
+    alpha 0 additive 0
+    pause 1.3
+    easein_cubic 3 alpha 1 additive 1
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-    add "gui/mainmenu/texture.png" xanchor .5 yanchor .5 xpos .5 ypos .5
-    add "gui/mainmenu/clouds.png" xanchor .5 yanchor .5 xpos .5 ypos .5
-    add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5
-    add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5
-    add "gui/mainmenu/vignette.png" xanchor .5 yanchor .5 xpos .5 ypos .5
+    add gui.main_menu_background at waveshader_background
+    add "gui/mainmenu/texture.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_texture
+    add "gui/mainmenu/clouds.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_clouds
+    add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars
+    add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars2
+    add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_ribbons
+    add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_ribbons2 as ribbons2
+    add "gui/mainmenu/vignette.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at vignette
 
 
     vbox:
         xpos .5 ypos .7 xanchor .5 yanchor .5
-        imagebutton auto "gui/mainmenu/newgame_%s.png" action Start()
-        imagebutton auto "gui/mainmenu/loadgame_%s.png" action ShowMenu("load")
-        imagebutton auto "gui/mainmenu/settings_%s.png" action ShowMenu("preferences")
-        imagebutton auto "gui/mainmenu/credits_%s.png" action ShowMenu("about")
-        imagebutton auto "gui/mainmenu/quit_%s.png" action Quit(confirm=not main_menu)
+        imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 action Start()
+        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 action ShowMenu("load")
+        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 action ShowMenu("preferences")
+        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 action ShowMenu("about")
+        imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 action Quit(confirm=not main_menu)
 
 
 

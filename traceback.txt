@@ -1,31 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 19, in script
-    "Silver-tongued, savvy, sociable Mina..."
-Exception: matrixcolor requires a Matrix (not im.matrix, got (Matrix([ 1.0000000,  0.0000000,  0.0000000,  0.0000000, 
-         0.0000000,  1.0000000,  0.0000000,  0.0000000, 
-         0.0000000,  0.0000000,  1.0000000,  0.0000000, 
-         0.0000000,  0.0000000,  0.0000000,  1.0000000, ]), Matrix([ 1.0000000,  0.0000000,  0.0000000,  0.9000000, 
-         0.0000000,  1.0000000,  0.0000000,  0.9000000, 
-         0.0000000,  0.0000000,  1.0000000,  0.9000000, 
-         0.0000000,  0.0000000,  0.0000000,  1.0000000, ])))
+KeyError: 'divide'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 19, in script
-    "Silver-tongued, savvy, sociable Mina..."
-  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 930, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "/Applications/renpy-7.4.10-sdk/renpy/exports.py", line 1474, in say
-    who(what, *args, **kwargs)
-  File "/Applications/renpy-7.4.10-sdk/renpy/character.py", line 1352, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "/Applications/renpy-7.4.10-sdk/renpy/character.py", line 1003, in do_display
-    display_say(who,
-  File "/Applications/renpy-7.4.10-sdk/renpy/character.py", line 693, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
   File "/Applications/renpy-7.4.10-sdk/renpy/ui.py", line 299, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 3582, in interact
@@ -38,10 +28,6 @@ Full traceback:
   File "render.pyx", line 266, in renpy.display.render.render
   File "/Applications/renpy-7.4.10-sdk/renpy/display/layout.py", line 888, in render
     surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/transition.py", line 543, in render
-    top = render(self.new_widget, width, height, st, at)
   File "render.pyx", line 170, in renpy.display.render.render
   File "render.pyx", line 266, in renpy.display.render.render
   File "/Applications/renpy-7.4.10-sdk/renpy/display/layout.py", line 888, in render
@@ -63,16 +49,10 @@ Full traceback:
   File "/Applications/renpy-7.4.10-sdk/renpy/display/transform.py", line 909, in render
     return RenderTransform(self).render(width, height, st, at)
   File "accelerator.pyx", line 1041, in renpy.display.accelerator.RenderTransform.render
-  File "accelerator.pyx", line 893, in renpy.display.accelerator.RenderTransform.final_render
-Exception: matrixcolor requires a Matrix (not im.matrix, got (Matrix([ 1.0000000,  0.0000000,  0.0000000,  0.0000000, 
-         0.0000000,  1.0000000,  0.0000000,  0.0000000, 
-         0.0000000,  0.0000000,  1.0000000,  0.0000000, 
-         0.0000000,  0.0000000,  0.0000000,  1.0000000, ]), Matrix([ 1.0000000,  0.0000000,  0.0000000,  0.9000000, 
-         0.0000000,  1.0000000,  0.0000000,  0.9000000, 
-         0.0000000,  0.0000000,  1.0000000,  0.9000000, 
-         0.0000000,  0.0000000,  0.0000000,  1.0000000, ])))
+  File "accelerator.pyx", line 905, in renpy.display.accelerator.RenderTransform.final_render
+KeyError: 'divide'
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.1.3.23091805
 Winter Game Jam 2024 The Winter Rally 1.0
-Fri Dec 27 18:01:33 2024
+Fri Dec 27 21:58:45 2024
