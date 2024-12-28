@@ -361,7 +361,7 @@ init:
             yanchor .5
             alpha 0
             pause 0
-            easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.2)
+            easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.0)
     transform phonebackground:
         xpos .5
         ypos .5
@@ -378,7 +378,7 @@ init:
         alpha 0
         pause .5
         matrixcolor BrightnessMatrix(.5)
-        easein 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
+        easein .5 alpha 1 matrixcolor BrightnessMatrix(0.0)
     transform phonemenu_idle:
         zoom .25
         yanchor .5
@@ -395,18 +395,36 @@ screen phone_menu():
     zorder 101
     modal True
     add "images/GUI/bigphone.png" at phoneappear
-    vbox at phonemenu_appear:
-        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('save'):
-            hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=90)
-            idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
-        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('load'):
-            hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=90)
-            idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#4f595e', size=80)
-        imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action ShowMenu('preferences'):
-            hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=90)
-            idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#4f595e', size=80)
-
-    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
+    vbox:
+        hbox at phonemenu_appear:
+            vbox:
+                xanchor .5
+                yanchor .5
+                xpos 2600
+                ypos 700
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None)]:
+                    hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=80)
+                    idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None)]:
+                    hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=80)
+                    idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None)]:
+                    hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=80)
+                    idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#5f6fa1', size=70)
+    hbox at phonemenu_appear:
+        ypos 2000
+        yoffset 350
+        if not main_menu:
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action ShowMenu("history"):
+                hover_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#eff', size=60)
+                idle_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action MainMenu():
+                hover_foreground Text(_("Menu"), xalign=0.4, yalign=.5, color='#eff', size=60)
+                idle_foreground Text(_("Menu" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action Quit(confirm=not main_menu):
+                hover_foreground Text(_("Quit"), xalign=0.4, yalign=.5, color='#eff', size=60)
+                idle_foreground Text(_("Quit" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
+        key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
 
 screen phone_background():
     zorder 100
@@ -504,25 +522,21 @@ screen main_menu():
     tag menu
 
     add gui.main_menu_background
+    add "gui/mainmenu/texture.png" xanchor .5 yanchor .5 xpos .5 ypos .5
+    add "gui/mainmenu/clouds.png" xanchor .5 yanchor .5 xpos .5 ypos .5
+    add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5
+    add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5
+    add "gui/mainmenu/vignette.png" xanchor .5 yanchor .5 xpos .5 ypos .5
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
 
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
+    vbox:
+        xpos .5 ypos .7 xanchor .5 yanchor .5
+        imagebutton auto "gui/mainmenu/newgame_%s.png" action Start()
+        imagebutton auto "gui/mainmenu/loadgame_%s.png" action ShowMenu("load")
+        imagebutton auto "gui/mainmenu/settings_%s.png" action ShowMenu("preferences")
+        imagebutton auto "gui/mainmenu/credits_%s.png" action ShowMenu("about")
+        imagebutton auto "gui/mainmenu/quit_%s.png" action Quit(confirm=not main_menu)
 
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -577,8 +591,8 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     if main_menu:
         add gui.main_menu_background
-    else:
-        add gui.game_menu_background
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
+
 style game_menu_outer_frame is empty
 style game_menu_navigation_frame is empty
 style game_menu_content_frame is empty
@@ -673,107 +687,119 @@ style about_label_text:
 ## https://www.renpy.org/doc/html/screen_special.html#save https://
 ## www.renpy.org/doc/html/screen_special.html#load
 
+##A transform that comes from the right
+transform from_right:
+    subpixel True
+    alpha 0.0 xalign 1.0 yalign 0.0
+    parallel:
+        easein 1.0 alpha 1.0
+    parallel:
+        easein 1.0 xalign 0.5
+    on hide:            
+        alpha 1 zoom 1 xalign 0.5 yalign 0.5
+        block:
+            linear 0.1 zoom 1.1
+            linear 0.5 zoom 0
+
 screen save():
-
     tag menu
-
     use file_slots(_("Save"))
-
+    add "gui/saveload/save.png" xpos .09 ypos .09 at saveloadslide:
+        at transform:
+            alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
+            spring3 1 alpha 1 additive 0 matrixcolor BrightnessMatrix(0.0)
 
 screen load():
 
     tag menu
-
     use file_slots(_("Load"))
+    add "gui/saveload/load.png" xpos .09 ypos .09 at saveloadslide:
+        at transform:
+            alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
+            spring3 1 alpha 1 additive 0 matrixcolor BrightnessMatrix(0.0)
 
+#This transform controls the "slide" from the phone to the final menu location. It is needed on every element that needs to move.
+transform saveloadslide:    
+    xoffset 1000 alpha 0 additive 1
+    easein .5 xoffset 0 alpha 1 additive 0
 
 screen file_slots(title):
-
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
+    add "gui/saveload/saveloadbg.png" at saveloadslide
+    use phone_menu
+    ## The page name, which can be edited by clicking on a button.
+    button at saveloadslide:
+        style "page_label"
+        key_events True
+        xalign 0.10
+        action page_name_value.Toggle()
+        ypos .795
+        input:
+            style "page_label_text"
+            value page_name_value
 
-    use game_menu(title):
+    ## The grid of file slots.
+    grid gui.file_slot_cols gui.file_slot_rows:
+        style_prefix "slot"
 
-        fixed:
+        xalign 0.2
+        yalign 0.5
 
-            ## This ensures the input will get the enter event before any of the
-            ## buttons do.
-            order_reverse True
+        spacing gui.slot_spacing
 
-            ## The page name, which can be edited by clicking on a button.
-            button:
-                style "page_label"
+        for i in range(gui.file_slot_cols * gui.file_slot_rows):
 
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
+            $ slot = i + 1
 
-                input:
-                    style "page_label_text"
-                    value page_name_value
+            button at saveloadslide:
+                action FileAction(slot)
 
-            ## The grid of file slots.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                style_prefix "slot"
+                has vbox
 
-                xalign 0.5
-                yalign 0.5
+                add FileScreenshot(slot) xalign 0.5
 
-                spacing gui.slot_spacing
+                text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
+                    style "slot_time_text"
 
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
+                text FileSaveName(slot):
+                    style "slot_name_text"
 
-                    $ slot = i + 1
+                key "save_delete" action FileDelete(slot)
 
-                    button:
-                        action FileAction(slot)
+    ## Buttons to access other pages.
+    vbox at saveloadslide:
 
-                        has vbox
+        xalign 0.3
+        yalign 0.88
 
-                        add FileScreenshot(slot) xalign 0.5
+        hbox:
+            xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
-                            style "slot_time_text"
+            spacing gui.page_spacing
 
-                        text FileSaveName(slot):
-                            style "slot_name_text"
+            textbutton _("<") action FilePagePrevious()
 
-                        key "save_delete" action FileDelete(slot)
+            if config.has_autosave:
+                textbutton _("{#auto_page}A") action FilePage("auto")
 
-            ## Buttons to access other pages.
-            vbox:
-                style_prefix "page"
+            if config.has_quicksave:
+                textbutton _("{#quick_page}Q") action FilePage("quick")
 
-                xalign 0.5
-                yalign 1.0
+            ## range(1, 10) gives the numbers from 1 to 9.
+            for page in range(1, 10):
+                textbutton "[page]" action FilePage(page)
 
-                hbox:
+            textbutton _(">") action FilePageNext()
+
+        if config.has_sync:
+            if CurrentScreenName() == "save":
+                textbutton _("Upload Sync"):
+                    action UploadSync()
                     xalign 0.5
-
-                    spacing gui.page_spacing
-
-                    textbutton _("<") action FilePagePrevious()
-
-                    if config.has_autosave:
-                        textbutton _("{#auto_page}A") action FilePage("auto")
-
-                    if config.has_quicksave:
-                        textbutton _("{#quick_page}Q") action FilePage("quick")
-
-                    ## range(1, 10) gives the numbers from 1 to 9.
-                    for page in range(1, 10):
-                        textbutton "[page]" action FilePage(page)
-
-                    textbutton _(">") action FilePageNext()
-
-                if config.has_sync:
-                    if CurrentScreenName() == "save":
-                        textbutton _("Upload Sync"):
-                            action UploadSync()
-                            xalign 0.5
-                    else:
-                        textbutton _("Download Sync"):
-                            action DownloadSync()
-                            xalign 0.5
+            else:
+                textbutton _("Download Sync"):
+                    action DownloadSync()
+                    xalign 0.5
 
 
 style page_label is gui_label
@@ -817,8 +843,9 @@ style slot_button_text:
 
 screen preferences():
     use game_menu('preferences')
+    add gui.game_menu_background at saveloadslide
     use phone_menu
-    hbox:
+    hbox at saveloadslide:
         xpos 250
         ypos 190
         vbox:
@@ -849,8 +876,9 @@ screen preferences():
             imagebutton auto "images/GUI/settings/off_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
+        key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
     key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
-
+    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('preferences', transition=None),Hide('phone_menu', transition=None)]
 
 
 style pref_label is gui_label

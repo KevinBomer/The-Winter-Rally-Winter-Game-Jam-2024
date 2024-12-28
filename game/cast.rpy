@@ -25,5 +25,5 @@ image fadetoblack = Image("images/faded.png", oversample=1.8125)
 
 
 #Dissolves
-define paintmask = ImageDissolve("images/gui/paintmask.jpg", 1.5, ramplen=256)
-define paintmask2 = ImageDissolve("images/gui/paintmask.jpg", 1.0, ramplen=256, reverse=False, time_warp=_warper.ease)
+define paintmask = ImageDissolve("images/gui/paintmask.jpg", 1.0, ramplen=256)
+define paintmask2 = ImageDissolve("images/gui/paintmask.jpg", .5, ramplen=256, reverse=False, time_warp=_warper.ease)
