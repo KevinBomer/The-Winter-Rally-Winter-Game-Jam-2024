@@ -1,64 +1,41 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-After initialization, but before game start.
-  File "game/screens.rpy", line 391, in prepare_screen
-    screen phone_menu():
-  File "game/screens.rpy", line 391, in prepare
-    screen phone_menu():
-  File "game/screens.rpy", line 411, in prepare
-    hbox at phonemenu_appear:
-  File "game/screens.rpy", line 411, in prepare
-    hbox at phonemenu_appear:
-  File "game/screens.rpy", line 414, in prepare
-    if not main_menu:
-  File "game/screens.rpy", line 414, in prepare
-    if not main_menu:
-  File "game/screens.rpy", line 415, in prepare
-    imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 [action ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
-  File "game/screens.rpy", line 415, in prepare
-    imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 [action ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
-SyntaxError: invalid syntax (screens.rpy, line 415)
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevin/Library/RenPy/WinterGameJam2024TheWinterRally-1733075722/sync/_reload-1-LT1.save'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "/Applications/renpy-7.4.10-sdk/renpy/bootstrap.py", line 275, in bootstrap
-    renpy.main.main()
-  File "/Applications/renpy-7.4.10-sdk/renpy/main.py", line 670, in main
-    run(restart)
-  File "/Applications/renpy-7.4.10-sdk/renpy/main.py", line 93, in run
-    renpy.display.screen.prepare_screens()
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/screen.py", line 1003, in prepare_screens
-    s.ast.prepare_screen()
-  File "game/screens.rpy", line 391, in prepare_screen
-    screen phone_menu():
-  File "game/screens.rpy", line 391, in prepare
-    screen phone_menu():
-  File "game/screens.rpy", line 411, in prepare
-    hbox at phonemenu_appear:
-  File "game/screens.rpy", line 411, in prepare
-    hbox at phonemenu_appear:
-  File "game/screens.rpy", line 414, in prepare
-    if not main_menu:
-  File "game/screens.rpy", line 414, in prepare
-    if not main_menu:
-  File "game/screens.rpy", line 415, in prepare
-    imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 [action ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
-  File "game/screens.rpy", line 415, in prepare
-    imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 [action ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
-  File "/Applications/renpy-7.4.10-sdk/renpy/py3analysis.py", line 808, in ast_eval
-    return self.ast_eval_literal(expr)[0]
-  File "/Applications/renpy-7.4.10-sdk/renpy/py3analysis.py", line 790, in ast_eval_literal
-    expr = py_compile(expr, 'eval', ast_node=True)
-  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1088, in py_compile
-    raise e
-  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1034, in py_compile
-    raise orig_e
-  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1027, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (screens.rpy, line 415)
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Applications/renpy-7.4.10-sdk/renpy/loadsave.py", line 810, in load
+    log_data, signature = location.load(filename)
+  File "/Applications/renpy-7.4.10-sdk/renpy/savelocation.py", line 520, in load
+    return l.load(slotname) # type: ignore
+  File "/Applications/renpy-7.4.10-sdk/renpy/savelocation.py", line 284, in load
+    with zipfile.ZipFile(filename, "r") as zf:
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/zipfile.py", line 1239, in __init__
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevin/Library/RenPy/WinterGameJam2024TheWinterRally-1733075722/sync/_reload-1-LT1.save'
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.1.3.23091805
 Winter Game Jam 2024 The Winter Rally 1.0
-Sat Dec 28 18:00:37 2024
+Sat Dec 28 20:43:42 2024
