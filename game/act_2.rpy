@@ -144,4 +144,4 @@ label finnlament:
     "So it was just the three of us for the day." 
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone." 
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
-    #FADE to NEXT SCENE
+    return

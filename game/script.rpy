@@ -1,42 +1,44 @@
+init:
+    transform centerstage:
+        xanchor .5 yanchor 1.0
+        xpos .5 ypos 1.5
+
 label start:
-
-
     scene nightsky with slowerdissolve
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
-    #Enter TERRIE. 
+    show ter sky default at centerstage with dissolve
     "Practical, plucky, passionate Terrie..."
-    menu:
-        "This is a test"
-        "This is choice 1":
-            "do nothing"
-        "This is choice 2":
-            "do nothing"
-        "This is choice 3":
-            "do nothing"
-    #Enter MINA. 
+    hide ter with dissolve
+    show mina hill default at centerstage with dissolve:    
+        subpixel True 
+        matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(0.0)*HueMatrix(-25.0) 
+
     "Silver-tongued, savvy, sociable Mina..."
+
     #Enter FINN. 
+    hide mina with dissolve
+    show fin sky default at centerstage with dissolve
     "Wise, wild workaholic Finn..." 
-    #Enter MORGAN, in the middle of everyone else. 
-    show morg sky happy with dissolve:
-        xanchor .5 yanchor 1.0
-        xpos .5 ypos 1.5
+    hide fin with dissolve
+    show morg sky happy at centerstage with dissolve:
     "And, of course, Morgan."
-    show fadetoblack with slowerdissolve
+
     "The five of us as a group ran like a clock, but life, as always..."
-    scene hilltop with slowdissolve
-    show morg fw neutral:
-        xanchor .5 yanchor 1.0
-        xpos .5 ypos 1.5
+    show fadetoblack behind morg with slowerdissolve
+    pause .5
+    show morg at centerstage:
+        alpha 1
+        ease 2 alpha 0
+    hide morg with dissolve
     "It mutated beyond our control and spread all of us thin." 
-    #Fade out Mina. 
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 
-    #Fade out Finn. 
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster." 
     "And Morgan?"
-    show corridor with slowdissolve
+    show corridor with paintmask2:
+        zoom 1.05
+        easein 1 zoom 1.0
     "They all said it was the most aggressive case they'd ever seen in their years of practicing medicine."
     "It was so deep in her system they couldn't even pin down what kind of cancer it was to start with." 
     "Being bound to a bed with two of her friends basically vanishing off the radar, I thought she'd never smile again..." 
@@ -44,16 +46,20 @@ label start:
     "So, on a chilly January 7th, I went to Nigh Hill Medical Clinic once more for Morgan." 
     "Well, not before inviting the only constant presence in our lives, too..." 
     "Nobody quite like good ol'..." 
-    #Pop-in TERRIE. 
-    ter "You made it! Good, I wouldn't miss this for the world."
-    ter "How long's it been since Morgan last gave us a call... like, what, two, three weeks? God." 
+    show ter at centerstage:
+        yoffset 1000
+        spring3 .5 yoffset 0
+    ter c-day playful "You made it! Good, I wouldn't miss this for the world."
+    ter c-day tense "How long's it been since Morgan last gave us a call... like, what, two, three weeks? God." 
     ter "Treatment must be rough for a gap of silence that wide." 
     ter "Hmmm..."
-    ter "No time like the present though, right? She's waitin'!"
+    ter c-day smile "No time like the present though, right? She's waitin'!"
     ter "C'mon, Nigh Hill's just that way."
-    scene purgatory with dissolve
+    hide ter
+    scene purgatory
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
+    ###SCRIPT show death
     mortis "You... you have a gift." 
     mortis "A gift seldom experienced to the fullest, and even more seldom stripped away so prematurely." 
     #Pop-in TERRIE. 
@@ -65,50 +71,67 @@ label start:
     mortis "You will find that much of what you miss will come to you in very due time." 
     mortis "I leave you to your devices now. To your good health, Morgan. Do not be late." 
     #Beat.
+    show ter hospital inthought at centerstage with dissolve:
+        xpos .15
     ter "...are you getting any of that? I sure ca— "
     ter "...huh?" 
-    #Enter from screen left DEATH. Long beat. 
+    #SCRIPT Enter from screen left DEATH. Long beat. 
     mortis "Your friend awaits you." 
     mortis "Hurry along, now. Live a little." 
     #Exit Death from screen right. 
     ter "I..." 
-    ter "I'm going in. You're coming with, yeah?" 
-    ter "Heyyy, Morgan? It's Terrie. It's us. How're you holding up?" 
+    ter hospital tense "I'm going in. You're coming with, yeah?" 
+    ter hospital happy "Heyyy, Morgan? It's Terrie. It's us. How're you holding up?" 
     #Fade-in MORGAN. 
     "She breathes heavily with a noticeable wheeze and coughs." 
     "As she breathes more, the wheezing fades... and then disappears altogether." 
-    morg "Never better?" 
+    show morg hospital inthought at centerstage:
+        subpixel True
+        zoom .97 alpha 0
+        easein 1 zoom 1 alpha 1
+
+        
+    morg hospital inthought "Never better?" 
     #FADE TO BLACK 
     #INT. HOSPITAL ROOM - DAY
-    ter "Morgan, oh my {i}God{/i}, you're glowing!"
-    morg "Not literally, I hope." 
+    ter hospital aha "Morgan, oh my {i}God{/i}, you're glowing!"
+    morg hospital playful "Not literally, I hope." 
+    show morg hospital default with dissolve
     ter "It's just— wh— how— what kinda treatment are they giving you guys in here?!" 
     ter "It's like a miracle!" 
-    morg "Who knows? Maybe they hooked me up to the Elixir of Life by accident." 
-    ter "D'you feel like you could... y'know... again?"
-    morg "What, this?"
+    morg playful "Who knows? Maybe they hooked me up to the Elixir of Life by accident." 
+    ter hospital default "D'you feel like you could... y'know... again?"
+    morg hospital sad "What, this?"
     "The moment that Morgan stood up again, it was like she'd never fallen ill."
     "It was like the future we wished for as teenagers could finally come to pass." 
-    ter "Dude... pinch me right now."
-    morg "Okay, then." 
-    ter "Ow— hey! You KNOW that's a figure of speech, you!"
+    ter hospital hurt "Dude... pinch me right now."
+
+    morg hospital playful "Okay, then." 
+    
+    show ter hospital aha at centerstage:
+        subpixel True 
+        yoffset 10 xpos .15
+        spring3 .5 yoffset 0
+    ter hospital aha "Ow— hey! You KNOW that's a figure of speech, you!"
     morg "Oh, I'm sorry, I've been cut off from the outside world for the past ten months."
     morg "Who knows how people speak now?"
-    ter "Well, since you're up and walkin', we could probably go out and see for ourselves." 
-    morg "We could..."
+    ter hospital happy "Well, since you're up and walkin', we could probably go out and see for ourselves." 
+    morg default "We could..."
     #Beat.
     morg "...Hm. Terrie, see that wastepaper over there in the trash?"
     morg "There's something written on it that I want to show you guys."
     "The wad of paper that Morgan threw away who knows how long ago was actually a to-do list." 
     "Packed with fun activities to pass the  time with alongside friends across Vancouver." 
-    "It was filled top to bottom. And Morgan, although she almost gave up on it, now…"
-    morg "All of it."
-    ter "All of it? Today?"
+    "It was filled top to bottom. And Morgan, although she almost gave up on it, now..."
+    morg hospital happy "All of it."
+    ter hospital inthought "All of it? Today?"
     morg "{i}All{/i} of it. Today."
     morg "With as many people as we can find. Heck, invite the neighbour's dog if you have to."
-    morg "Hey, how are Mina and Finn getting on? ter Oh, y'know, still giving their careers everything!"
-    ter "I dunno if we could reach them... to tell the truth, it's been a while. Like, with a capital W." 
-    morg "All the more reason to get them on board. morg Terrie, this is something we won't have- we haven't had - for ages."
+    morg hospital default "Hey, how are Mina and Finn getting on?"
+    ter hospital playful "Oh, y'know, still giving their careers everything!"
+    ter default "I dunno if we could reach them... to tell the truth, it's been a while. Like, with a capital W." 
+    morg hospital aha "All the more reason to get them on board."
+    morg sad "Terrie, this is something we won't have- we haven't had - for ages."
     ter "Well..."
     ter "I’m sure someone can make the time if we ask nicely!"
     morg "Oh, we'll ask, alright." 
