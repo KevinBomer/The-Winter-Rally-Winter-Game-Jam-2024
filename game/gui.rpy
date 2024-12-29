@@ -57,13 +57,13 @@ define gui.interface_text_color = '#ffffff'
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "fonts/MontserratAlternates-Regular.ttf"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "fonts/MontserratAlternates-Regular.ttf"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/MontserratAlternates-Regular.ttf"
 
 ## The size of normal dialogue text.
 define gui.text_size = 33
@@ -309,9 +309,9 @@ define gui.frame_tile = False
 
 ## The height of horizontal bars, scrollbars, and sliders. The width of vertical
 ## bars, scrollbars, and sliders.
-define gui.bar_size = 38
+define gui.bar_size = 18
 define gui.scrollbar_size = 18
-define gui.slider_size = 38
+define gui.slider_size = 18
 
 ## True if bar images should be tiled. False if they should be linearly scaled.
 define gui.bar_tile = False
@@ -342,19 +342,19 @@ define config.history_length = 250
 
 ## The height of a history screen entry, or None to make the height variable at
 ## the cost of performance.
-define gui.history_height = 210
+define gui.history_height = 140
 
 ## The position, width, and alignment of the label giving the name of the
 ## speaking character.
-define gui.history_name_xpos = 233
-define gui.history_name_ypos = 0
+define gui.history_name_xpos = 245
+define gui.history_name_ypos = 45
 define gui.history_name_width = 233
 define gui.history_name_xalign = 1.0
 
 ## The position, width, and alignment of the dialogue text.
-define gui.history_text_xpos = 255
-define gui.history_text_ypos = 3
-define gui.history_text_width = 1110
+define gui.history_text_xpos = 270
+define gui.history_text_ypos = 45
+define gui.history_text_width = 670
 define gui.history_text_xalign = 0.0
 
 

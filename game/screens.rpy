@@ -368,9 +368,6 @@ init:
         xanchor .5
         yanchor .5
         alpha .5
-        blend 'multiply'
-        matrixcolor BrightnessMatrix(1)
-        ease 1 matrixcolor BrightnessMatrix(0.0)
     transform phonemenu_appear:
         zoom .5
         xpos .7
@@ -392,7 +389,7 @@ init:
 
 
 screen phone_menu():
-    zorder 101
+    zorder 100
     modal True
     add "images/GUI/bigphone.png" at phoneappear
     vbox:
@@ -402,20 +399,20 @@ screen phone_menu():
                 yanchor .5
                 xpos 2600
                 ypos 700
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#5f6fa1', size=70)
     hbox at phonemenu_appear:
         ypos 2000
         yoffset 350
         if not main_menu:
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action ShowMenu("history"):
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action [ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
                 hover_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#eff', size=60)
                 idle_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
             imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action MainMenu():
@@ -427,7 +424,7 @@ screen phone_menu():
         key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
 
 screen phone_background():
-    zorder 100
+    zorder 99
     add Solid("#2b4255", xsize=1920, ysize=1080) at phonebackground
 screen quick_menu():
 
@@ -791,6 +788,7 @@ transform from_right:
 
 screen save():
     tag menu
+    zorder 100
     use file_slots(_("Save"))
     add "gui/saveload/save.png" xpos .09 ypos .09 at saveloadslide:
         at transform:
@@ -800,6 +798,7 @@ screen save():
 screen load():
 
     tag menu
+    zorder 100
     use file_slots(_("Load"))
     add "gui/saveload/load.png" xpos .09 ypos .09 at saveloadslide:
         at transform:
@@ -812,6 +811,7 @@ transform saveloadslide:
     easein .5 xoffset 0 alpha 1 additive 0
 
 screen file_slots(title):
+    zorder 100
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
     add "gui/saveload/saveloadbg.png" at saveloadslide
     use phone_menu
@@ -929,7 +929,15 @@ style slot_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
+transform sliderhover:
+    on hover:
+        additive 1
+
+    on idle:
+        additive 0
+
 screen preferences():
+    zorder 100
     use game_menu('preferences')
     add gui.game_menu_background at saveloadslide
     use phone_menu
@@ -962,6 +970,73 @@ screen preferences():
             imagebutton auto "images/GUI/settings/large_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
             imagebutton auto "images/GUI/settings/readtext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
             imagebutton auto "images/GUI/settings/off_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+
+
+    hbox at saveloadslide:
+        style_prefix "slider"
+        xpos 100
+        ypos 0.5
+        box_wrap True
+
+        vbox:
+            xoffset 200
+            yoffset 160
+            add "gui/slider/textspeed.png" xoffset 35
+            bar value Preference("text speed"):
+                at sliderhover
+                xsize 240
+                ysize 48
+
+
+
+
+            if config.has_music:
+                add "gui/slider/musicvolume.png" xoffset 35
+                hbox:
+                    bar value Preference("music volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+    ###################
+    #Removed to align voice acting
+    ###################
+            #label _("Auto-Forward Time"):
+            #    xalign .5
+            #bar value Preference("auto-forward time"):
+             #   xalign .5
+              #  xsize 240
+              # ysize 48
+
+        vbox:
+            yoffset 160
+            xoffset 20
+            if config.has_sound:
+                add "gui/slider/sfxvolume.png" xoffset 35
+                hbox:
+                    bar value Preference("sound volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+                    if config.sample_sound:
+                        textbutton _("Test") action Play("sound", config.sample_sound)
+
+
+            if config.has_voice:
+                add "gui/slider/voicevolume.png" xoffset 35
+                hbox:
+                    bar value Preference("voice volume"):
+                        at sliderhover
+                        xsize 240
+                        ysize 48
+                    if config.sample_voice:
+                        textbutton _("Test") action Play("voice", config.sample_voice)
+
+            if config.has_music or config.has_sound or config.has_voice:
+                null height gui.pref_spacing
+
+                textbutton _("Mute All"):
+                    action Preference("all mute", "toggle")
+                    style "mute_all_button"
     if main_menu:
         key "game_menu" action ShowMenu("main_menu")
         key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
@@ -1049,42 +1124,62 @@ style slider_vbox:
 ## https://www.renpy.org/doc/html/history.html
 
 screen history():
-
+    zorder 100
     tag menu
 
     ## Avoid predicting this screen, as it can be very large.
     predict False
+    use phone_menu
+    $ close_action = Return()
+    key config.keymap["game_menu"] action close_action
 
-    use game_menu(_("History"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0):
+    fixed:           
+        add "images/gui/history.png" at saveloadslide
 
-        style_prefix "history"
+        vpgrid at saveloadslide:
+            # background None
+            # padding (0, 0)
+            # margin (0, 0)
+            id "history_vpgrid"
+            pos (120, 230)
+            xysize(940, 720)
 
-        for h in _history_list:
+            yinitial 1.0
 
-            window:
+            cols 1
+            scrollbars None
 
-                ## This lays things out properly if history_height is None.
-                has fixed:
-                    yfit True
+            draggable True
+            mousewheel True
 
-                if h.who:
+            style_prefix "history"
 
-                    label h.who:
-                        style "history_name"
+            for h in _history_list:
+
+                window:
+
+                    ## This lays things out properly if history_height is None.
+                    has fixed:
+                        yfit True
+
+                    if h.who:
+
+                        label h.who.upper():
+                            style "history_name"
+                            substitute False
+
+                            ## Take the color of the who text from the Character, if
+                            ## set.
+                            if "color" in h.who_args:
+                                text_color h.who_args["color"]
+
+                    $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                    text what:
                         substitute False
 
-                        ## Take the color of the who text from the Character, if
-                        ## set.
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
-
-                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                text what:
-                    substitute False
-
-        if not _history_list:
-            label _("The dialogue history is empty.")
-
+            if not _history_list:
+                label _("The dialogue history is empty.")
+        
 
 ## This determines what tags are allowed to be displayed on the history screen.
 
@@ -1113,6 +1208,7 @@ style history_name:
 style history_name_text:
     min_width gui.history_name_width
     textalign gui.history_name_xalign
+    size 30
 
 style history_text:
     xpos gui.history_text_xpos
@@ -1122,13 +1218,14 @@ style history_text:
     min_width gui.history_text_width
     textalign gui.history_text_xalign
     layout ("subtitle" if gui.history_text_xalign else "tex")
+    size 30
+    color '#5f6fa1'#lavender
 
 style history_label:
     xfill True
 
 style history_label_text:
     xalign 0.5
-
 
 ## Help screen #################################################################
 ##
@@ -1345,7 +1442,7 @@ style confirm_button is gui_medium_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
+    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=None)
     padding gui.confirm_frame_borders.padding
     xalign .5
     yalign .5
