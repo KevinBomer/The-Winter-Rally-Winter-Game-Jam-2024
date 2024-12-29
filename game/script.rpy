@@ -20,10 +20,16 @@ label start:
     #Enter FINN. 
     "Wise, wild workaholic Finn..." 
     #Enter MORGAN, in the middle of everyone else. 
+    show morg sky happy with dissolve:
+        xanchor .5 yanchor 1.0
+        xpos .5 ypos 1.5
     "And, of course, Morgan."
     show fadetoblack with slowerdissolve
     "The five of us as a group ran like a clock, but life, as always..."
     scene hilltop with slowdissolve
+    show morg fw neutral:
+        xanchor .5 yanchor 1.0
+        xpos .5 ypos 1.5
     "It mutated beyond our control and spread all of us thin." 
     #Fade out Mina. 
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 

@@ -7,8 +7,14 @@ init python:
    # define the composite sprites with LayeredImages, blinking eyes and flapping mouth
    DefineImages("sprites", composite=True)
 
-   layerorder = ['hair', 'base', 'arms', 'armout','armwave','tail','mouth','eyes','brow','blush','anger','sweatdrop','nervous']
-   DefineImages('images/sprites', composite=True, overrideLayerOrder=layerorder, offsets=(0, 100), zooms={'Kan':.85,'Rin':.6,'Kyou':.9, 'Maya': .9, 'Youk':.9, 'Char':.65}, sides=['Kan', 'Rin', 'Kyou','Maya','Youk','Char'])
+   layerorder = ['base', 'expression','glasses']
+   DefineImages('images/sprites', composite=True, overrideLayerOrder=layerorder, offsets=(0, 100), zooms={'morg':1.4,'mc':1.4,'mina':1.4, 'fin': 1.4, 'ter':1.4, 'yum':1.4, 'mortis':1.4}, sides=['Kan', 'Rin', 'Kyou','Maya','Youk','Char'])
+
+
+####NOTE: This script requires each character to have a file "e default" and "m default" in order to work properly. For this game, they are 25x25 blank transparent PNGs. 
+#### All Components must have a base.png and at least 1 default for each layer called "layer default"
+#### All pose and lighting variations can be placed in their own directories under the character's directory. e default and m default only need to exist in 1 set of sprites. 
+#### Directories must not have spaces. 
 
    #Dynamic Sprite Emote Maps
    #MapEmote('war hugesmile',  'war md_hugesmile ed_bigsmile blush')
@@ -16,6 +22,7 @@ init python:
    #image war_ed_default = BlinkEyes("war_e_default", "war_ec_grin")
    # image war_md_hugesmile = FlapMouth("war_mc_smug", "war_m_bigsmile")
 
-####Kanna Example
-   MapEmote('Kan smile worried eo', 'Kan base mdo_happy ed_default brow_sad')
-   
+#### Example
+   MapEmote('morg cnight aha', 'morg corridor-night base expression_aha')
+   MapEmote('morg sky happy', 'morg night-sky base expression_happy')
+   MapEmote('morg fw neutral', 'morg fireworkferriswheel base expression_default')

@@ -1,4 +1,4 @@
-Sat Dec 28 18:01:07 2024
+Sat Dec 28 21:31:12 2024
 macOS-10.16-x86_64-i386-64bit
 Ren'Py 8.1.3.23091805
  
@@ -7,19 +7,19 @@ Bootstrap to the start of init.init. took 0.03s
 Early init. took 0.00s
 Loader init. took 0.01s
 Loading error handling. took 0.03s
-Loading script. took 0.48s
-Loading save slot metadata. took 0.03s
+Loading script. took 0.11s
+Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
 CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
 --- launch game ---
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
-Running init code. took 0.05s
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.44252 s.
+Running init code. took 3.48s
 Loading analysis data. took 0.03s
 Analyze and compile ATL. took 0.00s
-Reloading save slot metadata. took 0.02s
+Reloading save slot metadata. took 0.01s
 Index archives took 0.00s
-Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
-Dump and make backups. took 0.05s
+Dump and make backups. took 0.04s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
 Initial gc. took 0.02s
@@ -28,12 +28,12 @@ Creating interface object. took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.04s
 Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.03s
-Save screen analysis took 0.03s
-Prepare screens took 0.13s
-Save pyanalysis. took 0.03s
-Save bytecode. took 0.03s
+Load screen analysis took 0.04s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
 Running _start took 0.00s
 Performance test:
 Interface start. took 0.30s
@@ -46,20 +46,115 @@ Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
 Version: b'2.1 ATI-6.1.13'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1628, 916) drawable=(3256, 1832)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
 Maximum texture size: 4096x4096
 Resetting cache.
-Bootstrap to the start of init.init. took 60.78s
+Bootstrap to the start of init.init. took 185.73s
 Early init. took 0.00s
 Loader init. took 0.01s
 Loading error handling. took 0.03s
-Loading script. took 0.27s
+Loading script. took 0.12s
 Loading save slot metadata. took 0.02s
 Loading persistent. took 0.00s
 CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
 --- launch game ---
 INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
-Running init code. took 0.03s
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.37950 s.
+Running init code. took 3.41s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.04s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 326.70s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.02s
+Loading script. took 0.23s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.38567 s.
+Running init code. took 3.42s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.13s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 441.75s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.19s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.38188 s.
+Running init code. took 3.41s
 Loading analysis data. took 0.03s
 Analyze and compile ATL. took 0.00s
 Reloading save slot metadata. took 0.02s
@@ -77,7 +172,244 @@ Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.03s
 Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 506.95s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.37229 s.
+Running init code. took 3.40s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.05s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.04s
 Prepare screens took 0.14s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 569.04s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.37890 s.
+Running init code. took 3.41s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1408, 712) drawable=(2816, 1424)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 604.92s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.35618 s.
+Running init code. took 3.39s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1266, 712) drawable=(2532, 1424)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 626.45s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.37087 s.
+Running init code. took 3.40s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.05s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1266, 712) drawable=(2532, 1424)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 646.54s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.02s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.39833 s.
+Running init code. took 3.43s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
 Save pyanalysis. took 0.03s
 Save bytecode. took 0.02s
 Running _start took 0.00s
@@ -92,19 +424,101 @@ Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
 Version: b'2.1 ATI-6.1.13'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1628, 916) drawable=(3256, 1832)
+Screen sizes: virtual=(1920, 1080) physical=(1266, 712) drawable=(2532, 1424)
 Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 660.70s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.02s
+Loading script. took 0.20s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.39110 s.
+Running init code. took 3.42s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.04s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.00s
+Init translation took 0.04s
 Build styles took 0.00s
-Load screen analysis took 0.06s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
 Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1266, 712) drawable=(2532, 1424)
+Maximum texture size: 4096x4096
+Resetting cache.
+Bootstrap to the start of init.init. took 683.84s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.02s
+Loading script. took 0.21s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Winter Game Jam 2024 The Winter Rally 1.0 
+--- launch game ---
+INFO     Winter Game Jam 2024 The Winter Rally 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 3.39666 s.
+Running init code. took 3.43s
+Loading analysis data. took 0.02s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.04s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.00s
+Init translation took 0.04s
 Build styles took 0.00s
-Load screen analysis took 0.04s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.03s
+Save bytecode. took 0.02s
+Running _start took 0.01s
+Performance test:
+Interface start. took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1266, 712) drawable=(2532, 1424)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(947, 570) drawable=(1894, 1140)
+Maximum texture size: 4096x4096

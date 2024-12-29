@@ -1,11 +1,11 @@
 # CHARACTER DEFINITIONSV
-define you = Character("[povname]", color = "#ffffffff")
-define morg = Character("Morgan", color = "#ffffffff")
-define min = Character("Mina", color = "#ffffffff")
-define fin = Character("Finn", color = "#ffffffff")
-define ter = Character("Terrie", color = "#ffffffff")
-define yum = Character("Owner", color = "#ffffffff")
-define mortis = Character("Death", color = "#000000ff")
+define mc = Character("[povname]", image = "mc", voice_tag = "mc",callback=speaker("mc"), color = "#ffffffff")
+define morg = Character("Morgan", image = "morg", voice_tag = "morg",callback=speaker("morg"),color = "#ffffffff")
+define mina = Character("Mina", image = "mina", voice_tag = "mina",callback=speaker("mina"), color = "#ffffffff")
+define fin = Character("Finn", image = "fin", voice_tag = "fin",callback=speaker("fin"), color = "#ffffffff")
+define ter = Character("Terrie", image = "ter", voice_tag = "ter",callback=speaker("ter"), color = "#ffffffff")
+define yum = Character("Owner", image = "yum", voice_tag = "yum", callback=speaker("yum"), color = "#ffffffff")
+define mortis = Character("Death", voice_tag = "mortis",callback=speaker("mortis"), color = "#000000ff")
 
 define slowerdissolve = Dissolve(2.0)
 define slowdissolve = Dissolve(1.0)

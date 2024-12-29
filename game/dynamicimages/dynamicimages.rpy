@@ -800,7 +800,7 @@ screen dynamicspritespreview():
         hbox:
             spacing 0
             button:
-                background Solid("fffe")
+                background Solid("012f")
                 #xysize (config.screen_width/2, 1.0)
                 xysize (960, 1.0)
                 margin (10,50,5,10)
@@ -816,6 +816,8 @@ screen dynamicspritespreview():
                         mousewheel True
                         xinitial 0.5
                         yinitial 0.5
+                        add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars
+                        add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars2
                         for layer in layerorder:
                             if layer in values:
                                 $ img = valuespath[layer][dynamicspritespreview_var_selectedlayers[layer]]
