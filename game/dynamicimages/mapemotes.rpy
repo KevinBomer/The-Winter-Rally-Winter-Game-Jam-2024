@@ -8,7 +8,7 @@ init python:
    DefineImages("sprites", composite=True)
 
    layerorder = ['base', 'expression','glasses']
-   DefineImages('images/sprites', composite=True, overrideLayerOrder=layerorder, offsets=(0, 100), zooms={'morg':1.4,'mc':1.4,'mina':1.4, 'fin': 1.4, 'ter':1.4, 'yum':1.4, 'mortis':1.4}, sides=['Kan', 'Rin', 'Kyou','Maya','Youk','Char'])
+   DefineImages('images/sprites', composite=True, overrideLayerOrder=layerorder, offsets=(0, 100), zooms={'morg':1.3,'mc':1.4,'mina':1.4, 'fin': 1.4, 'ter':1.4, 'yum':1.4, 'mortis':1.4}, sides=['mxxorg', 'xxter', 'xxmina','xxfin','xxyum','xxmortis'])
 
 
 ####NOTE: This script requires each character to have a file "e default" and "m default" in order to work properly. For this game, they are 25x25 blank transparent PNGs. 
@@ -26,3 +26,32 @@ init python:
    MapEmote('morg cnight aha', 'morg corridor-night base expression_aha')
    MapEmote('morg sky happy', 'morg night-sky base expression_happy')
    MapEmote('morg fw neutral', 'morg fireworkferriswheel base expression_default')
+
+   MapEmote('morg hospital inthought', 'morg hospital-dorm base expression_inthought')
+   MapEmote('morg hospital playful', 'morg hospital-dorm base expression_playful')
+   MapEmote('morg hospital default', 'morg hospital-dorm base expression_default')
+   MapEmote('morg hospital sad', 'morg hospital-dorm base expression_sad')
+   MapEmote('morg hospital happy', 'morg hospital-dorm base expression_happy')
+   MapEmote('morg hospital aha', 'morg hospital-dorm base expression_aha')
+   ###Terrie
+   MapEmote('ter sky default', 'ter sky base expression_default')
+
+
+   MapEmote('ter hospital tense', 'ter hospital-dorm base expression__hospitalanddorm_tense')
+   MapEmote('ter hospital inthought', 'ter hospital-dorm base expression_default')
+   MapEmote('ter hospital happy', 'ter hospital-dorm base expression__hospitalanddorm_happy')
+   MapEmote('ter hospital aha', 'ter hospital-dorm base expression__hospitalanddorm_aha')
+   MapEmote('ter hospital default', 'ter hospital-dorm base expression_default')
+   MapEmote('ter hospital hurt', 'ter hospital-dorm base expression__hospitalanddorm_hurt')
+   MapEmote('ter hospital playful', 'ter hospital-dorm base expression__hospitalanddorm_playful')
+
+   MapEmote('ter c-day playful', 'ter corridor-day base expression__daycorrdior_playful')
+   MapEmote('ter c-day tense', 'ter corridor-day base expression__daycorrdior_tense')
+   MapEmote('ter c-day smile', 'ter corridor-day base expression__daycorrdior_happy')
+
+   ###Mina
+   MapEmote('mina hill default', 'mina HILL base expression_default')
+
+
+   ###Fin
+   MapEmote('fin sky default', 'fin sky base expression_default glasses_default')
