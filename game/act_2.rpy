@@ -100,6 +100,7 @@ label finnlament:
     #beat
     fin "Mina didn't put you up to this, did she?"
     morg "Oh, you wish."
+    jump withfinn
     #FAILURE
     fin "We're going round in circles here." 
     fin "You want me to engage in a day of folly, but I want to hold tight for the better part of a week to secure my entire future." 
@@ -144,4 +145,5 @@ label finnlament:
     "So it was just the three of us for the day." 
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone." 
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
-    return
+    #FADE to NEXT SCENE
+    jump withfinn

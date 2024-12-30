@@ -11,6 +11,9 @@ define slowerdissolve = Dissolve(2.0)
 define slowdissolve = Dissolve(1.0)
 
 #CHARACTER SPRITESV
+image morgph = "sprites/morg_placeholder.png"
+image finph = "sprites/fin_placeholder.png"
+image terph = "sprites/ter_placeholder.png"
 
 #BACKGROUNDSV
 image nightsky = Image("bgs/Night_Sky.png", oversample=1.8125)
@@ -22,7 +25,6 @@ image fadetoblack = Image("images/faded.png", oversample=1.8125)
 #CGSV
 
 #ATL transforms
-
 
 #Dissolves
 define paintmask = ImageDissolve("images/gui/paintmask.jpg", 1.0, ramplen=256)
