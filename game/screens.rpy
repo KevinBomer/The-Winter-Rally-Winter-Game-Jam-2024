@@ -1227,6 +1227,64 @@ style history_label:
 style history_label_text:
     xalign 0.5
 
+##########
+# Mina Phone Screen
+###########
+transform minaphone_pos:
+    zoom .5
+    xpos .25
+    ypos .4
+    xanchor .5
+    yanchor .5
+    on show:
+        alpha 0
+        easein 1 alpha 1
+    on hide:
+        alpha 1
+        easeout 1 alpha 0
+
+
+screen minaphone():
+    layer 'master'
+    fixed:
+
+        add "images/gui/bigphone.png" at minaphone_pos
+        add Solid("#57678b55", xsize=479, ysize=704, xalign=.5, xoffset=12, yoffset=3) at minaphone_pos
+        add "gui/mainmenu/stars2.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars_phone, minaphone_pos
+        add "gui/mainmenu/stars2.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars2_phone, minaphone_pos
+
+transform waveshader_stars_phone:
+    #initial setup
+    alpha 0
+    xzoom -1
+    yzoom 1
+    subpixel True
+    rotate_pad True
+    parallel:
+        pause 2
+        ease 2 alpha 1
+    #wave shader
+    parallel:
+        function WaveShader(speed=.1, amp=1, period=10)
+    #looping additive %
+    #looping rotation
+    parallel:
+        linear 120 rotate 360
+transform waveshader_stars2_phone:
+    alpha 0
+    xzoom -1
+    rotate_pad True
+    yzoom 1
+    subpixel True
+    parallel:
+        easein 2 alpha 1
+    parallel:
+        function WaveShader(speed=.1, amp=1, period=10)
+    parallel:
+        linear 60 rotate 360
+
+
+
 ## Help screen #################################################################
 ##
 ## A screen that gives information about key and mouse bindings. It uses other
