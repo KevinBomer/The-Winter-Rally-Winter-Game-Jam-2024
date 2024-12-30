@@ -2,6 +2,14 @@ init:
     transform centerstage:
         xanchor .5 yanchor 1.0
         xpos .5 ypos 1.5
+    transform minachibi_transform:
+        subpixel True 
+        pos (0.35, 0.66) yzoom 1.0 zoom 0.4
+
+    #####Set the automatic dissolve between expressions to dissolve
+    define config.say_attribute_transition = dissolve
+
+
 
 label start:
     scene nightsky with slowerdissolve
@@ -133,72 +141,92 @@ label start:
     morg hospital aha "All the more reason to get them on board."
     morg sad "Terrie, this is something we won't have- we haven't had - for ages."
     ter "Well..."
-    ter "I’m sure someone can make the time if we ask nicely!"
-    morg "Oh, we'll ask, alright." 
+    ter happy "I’m sure someone can make the time if we ask nicely!"
+    morg default "Oh, we'll ask, alright." 
     morg "You call Finn, I'll get in touch with Mina." 
-    morg "And, hey, if he's slow to pick up, introduce yourself as the pizza guy." 
+    morg playful "And, hey, if he's slow to pick up, introduce yourself as the pizza guy." 
     morg "You know how he is." 
-    ter "Girl, he has our contacts saved. Be for real."
-    ter "Oh well, here we go, then! Gimme one sec while I just..."
+    ter inthought "Girl, he has our contacts saved. Be for real."
+    ter default "Oh well, here we go, then! Gimme one sec while I just..."
+    hide ter with dissolve
     #Exit Terrie. 
-    morg "Right, now, my phone. Where oh where oh where is—"
-    morg "Ah. Right. Only 1% left."
-    morg "You won't mind if I use yours? Thanks."
+    morg default "Right, now, my phone. Where oh where oh where is—"
+    morg sad "Ah. Right. Only 1%% left."
+    morg default "You won't mind if I use yours? Thanks."
     "A dial-tone can be heard. Silence while the phone rings."
     morg "...Hey, what's with that look?"
     #Further beat.
-    morg "You saw it too, didn't you?" 
+    morg tense "You saw it too, didn't you?" 
     "After some feedback and mic bumping on the other side of the phone, Mina picks up."
     #Pop-in chibi MINA.
-    min "—llo? Hello? You there?" 
-    morg "Mina. It's me, Morgan. I'm here with the others." 
-    morg "Well, just Terrie and—" 
-    min "Get outta town, MORGAN?! Girly it's been forever! How are things?!" 
-    min "Uh, I mean, outside of the... hospital stuff." 
-    morg "That's why I'm calling." 
+    show screen minaphone
+    show mina chibi default at minachibi_transform, minaphone_pos with dissolve:
+        xoffset 10
+        additive .1
+        matrixcolor ContrastMatrix(1.2)
+        pause .15
+    mina "—llo? Hello? You there?" 
+    morg happy "Mina. It's me, Morgan. I'm here with the others." 
+    morg inthought "Well, just Terrie and—" 
+    show morg default
+    mina overjoyed "Get outta town, MORGAN?! Girly it's been forever! How are things?!" 
+    mina pained "Uh, I mean, outside of the... hospital stuff." 
+    morg playful "That's why I'm calling." 
     morg "I've got a day outside to myself, and I was thinking of crossing a few items off of my to-do list." 
-    morg "In the company of whoever I wished." 
-    min "And you thought of me? D'aww."
-    min "What notice period am I lookin' at?" 
-    morg "None. Obviously."
+    morg default "In the company of whoever I wished." 
+    mina happy "And you thought of me? D'aww."
+    mina default "What notice period am I lookin' at?" 
+    morg playful "None. Obviously."
     #Beat.
-    min "Man, it really has been a million years." 
-    min "Ugh, how do I put this? for the last few months, streaming's gone so well that I, uh..."
-    min "LA called, and I went. Like, for good."
-    min "Morgan, I really wanna be there, like, really really, but with the timings and all I don't think I can—" 
-    morg "It’s fine."
-    min "...You sure?"
-    morg "Yes, really, Mina."
-    min "I can try making changes or something—"
-    morg "i promise."
+    mina happy "Man, it really has been a million years." 
+    mina nervous "Ugh, how do I put this? for the last few months, streaming's gone so well that I, uh..."
+    mina "LA called, and I went. Like, for good."
+    mina pained "Morgan, I really wanna be there, like, really really, but with the timings and all I don't think I can—" 
+    morg sad "It’s fine."
+    mina nervous "...You sure?"
+    morg happy "Yes, really, Mina."
+    mina default "I can try making changes or something—"
+    morg sad "i promise."
     morg "Hearing from you's good enough for me."
     morg "Next time we all want to be in the same place together, you'll know first."
-    morg "And congratulations on the streaming blow-up. You really deserved it."
-    min "Morgan..."
-    min "You better tell me how things went after today, 'kay?"
-    morg "You got it."
-    min "Mhm... listen, uh, I had a stream to set up for like, five minutes ago, so I gotta bounce.
-    morg No worries! Go to work!"
+    morg happy "And congratulations on the streaming blow-up. You really deserved it."
+    mina "Morgan..."
+    mina nervous "You better tell me how things went after today, 'kay?"
+    morg default "You got it."
+    mina default "Mhm... listen, uh, I had a stream to set up for like, five minutes ago, so I gotta bounce."
+    morg playful "No worries! Go to work!"
     morg "Everyone will be cheering you on. We'll talk soon. Lots of love from us all."
-    min "Okay thank you guys miss you talk later byeeeeeee~! Sorry again bye gang. Buh-bye."
+    mina overjoyed "Okay thank you guys miss you talk later byeeeeeee~! Sorry again bye gang. Buh-bye."
     "Awkward second of Mina's clothes rustling against her phone's microphone before she hangs up."
-    morg "Bye."
+    show mina at minachibi_transform, minaphone_pos:
+        xzoom 1 yzoom 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
+        easeout .2 xzoom 0 yzoom 1.2 matrixcolor BrightnessMatrix(0.3)
+        parallel:
+            easeout .2 alpha 0
+    pause .1
+    hide minaphone with dissolve
+    pause .25
+    morg sad "Bye."
     #Emphasis on sudden gloom from Morgan. Enter Terrie from the right.
-    ter "Oh, that guy!"
+    show ter hospital default at centerstage with dissolve:
+        xpos .15
+    ter inthought "Oh, that guy!"
     morg "No luck?"
-    ter "Nada. How about Mina?"
+    ter default "Nada. How about Mina?"
     morg "..."
-    ter "Oh, yeah, the career..."
-    ter "Well, uh, I'm sure we can make today work with just the four of us!"
-    morg "We can. But we won't."
+    ter sad "Oh, yeah, the career..."
+    ter playful "Well, uh, I'm sure we can make today work with just the four of us!"
+    morg default "We can. But we won't."
     morg "A little break from his hardships would do wonders for Finn. I would know."
-    morg "That's why we have to tell him {i}in person." 
+    morg playful "That's why we have to tell him {i}in person." 
     morg "Guys, get out something to write with. I'm amending our master plan."
-    morg "New order, phase one: Make Finn Smile Again."
-    ter "I mean, if you can manage a grin, no excuses for him."
+    morg default "New order, phase one: Make Finn Smile Again."
+    ter happy "I mean, if you can manage a grin, no excuses for him."
     #Morgan smiles again.
+    show morg hospital happy at centerstage with dissolve
     ter "EXACTLY! Just like that!"
-    ter "Now, if we're kickin' this mission Off…"
+    ter default "Now, if we're kickin' this mission Off..."
     ter "We gotta go back to school."
     #show school with dissolve
+    scene black with fade
     jump act2

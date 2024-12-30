@@ -33,17 +33,20 @@ init python:
    MapEmote('morg hospital sad', 'morg hospital-dorm base expression_sad')
    MapEmote('morg hospital happy', 'morg hospital-dorm base expression_happy')
    MapEmote('morg hospital aha', 'morg hospital-dorm base expression_aha')
+   MapEmote('morg hospital tense', 'morg hospital-dorm base expression_tense')
+
    ###Terrie
    MapEmote('ter sky default', 'ter sky base expression_default')
 
 
    MapEmote('ter hospital tense', 'ter hospital-dorm base expression__hospitalanddorm_tense')
-   MapEmote('ter hospital inthought', 'ter hospital-dorm base expression_default')
+   MapEmote('ter hospital inthought', 'ter hospital-dorm base expression__hospitalanddorm_inthought')
    MapEmote('ter hospital happy', 'ter hospital-dorm base expression__hospitalanddorm_happy')
    MapEmote('ter hospital aha', 'ter hospital-dorm base expression__hospitalanddorm_aha')
    MapEmote('ter hospital default', 'ter hospital-dorm base expression_default')
    MapEmote('ter hospital hurt', 'ter hospital-dorm base expression__hospitalanddorm_hurt')
    MapEmote('ter hospital playful', 'ter hospital-dorm base expression__hospitalanddorm_playful')
+   MapEmote('ter hospital sad', 'ter hospital-dorm base expression__hospitalanddorm_melancholy')
 
    MapEmote('ter c-day playful', 'ter corridor-day base expression__daycorrdior_playful')
    MapEmote('ter c-day tense', 'ter corridor-day base expression__daycorrdior_tense')
@@ -51,6 +54,17 @@ init python:
 
    ###Mina
    MapEmote('mina hill default', 'mina HILL base expression_default')
+
+   ##Mina Chibi
+   MapEmote('mina chibi default', 'mina Chibi base expression_default')
+   MapEmote('mina chibi happy', 'mina Chibi base expression_Happy')
+   MapEmote('mina chibi nervous', 'mina Chibi base expression_Nervous')
+   MapEmote('mina chibi overjoyed', 'mina Chibi base expression_Overjoyed')
+   MapEmote('mina chibi pained', 'mina Chibi base expression_Pained')
+
+
+
+
 
 
    ###Fin
