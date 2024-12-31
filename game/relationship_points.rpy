@@ -36,7 +36,7 @@ init python:
 
             self.updateRelationship(character, 0)
 
-        def increaseRelationship(self, character, value, showui=True, showui_duration=2.5):
+        def increaseRelationship(self, character, value, showui=False, showui_duration=2.5):
             '''
             Increment Relationship
             '''
@@ -44,14 +44,14 @@ init python:
             if character not in self.relationships:
                 self.updateRelationship(character, 0)
             
-            if showui:
-                show_expbar_multiple((
-                        (character, self.relationships[character], self.clamp(self.relationships[character] + value, 0, 10)),
-                    ), showui_duration
-                )
+            #if showui:
+                #show_expbar_multiple((
+                #        (character, self.relationships[character], self.clamp(self.relationships[character] + value, 0, 10)),
+                #    ), showui_duration
+             #   )
             self.relationships[character] = self.clamp(self.relationships[character] + value, 0, 10)
 
-        def increaseRelationshipMultiple(self, cp_dict, showui=True, showui_duration=2.5):
+        def increaseRelationshipMultiple(self, cp_dict, showui=False, showui_duration=2.5):
             '''
             Increment Relationship for multiple characters at once
             '''
@@ -66,7 +66,7 @@ init python:
                     from_val = self.getRelationship(character)
                     to_val = self.clamp(from_val + cp_dict[character], 0, 10)
                     cplist += ((character, from_val, to_val),)
-                show_expbar_multiple(cplist, showui_duration)
+                #show_expbar_multiple(cplist, showui_duration)
             
             for character in cp_dict:
                 self.relationships[character] = self.clamp(self.relationships[character] + cp_dict[character], 0, 10)
@@ -101,8 +101,8 @@ init python:
             for character in characters:
                 p = self.getRelationship(character)
                 cplist += ((character, p, p),)
-
-            show_expbar_multiple(cplist, duration)
+            #Removed visualization of point system feedback
+            #show_expbar_multiple(cplist, duration)
 
         def getHighestRankingRelationship(self):
             '''
