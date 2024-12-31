@@ -18,8 +18,15 @@ image terph = "sprites/ter_placeholder.png"
 #BACKGROUNDSV
 image nightsky = Image("bgs/Night_Sky.png", oversample=1.8125)
 image purgatory = Image("bgs/Purgatory.png", oversample=1.8125)
-image hilltop = Image("bgs/Top_of_the_world.png", oversample=1.8125)
-image corridor = Image("bgs/Corridor.png", oversample=1.8125)
+image hilltop = Image("bgs/hilltop.png", oversample=1.8125)
+image ferriswheel = Image("bgs/Ferris_wheel.png", oversample=1.8125)
+image topofferriswheel = Image("bgs/topofferriswheel.png", oversample=1.8125)
+image corridor day = Image("bgs/Corridor.png", oversample=1.8125)
+image corridor night = Image("bgs/Corridor_night.png", oversample=1.8125)
+image corridor dim = Image("bgs/Corridor_night.png", oversample=1.8125)
+image dorm = Image("bgs/dorm.png", oversample=1.8125)
+image sushishop = Image("bgs/sushishop.png", oversample=1.8125)
+image icerink = Image("bgs/icerink.png", oversample=1.8125)
 image fadetoblack = Image("images/faded.png", oversample=1.8125)
 
 #CGSV

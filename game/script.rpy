@@ -9,6 +9,8 @@ init:
     #####Set the automatic dissolve between expressions to dissolve
     define config.say_attribute_transition = dissolve
 
+    $ Minigame1 = False
+    $ Failstate = 'minigame1failure'
 
 
 label start:
@@ -204,7 +206,7 @@ label start:
         parallel:
             easeout .2 alpha 0
     pause .1
-    hide minaphone with dissolve
+    hide screen minaphone with dissolve
     pause .25
     morg sad "Bye."
     #Emphasis on sudden gloom from Morgan. Enter Terrie from the right.
