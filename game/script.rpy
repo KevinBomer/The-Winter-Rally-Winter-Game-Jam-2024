@@ -65,8 +65,8 @@ label start:
     ter "Hmmm..."
     ter c-day smile "No time like the present though, right? She's waitin'!"
     ter "C'mon, Nigh Hill's just that way."
-    hide ter
-    scene purgatory
+    hide ter with easeoutright
+    scene purgatory with dissolve
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
     ###SCRIPT show death
@@ -155,6 +155,7 @@ label start:
     morg default "Right, now, my phone. Where oh where oh where is—"
     morg sad "Ah. Right. Only 1%% left."
     morg default "You won't mind if I use yours? Thanks."
+    play sound "audio/sfx/cell_ring.mp3"
     "A dial-tone can be heard. Silence while the phone rings."
     morg "...Hey, what's with that look?"
     #Further beat.
@@ -173,10 +174,11 @@ label start:
     show morg default
     mina overjoyed "Get outta town, MORGAN?! Girly it's been forever! How are things?!" 
     mina pained "Uh, I mean, outside of the... hospital stuff." 
+    show mina default
     morg playful "That's why I'm calling." 
     morg "I've got a day outside to myself, and I was thinking of crossing a few items off of my to-do list." 
     morg default "In the company of whoever I wished." 
-    mina happy "And you thought of me? D'aww."
+    mina overjoyed "And you thought of me? D'aww."
     mina default "What notice period am I lookin' at?" 
     morg playful "None. Obviously."
     #Beat.
@@ -209,6 +211,7 @@ label start:
     hide screen minaphone with dissolve
     pause .25
     morg sad "Bye."
+    play sound "audio/sfx/cell_hangup.mp3"
     #Emphasis on sudden gloom from Morgan. Enter Terrie from the right.
     show ter hospital default at centerstage with dissolve:
         xpos .15
