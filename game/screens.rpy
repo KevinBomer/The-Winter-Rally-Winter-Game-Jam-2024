@@ -4,7 +4,8 @@
 
 init offset = -1
 
-
+#this is how much time a choice has to be made
+define Choicetime = 5
 ################################################################################
 ## Styles
 ################################################################################
@@ -291,7 +292,7 @@ transform snowflakerotation:
     repeat #infinity
 transform snowflakefalling:
     subpixel True 
-    linear 5 ypos .7 zoom .2
+    linear Choicetime ypos .7 zoom .2
     easeout .5 alpha 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(1.00)*HueMatrix(0.0) 
 
 
@@ -303,13 +304,23 @@ transform minigame1background_transform:
     blend "normal"
 
 screen choice(items):
+
+
+    timer Choicetime action Jump(Failstate)
     add "images/Minigames/MinigameBG.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at minigame1background_transform
     style_prefix "choice"
-
     vbox:
         for i in items:
             textbutton i.caption action i.action at choiceappear
     add "images/Minigames/1/Minigame1flamemeter.png" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling, snowflakeblowing
+    if Minigame1 == True:
+        $Morgan = game_player.getRelationship("Morgan")
+        if Morgan <= 1:
+            add 'fin chibi sad' at finchibi_transform
+        elif Morgan >=2 and Morgan <3:
+            add 'fin chibi neutral' at finchibi_transform
+        elif Morgan >=3:
+            add 'fin chibi happy' at finchibi_transform
 
 style choice_vbox is vbox
 style choice_button is button
@@ -1470,24 +1481,27 @@ screen confirm(message, yes_action, no_action):
     style_prefix "confirm"
 
     add "gui/overlay/confirm.png"
+    add "gui/frame.png"
 
-    frame:
+    #frame:
 
-        vbox:
-            xalign .5
-            yalign .5
-            spacing 45
+    #xsize 1000
+    #ysize 700
+    vbox:
+        xalign .5
+        yalign .5
+        spacing 45
 
-            label _(message):
-                style "confirm_prompt"
-                xalign 0.5
+        label _(message):
+            style "confirm_prompt"
+            xalign 0.5
 
-            hbox:
-                xalign 0.5
-                spacing 150
+        hbox:
+            xalign 0.5
+            spacing 75
 
-                textbutton _("Yes") action yes_action
-                textbutton _("No") action no_action
+            textbutton _("Yes") action yes_action
+            textbutton _("No") action no_action
 
     ## Right-click and escape answer "no".
     key "game_menu" action no_action
@@ -1508,6 +1522,8 @@ style confirm_frame:
 style confirm_prompt_text:
     textalign 0.5
     layout "subtitle"
+    size 32
+    color "#5f6fa1"
 
 style confirm_button:
     properties gui.button_properties("confirm_button")

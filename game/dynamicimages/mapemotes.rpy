@@ -26,7 +26,6 @@ init python:
    MapEmote('morg cnight aha', 'morg corridor-night base expression_aha')
    MapEmote('morg sky happy', 'morg night-sky base expression_happy')
    MapEmote('morg fw neutral', 'morg fireworkferriswheel base expression_default')
-
    MapEmote('morg hospital inthought', 'morg hospital-dorm base expression_inthought')
    MapEmote('morg hospital playful', 'morg hospital-dorm base expression_playful')
    MapEmote('morg hospital default', 'morg hospital-dorm base expression_default')
@@ -35,10 +34,11 @@ init python:
    MapEmote('morg hospital aha', 'morg hospital-dorm base expression_aha')
    MapEmote('morg hospital tense', 'morg hospital-dorm base expression_tense')
 
+   MapEmote('morg c-day sad', 'morg corridor-day base expression_sad')
+   MapEmote('morg c-day default', 'morg corridor-day base expression_default')
+
    ###Terrie
    MapEmote('ter sky default', 'ter sky base expression_default')
-
-
    MapEmote('ter hospital tense', 'ter hospital-dorm base expression__hospitalanddorm_tense')
    MapEmote('ter hospital inthought', 'ter hospital-dorm base expression__hospitalanddorm_inthought')
    MapEmote('ter hospital happy', 'ter hospital-dorm base expression__hospitalanddorm_happy')
@@ -47,10 +47,17 @@ init python:
    MapEmote('ter hospital hurt', 'ter hospital-dorm base expression__hospitalanddorm_hurt')
    MapEmote('ter hospital playful', 'ter hospital-dorm base expression__hospitalanddorm_playful')
    MapEmote('ter hospital sad', 'ter hospital-dorm base expression__hospitalanddorm_melancholy')
+   MapEmote('ter hospital smilehurt', 'ter hospital-dorm base expression__hospitalanddorm_smilehurt')
+   MapEmote('ter hospital grief', 'ter hospital-dorm base expression_default')
+   MapEmote('ter hospital embarrassed', 'ter hospital-dorm base expression__hospitalanddorm_embarassed')
 
    MapEmote('ter c-day playful', 'ter corridor-day base expression__daycorrdior_playful')
    MapEmote('ter c-day tense', 'ter corridor-day base expression__daycorrdior_tense')
    MapEmote('ter c-day smile', 'ter corridor-day base expression__daycorrdior_happy')
+   MapEmote('ter c-day grief', 'ter corridor-day base expression__daycorrdior_grief')
+   MapEmote('ter c-day melancholy', 'ter corridor-day base expression__daycorrdior_melancholy')
+   MapEmote('ter c-day happy', 'ter corridor-day base expression__daycorrdior_happy')
+   MapEmote('ter c-day default', 'ter corridor-day base expression_default')
 
    ###Mina
    MapEmote('mina hill default', 'mina HILL base expression_default')
@@ -62,10 +69,18 @@ init python:
    MapEmote('mina chibi overjoyed', 'mina Chibi base expression_Overjoyed')
    MapEmote('mina chibi pained', 'mina Chibi base expression_Pained')
 
-
-
-
-
-
    ###Fin
    MapEmote('fin sky default', 'fin sky base expression_default glasses_default')
+   MapEmote('fin hospital default', 'fin hospital-dorm base base expression_default glasses_default')
+   MapEmote('fin hospital inthought', 'fin hospital-dorm base base expression_inthought glasses_default')
+   MapEmote('fin hospital tense', 'fin hospital-dorm base expression_tense glasses_default')
+   MapEmote('fin hospital aha', 'fin hospital-dorm base expression_aha glasses_default')
+   MapEmote('fin hospital melancholy', 'fin hospital-dorm base expression_melancholy glasses_default')
+   MapEmote('fin hospital upset', 'fin hospital-dorm base expression_upset glasses_default')
+   MapEmote('fin hospital playful', 'fin hospital-dorm base expression_playful glasses_default')
+
+
+   ###Fin Chibis
+   MapEmote('fin chibi neutral', 'fin chibi base expression_default glasses_default')
+   MapEmote('fin chibi sad', 'fin chibi base expression_bad glasses_default')
+   MapEmote('fin chibi happy', 'fin chibi base expression_good glasses_default')
