@@ -8,4 +8,6 @@ init +1 python:
 ################################################################################
 
     config.developer = True
-
+    renpy.start_predict_screen('main_menu')
+    renpy.start_predict("gui/mainmenu*.*")
+    #renpy.start_predict_screen(main_menu)

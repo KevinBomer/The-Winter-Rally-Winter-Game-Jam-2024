@@ -39,7 +39,7 @@ define gui.about = _p("""
 
 define build.name = "GoodMorningMorgan"
 
-
+define config.image_cache_size = 30
 ## Sounds and music ############################################################
 
 ## These three variables control, among other things, which mixers are shown
@@ -207,4 +207,4 @@ init python:
 ## The username and project name associated with an itch.io project, separated
 ## by a slash.
 
-# define build.itch_project = "renpytom/test-project"
+define build.itch_project = "eeecee/Good Morning, Morgan"
