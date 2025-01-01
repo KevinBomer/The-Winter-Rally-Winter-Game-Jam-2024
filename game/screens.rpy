@@ -96,6 +96,17 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+
+
+##Splash screen played before the game is run
+label splashscreen:
+    scene black
+    with Pause(1)
+    show image "gui/demoscene.jpg" with dissolve
+    with Pause(2)
+    scene black with fade
+    return
+
 transform quickmenu_hover:
     on hover:
         additive .5
@@ -533,6 +544,7 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 transform waveshader_ribbons:
+    subpixel True
     pause 1
     parallel:
         pause 1
@@ -543,6 +555,7 @@ transform waveshader_ribbons:
         blend 'add'
         easein 3 alpha 1
 transform waveshader_ribbons2:
+    subpixel True
     pause 1
     alpha 0
     blend 'add'
@@ -554,6 +567,7 @@ transform waveshader_ribbons2:
         zoom 1.2
         easein 3 alpha 1
 transform waveshader_stars:
+    subpixel True
     #initial setup
     zoom 2
     alpha 0
@@ -573,6 +587,7 @@ transform waveshader_stars:
     parallel:
         linear 120 rotate 360
 transform waveshader_stars2:
+    subpixel True
     alpha 0
     subpixel True
     xzoom -1
@@ -587,19 +602,23 @@ transform waveshader_stars2:
     parallel:
         linear 60 rotate 360
 transform waveshader_clouds:
+    subpixel True
     blend "add"
     alpha 0 matrixcolor BrightnessMatrix(0)
     pause 1
     easein 1 alpha 1 matrixcolor BrightnessMatrix(-.2)
     
 transform waveshader_background:
+    subpixel True
     alpha 0
     pause 1
     easein 5 alpha 1
 transform vignette:
+    subpixel True
     pause 1
     matrixcolor BrightnessMatrix(-.5)
 transform waveshader_texture:
+    subpixel True
     alpha 0
     pause 1
     easein 3 alpha 1
