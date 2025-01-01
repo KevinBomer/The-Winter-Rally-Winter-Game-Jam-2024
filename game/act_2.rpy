@@ -6,6 +6,7 @@ label act2:
     show fin hospital default at centerstage with dissolve
 
     "Believe it or not, Finn's living space was in surprisingly good shape for a struggling college student."
+    $ play_music(finn_dorm,5)
     "Really nice place. Not a single cup, can or bottle in sight."
     "Well, in the common area, at least. Who knew what things were hiding on the other side of the door?"
     "All three of us were hoping we'd be able to find out. As long as Finn was all ears, of course."
