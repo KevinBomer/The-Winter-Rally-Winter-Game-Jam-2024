@@ -1,55 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 237, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/screens.rpy", line 104, in script
-    with Pause(1)
-  File "renpy/common/00start.rpy", line 237, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/screens.rpy", line 104, in script
-    with Pause(1)
-AttributeError: 'bool' object has no attribute 'split'
+  File "game/script.rpy", line 18, in script
+    $ play_music(introduction,3, volume)
+  File "game/script.rpy", line 18, in <module>
+    $ play_music(introduction,3, volume)
+NameError: name 'volume' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "/Applications/renpy-7.4.10-sdk/renpy/bootstrap.py", line 275, in bootstrap
-    renpy.main.main()
-  File "/Applications/renpy-7.4.10-sdk/renpy/main.py", line 670, in main
-    run(restart)
-  File "/Applications/renpy-7.4.10-sdk/renpy/main.py", line 144, in run
-    renpy.execution.run_context(True)
-  File "/Applications/renpy-7.4.10-sdk/renpy/execution.py", line 955, in run_context
-    context.run()
-  File "renpy/common/00start.rpy", line 237, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/screens.rpy", line 104, in script
-    with Pause(1)
-  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 444, in raise_
-  File "renpy/common/00start.rpy", line 237, in script call
-    call _splashscreen from _call_splashscreen_1
-  File "game/screens.rpy", line 104, in script
-    with Pause(1)
-  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1678, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "/Applications/renpy-7.4.10-sdk/renpy/exports.py", line 1758, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 2978, in do_with
-    return self.interact(trans_pause=True,
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 3582, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 4308, in interact_core
-    self.idle_frame(can_block, expensive)
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 3685, in idle_frame
-    result = self.prediction_coroutine.send(expensive)
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/predict.py", line 164, in prediction_coroutine
-    renpy.display.screen.predict_screen(name, *args, **kwargs)
-  File "/Applications/renpy-7.4.10-sdk/renpy/display/screen.py", line 1284, in predict_screen
-    name = tuple(name.split())
-AttributeError: 'bool' object has no attribute 'split'
+  File "game/script.rpy", line 18, in script
+    $ play_music(introduction,3, volume)
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 18, in <module>
+    $ play_music(introduction,3, volume)
+NameError: name 'volume' is not defined
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.1.3.23091805
 Good Morning Morgan 1.0
-Tue Dec 31 20:28:17 2024
+Tue Dec 31 21:52:24 2024

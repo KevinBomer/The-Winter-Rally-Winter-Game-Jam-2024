@@ -430,26 +430,26 @@ screen phone_menu():
                 yanchor .5
                 xpos 2600
                 ypos 700
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None), Hide('history', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
+                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
                     hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=80)
                     idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#5f6fa1', size=70)
     hbox at phonemenu_appear:
         ypos 2000
         yoffset 350
         if not main_menu:
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action [ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
                 hover_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#eff', size=60)
                 idle_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action MainMenu():
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action MainMenu():
                 hover_foreground Text(_("Menu"), xalign=0.4, yalign=.5, color='#eff', size=60)
                 idle_foreground Text(_("Menu" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 action Quit(confirm=not main_menu):
+            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action Quit(confirm=not main_menu):
                 hover_foreground Text(_("Quit"), xalign=0.4, yalign=.5, color='#eff', size=60)
                 idle_foreground Text(_("Quit" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
         key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
@@ -465,7 +465,7 @@ screen quick_menu():
     if quick_menu:
         imagebutton:
             focus_mask True
-            idle "images/gui/phone.png" at phonemenu_idle action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
+            idle "images/gui/phone.png" at phonemenu_idle hover_sound "audio/sfx/ui_click.ogg" action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
 
             
 
@@ -670,11 +670,11 @@ screen main_menu():
 
     vbox:
         xpos .5 ypos .8 xanchor .5 yanchor .5
-        imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 action Start()
-        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 action ShowMenu("load")
-        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 action ShowMenu("preferences")
-        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 action OpenURL("https://eeecee.itch.io/good-morning-morgan")
-        imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 action Quit(confirm=not main_menu)
+        imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 hover_sound "audio/sfx/ui_click.ogg" action Start()
+        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 hover_sound "audio/sfx/ui_click.ogg" action ShowMenu("load")
+        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 hover_sound "audio/sfx/ui_click.ogg" action ShowMenu("preferences")
+        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 hover_sound "audio/sfx/ui_click.ogg" action OpenURL("https://eeecee.itch.io/good-morning-morgan")
+        imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 hover_sound "audio/sfx/ui_click.ogg" action Quit(confirm=not main_menu)
 
 
 
@@ -874,6 +874,7 @@ screen file_slots(title):
         style "page_label"
         key_events True
         xalign 0.10
+        hover_sound "audio/sfx/ui_click.ogg"
         action page_name_value.Toggle()
         ypos .795
         input:
@@ -922,25 +923,27 @@ screen file_slots(title):
             textbutton _("<") action FilePagePrevious()
 
             if config.has_autosave:
-                textbutton _("{#auto_page}A") action FilePage("auto")
+                textbutton _("{#auto_page}A") hover_sound "audio/sfx/ui_click.ogg" action FilePage("auto")
 
             if config.has_quicksave:
-                textbutton _("{#quick_page}Q") action FilePage("quick")
+                textbutton _("{#quick_page}Q") hover_sound "audio/sfx/ui_click.ogg" action FilePage("quick")
 
             ## range(1, 10) gives the numbers from 1 to 9.
             for page in range(1, 10):
-                textbutton "[page]" action FilePage(page)
+                textbutton "[page]" hover_sound "audio/sfx/ui_click.ogg"  action FilePage(page)
 
-            textbutton _(">") action FilePageNext()
+            textbutton _(">") hover_sound "audio/sfx/ui_click.ogg" action FilePageNext()
 
         if config.has_sync:
             if CurrentScreenName() == "save":
                 textbutton _("Upload Sync"):
                     action UploadSync()
+                    hover_sound "audio/sfx/ui_click.ogg"
                     xalign 0.5
             else:
                 textbutton _("Download Sync"):
                     action DownloadSync()
+                    hover_sound "audio/sfx/ui_click.ogg"
                     xalign 0.5
 
 
@@ -1013,17 +1016,17 @@ screen preferences():
         vbox:
             xpos 200
             spacing 10
-            imagebutton auto "images/GUI/settings/windowed_%s.png" action Preference("display", "window")  xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/default_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/alltext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/on_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/windowed_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "window")  xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/default_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/alltext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/on_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
         vbox:
             xpos 250
             spacing 10
-            imagebutton auto "images/GUI/settings/fullscreen_%s.png" action Preference("display", "fullscreen")  xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/large_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/readtext_%s.png" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/off_%s.png" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/fullscreen_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "fullscreen")  xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/large_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/readtext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
 
 
     hbox at saveloadslide:
