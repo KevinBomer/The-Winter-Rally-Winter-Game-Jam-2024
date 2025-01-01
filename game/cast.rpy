@@ -11,6 +11,9 @@ define slowerdissolve = Dissolve(2.0)
 define slowdissolve = Dissolve(1.0)
 
 #CHARACTER SPRITESV
+image morgph = "sprites/morg_placeholder.png"
+image finph = "sprites/fin_placeholder.png"
+image terph = "sprites/ter_placeholder.png"
 
 #BACKGROUNDSV
 image nightsky = Image("bgs/Night_Sky.png", oversample=1.8125)
@@ -28,8 +31,47 @@ image fadetoblack = Image("images/faded.png", oversample=1.8125)
 
 #CGSV
 
-#ATL transforms
+init python:
+###Initial Audio Cues Setup
+# Define every song with an alias
 
+    menu_theme = "audio/Menu_Music_LOOP.ogg"
+    introduction = "audio/Introduction_Memories.mp3"
+    hospital = "audio/Hospital_Music_LOOP_2_test.ogg"
+    finn_dorm = "audio/Finns_Dorm_Room_Music_LOOP.ogg"
+    finn_minigame = "audio/Minigame_Music.ogg"
+
+    # alias : "Song Title",
+    music_dictionary = {
+        menu_theme : "Good Morning, Morgan",
+        introduction : "Voices Of The Past",
+        hospital : "Purgatory",
+        finn_dorm : "Finn's Study",
+        finn_minigame : "Sweet Talker",
+
+
+
+
+
+    }
+    
+    ### Audio Cues
+    # These are used in place of "play music" and "play sound". In your script:
+    # $ play_sfx(door_close)
+    # will play the door close sound effect.
+    # $ play_music(lamentoso,10)
+    # will play "lamentoso" with a 10 second fadein.
+
+    def play_sfx(sound_alias,fade=0):
+        renpy.sound.play(sound_alias,fadein=fade)
+        if persistent.audio_cues:
+            renpy.notify("SFX: {i}" + sfx_dictionary[renpy.sound.get_playing('sound')] + "{/i}")
+
+    def play_music(music_alias,fade=0):
+        renpy.music.play(music_alias,fadein=fade)
+        if persistent.audio_cues:
+            renpy.notify("Now Playing: " + music_dictionary[renpy.music.get_playing('music')])
+    ###
 
 #Dissolves
 define paintmask = ImageDissolve("images/gui/paintmask.jpg", 1.0, ramplen=256)
