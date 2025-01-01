@@ -69,7 +69,17 @@ label start:
     scene purgatory
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
-    ###SCRIPT show death
+    ###SCRIPT show death]
+    camera:
+        easein 1 matrixcolor SaturationMatrix(0.5)
+
+    show image "death black cropped.png" at centerstage with paintmask:
+        subpixel True
+        matrixcolor BrightnessMatrix (-1.0)
+        blur 30
+        xpos .6
+        zoom .72
+        easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (0.0) zoom .75 blur 0 xpos .65
     mortis "You... you have a gift." 
     mortis "A gift seldom experienced to the fullest, and even more seldom stripped away so prematurely." 
     #Pop-in TERRIE. 
@@ -89,6 +99,15 @@ label start:
     mortis "Your friend awaits you." 
     mortis "Hurry along, now. Live a little." 
     #Exit Death from screen right. 
+    show image "death black cropped.png" at centerstage with paintmask:
+        subpixel True
+        matrixcolor BrightnessMatrix (0.0)
+        blur 0
+        xpos .65
+        zoom .75
+        easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (-1.0) zoom .75 blur 30 xpos 2.0
+    camera:
+        easeout 1 matrixcolor SaturationMatrix(1.0)
     ter "I..." 
     ter hospital tense "I'm going in. You're coming with, yeah?" 
     ter hospital happy "Heyyy, Morgan? It's Terrie. It's us. How're you holding up?" 
