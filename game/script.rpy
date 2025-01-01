@@ -15,7 +15,7 @@ init:
 
 label start:
     scene nightsky with slowerdissolve
-    $ play_music(introduction,5)
+    $ play_music(introduction,3)
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
@@ -47,6 +47,7 @@ label start:
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster." 
     "And Morgan?"
+    stop music fadeout 1.0
     scene corridor with paintmask2:
         zoom .52
         easein_cubic 1 zoom .5
@@ -68,6 +69,7 @@ label start:
     ter "C'mon, Nigh Hill's just that way."
     hide ter with easeoutright
     scene purgatory with dissolve
+    $ play_music(hospital,3)
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
     ###SCRIPT show death]
