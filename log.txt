@@ -1,11 +1,11 @@
-Tue Dec 31 21:03:42 2024
+Tue Dec 31 21:28:08 2024
 macOS-10.16-x86_64-i386-64bit
 Ren'Py 8.1.3.23091805
  
 
-Bootstrap to the start of init.init. took 0.04s
+Bootstrap to the start of init.init. took 0.03s
 Early init. took 0.32s
-Loader init. took 0.10s
+Loader init. took 0.11s
 Loading error handling. took 0.04s
 Loading script. took 0.13s
 Loading save slot metadata. took 0.03s
@@ -13,22 +13,22 @@ Loading persistent. took 0.00s
 CRITICAL Good Morning Morgan 1.0 
 --- launch game ---
 INFO     Good Morning Morgan 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
- - Init at game/dynamicimages/mapemotes.rpy:1 took 5.88177 s.
-Running init code. took 5.92s
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 5.82060 s.
+Running init code. took 5.86s
 Loading analysis data. took 0.03s
 Analyze and compile ATL. took 0.00s
 Reloading save slot metadata. took 0.02s
 Index archives took 0.00s
-Dump and make backups. took 0.05s
+Dump and make backups. took 0.04s
 Cleaning cache. took 0.00s
 Making clean stores. took 0.00s
-Initial gc. took 0.04s
+Initial gc. took 0.03s
 DPI scale factor: 1.000000
 Creating interface object. took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.05s
+Init translation took 0.04s
 Build styles took 0.00s
-Load screen analysis took 0.05s
+Load screen analysis took 0.04s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
 Prepare screens took 0.12s
@@ -46,7 +46,201 @@ Vendor: "b'ATI Technologies Inc.'"
 Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
 Version: b'2.1 ATI-6.1.13'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(983, 553) drawable=(1966, 1106)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
 Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1516, 876) drawable=(3032, 1752)
+
+Full traceback:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
+    python hide:
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
+  File "/Applications/renpy-7.4.10-sdk/renpy/ui.py", line 299, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "/Applications/renpy-7.4.10-sdk/renpy/display/core.py", line 4379, in interact_core
+    renpy.audio.audio.periodic()
+  File "/Applications/renpy-7.4.10-sdk/renpy/audio/audio.py", line 1224, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "/home/tom/ab/renpy-build-fix/tmp/install.linux-x86_64/lib/python3.9/site-packages/future/utils/__init__.py", line 444, in raise_
+  File "/Applications/renpy-7.4.10-sdk/renpy/audio/audio.py", line 1202, in periodic_thread_main
+    periodic_pass()
+  File "/Applications/renpy-7.4.10-sdk/renpy/audio/audio.py", line 1144, in periodic_pass
+    c.periodic()
+  File "/Applications/renpy-7.4.10-sdk/renpy/audio/audio.py", line 534, in periodic
+    topf = load(filename)
+  File "/Applications/renpy-7.4.10-sdk/renpy/audio/audio.py", line 72, in load
+    rv = renpy.loader.load(fn, directory="audio")
+  File "/Applications/renpy-7.4.10-sdk/renpy/loader.py", line 833, in load
+    raise IOError("Couldn't find file '%s'." % name)
+OSError: Couldn't find file 'Game/audio/Menu_Music_LOOP.ogg'.
+
+While running game code:
+OSError: Couldn't find file 'Game/audio/Menu_Music_LOOP.ogg'.
+Resetting cache.
+Bootstrap to the start of init.init. took 88.61s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.03s
+Loading script. took 0.16s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Good Morning Morgan 1.0 
+--- launch game ---
+INFO     Good Morning Morgan 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 5.66373 s.
+Running init code. took 5.70s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.01s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Backing up script files to '/Users/kevin/Library/RenPy/backups/The-Winter-Rally-Winter-Game-Jam-2024':
+Dump and make backups. took 0.05s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.03s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.02s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.10s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
 Maximum texture size: 4096x4096
+
+Full traceback:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Applications/renpy-7.4.10-sdk/renpy/loadsave.py", line 816, in load
+    log.unfreeze(roots, label="_after_load")
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 1105, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 905, in rollback
+    self.load_failed()
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 823, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+Resetting cache.
+Bootstrap to the start of init.init. took 98.12s
+Early init. took 0.00s
+Loader init. took 0.01s
+Loading error handling. took 0.01s
+Loading script. took 0.12s
+Loading save slot metadata. took 0.02s
+Loading persistent. took 0.00s
+CRITICAL Good Morning Morgan 1.0 
+--- launch game ---
+INFO     Good Morning Morgan 1.0 Game directory: /Users/kevin/GitHub/The-Winter-Rally-Winter-Game-Jam-2024/game
+ - Init at game/dynamicimages/mapemotes.rpy:1 took 5.70247 s.
+Running init code. took 5.73s
+Loading analysis data. took 0.03s
+Analyze and compile ATL. took 0.00s
+Reloading save slot metadata. took 0.02s
+Index archives took 0.00s
+Dump and make backups. took 0.04s
+Cleaning cache. took 0.00s
+Making clean stores. took 0.00s
+Initial gc. took 0.04s
+DPI scale factor: 1.000000
+Creating interface object. took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.04s
+Build styles took 0.00s
+Load screen analysis took 0.05s
+Analyze screens took 0.00s
+Save screen analysis took 0.00s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.00s
+Running _start took 0.00s
+Performance test:
+Interface start. took 0.11s
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 2560, 1440)
+swap interval: 1 frames
+Windowed mode.
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon Pro 580X OpenGL Engine'
+Version: b'2.1 ATI-6.1.13'
+Display Info: None
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1080) drawable=(3840, 2160)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "/Applications/renpy-7.4.10-sdk/renpy/loadsave.py", line 816, in load
+    log.unfreeze(roots, label="_after_load")
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 1105, in unfreeze
+    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 905, in rollback
+    self.load_failed()
+  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 823, in load_failed
+    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+
+While running game code:
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 529, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 529, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?

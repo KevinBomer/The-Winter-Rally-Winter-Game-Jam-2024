@@ -35,11 +35,11 @@ init python:
 ###Initial Audio Cues Setup
 # Define every song with an alias
 
-    menu_theme = "Game/audio/Menu_Music_LOOP.ogg"
-    introduction = "game/audio/Introduction_Memories.mp3"
-    hospital = "game/audio/Hospital_Music_LOOP_2_test.ogg"
-    finn_dorm = "game/audio/Finns_Dorm_Room_Music_LOOP.ogg"
-    finn_minigame = "game/audio/Minigame_Music.ogg"
+    menu_theme = "audio/Menu_Music_LOOP.ogg"
+    introduction = "audio/Introduction_Memories.mp3"
+    hospital = "audio/Hospital_Music_LOOP_2_test.ogg"
+    finn_dorm = "audio/Finns_Dorm_Room_Music_LOOP.ogg"
+    finn_minigame = "audio/Minigame_Music.ogg"
 
     # alias : "Song Title",
     music_dictionary = {
