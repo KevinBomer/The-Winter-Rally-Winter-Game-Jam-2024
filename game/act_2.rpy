@@ -246,6 +246,10 @@ label minigame1success:
             fin playful 'Besides your parents, that is, Morgan. Do I know this mystery person?'
 
             morg tense 'I’d hope not.'
+            scene black with fade
+            show image "gui/demoscene.jpg" with dissolve
+            $ renpy.pause()
+            scene black with fade
             return
 
 
@@ -256,6 +260,10 @@ label minigame1success:
             fin melancholy "I would have welcomed an appearance from her alongside you three."
 
             morg happy "Who knows? The day is still young... ish."
+            scene black with fade
+            show image "gui/demoscene.jpg" with dissolve
+            $ renpy.pause()
+            scene black with fade
             return
 
         "Mina? Who's that? Never heard of her.":
@@ -265,6 +273,10 @@ label minigame1success:
             morg playful "A smile from Finn? That should have been on the bucket list."
 
             fin happy "Savor it. You too, my friend; such compliments about her are secrets you take to your grave."
+            scene black with fade
+            show image "gui/demoscene.jpg" with dissolve
+            $ renpy.pause()
+            scene black with fade
             return
 
 
@@ -319,5 +331,8 @@ label minigame1failure:
     "So it was just the three of us for the day." 
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone." 
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
+    scene black with fade
+    show image "gui/demoscene.jpg" with dissolve
+    $ renpy.pause()
     scene black with fade
     return

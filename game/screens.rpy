@@ -95,11 +95,19 @@ style frame:
 ## and id "window" to apply style properties.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
+
 transform quickmenu_hover:
     on hover:
         additive .5
     on idle:
         additive 0
+
+transform say_titlebox_init_transform:
+    xoffset 0 alpha 1
+transform say_titlebox_animate_transform:
+    xoffset -50 alpha 0
+    easein 0.2 xoffset 0 alpha 1
+
 screen say(who, what):
     style_prefix "say"
 screen say(who, what):
@@ -110,6 +118,7 @@ screen say(who, what):
         if who is not None:
 
             window:
+                at say_titlebox_init_transform, say_titlebox_animate_transform
                 id "namebox"
                 style "namebox"
                 text who id "who"
@@ -524,19 +533,24 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 transform waveshader_ribbons:
+    pause 1
     parallel:
+        pause 1
         function WaveShader(speed=.1, amp=3, period=5)
     parallel:
+        pause 1
         alpha 0
         blend 'add'
         easein 3 alpha 1
 transform waveshader_ribbons2:
-
+    pause 1
     alpha 0
     blend 'add'
     parallel:
+        pause 1
         function WaveShader(speed=.1, amp=3, period=5)
     parallel:
+        pause 1
         zoom 1.2
         easein 3 alpha 1
 transform waveshader_stars:
@@ -575,62 +589,72 @@ transform waveshader_stars2:
 transform waveshader_clouds:
     blend "add"
     alpha 0 matrixcolor BrightnessMatrix(0)
-    easein 2 alpha 1 matrixcolor BrightnessMatrix(-.2)
+    pause 1
+    easein 1 alpha 1 matrixcolor BrightnessMatrix(-.2)
     
 transform waveshader_background:
     alpha 0
     pause 1
     easein 5 alpha 1
 transform vignette:
+    pause 1
     matrixcolor BrightnessMatrix(-.5)
 transform waveshader_texture:
     alpha 0
-    easein 1 alpha 1
+    pause 1
+    easein 3 alpha 1
+
+transform menulogo_transform:
+    blur 30
+    additive 5
+    alpha 0
+    easein 3 alpha 1 blur 5 additive .2
 
 ######
 ##Transform for menu buttons. Each one is slightly different for different fade times
 ######
 transform menubuttons1:
     alpha 0 additive 0
-    pause .5
+    pause 1
     easein_cubic 3 alpha 1 additive 1
 transform menubuttons2:
     alpha 0 additive 0
-    pause .7
+    pause 1.2
     easein_cubic 3 alpha 1 additive 1
 transform menubuttons3:
     alpha 0 additive 0
-    pause .9
+    pause 1.4
     easein_cubic 3 alpha 1 additive 1
 transform menubuttons4:
     alpha 0 additive 0
-    pause 1.1
+    pause 1.6
     easein_cubic 3 alpha 1 additive 1
 transform menubuttons5:
     alpha 0 additive 0
-    pause 1.3
+    pause 1.8
     easein_cubic 3 alpha 1 additive 1
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
-
+    add Solid ("#000000")
     add gui.main_menu_background at waveshader_background
     add "gui/mainmenu/texture.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_texture
     add "gui/mainmenu/clouds.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_clouds
     add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars
     add "gui/mainmenu/stars.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_stars2
+    add "images/GUI/menulogo.png" xanchor .5 yanchor .5 xpos .475 ypos .5 at menulogo_transform
     add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_ribbons
     add "gui/mainmenu/ribbons.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_ribbons2 as ribbons2
     add "gui/mainmenu/vignette.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at vignette
 
 
     vbox:
-        xpos .5 ypos .7 xanchor .5 yanchor .5
+        xpos .5 ypos .8 xanchor .5 yanchor .5
         imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 action Start()
         imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 action ShowMenu("load")
         imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 action ShowMenu("preferences")
-        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 action ShowMenu("about")
+        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 action OpenURL("https://eeecee.itch.io/good-morning-morgan")
         imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 action Quit(confirm=not main_menu)
 
 

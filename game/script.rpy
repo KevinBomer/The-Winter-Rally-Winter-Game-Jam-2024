@@ -33,7 +33,7 @@ label start:
     show fin sky default at centerstage with dissolve
     "Wise, wild workaholic Finn..." 
     hide fin with dissolve
-    show morg sky happy at centerstage with dissolve:
+    show morg sky happy at centerstage with dissolve
     "And, of course, Morgan."
 
     "The five of us as a group ran like a clock, but life, as always..."
@@ -47,9 +47,9 @@ label start:
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster." 
     "And Morgan?"
-    show corridor with paintmask2:
-        zoom 1.05
-        easein 1 zoom 1.0
+    scene corridor with paintmask2:
+        zoom .52
+        easein_cubic 1 zoom .5
     "They all said it was the most aggressive case they'd ever seen in their years of practicing medicine."
     "It was so deep in her system they couldn't even pin down what kind of cancer it was to start with." 
     "Being bound to a bed with two of her friends basically vanishing off the radar, I thought she'd never smile again..." 
@@ -70,7 +70,17 @@ label start:
     scene purgatory with dissolve
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
     "So imagine seeing that, on today of all days, somebody else had beaten us to the punch." 
-    ###SCRIPT show death
+    ###SCRIPT show death]
+    camera:
+        easein 1 matrixcolor SaturationMatrix(0.5)
+
+    show image "death black cropped.png" at centerstage with paintmask:
+        subpixel True
+        matrixcolor BrightnessMatrix (-1.0)
+        blur 30
+        xpos .6
+        zoom .72
+        easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (0.0) zoom .75 blur 0 xpos .65
     mortis "You... you have a gift." 
     mortis "A gift seldom experienced to the fullest, and even more seldom stripped away so prematurely." 
     #Pop-in TERRIE. 
@@ -90,6 +100,15 @@ label start:
     mortis "Your friend awaits you." 
     mortis "Hurry along, now. Live a little." 
     #Exit Death from screen right. 
+    show image "death black cropped.png" at centerstage with paintmask:
+        subpixel True
+        matrixcolor BrightnessMatrix (0.0)
+        blur 0
+        xpos .65
+        zoom .75
+        easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (-1.0) zoom .75 blur 30 xpos 2.0
+    camera:
+        easeout 1 matrixcolor SaturationMatrix(1.0)
     ter "I..." 
     ter hospital tense "I'm going in. You're coming with, yeah?" 
     ter hospital happy "Heyyy, Morgan? It's Terrie. It's us. How're you holding up?" 
