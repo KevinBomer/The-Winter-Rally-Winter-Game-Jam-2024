@@ -78,6 +78,7 @@ init python:
    MapEmote('fin hospital melancholy', 'fin hospital-dorm base expression_melancholy glasses_default')
    MapEmote('fin hospital upset', 'fin hospital-dorm base expression_upset glasses_default')
    MapEmote('fin hospital playful', 'fin hospital-dorm base expression_playful glasses_default')
+   MapEmote('fin hospital happy', 'fin hospital-dorm base expression_happy glasses_default')
 
 
    ###Fin Chibis

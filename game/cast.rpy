@@ -5,7 +5,7 @@ define mina = Character("Mina", image = "mina", voice_tag = "mina",callback=spea
 define fin = Character("Finn", image = "fin", voice_tag = "fin",callback=speaker("fin"), color = "#ffffffff")
 define ter = Character("Terrie", image = "ter", voice_tag = "ter",callback=speaker("ter"), color = "#ffffffff")
 define yum = Character("Miya", image = "miya", voice_tag = "miya", callback=speaker("miya"), color = "#ffffffff")
-define mortis = Character("Death", voice_tag = "mortis",callback=speaker("mortis"), color = "#000000ff")
+define mortis = Character("Mortis", voice_tag = "mortis",callback=speaker("mortis"), color = "#000000ff")
 
 define slowerdissolve = Dissolve(2.0)
 define slowdissolve = Dissolve(1.0)
