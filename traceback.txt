@@ -1,42 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 529, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 529, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
-    renpy.load(renpy.session["_reload_slot"])
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 18, in script
+    $ play_music(introduction,3, volume)
+  File "game/script.rpy", line 18, in <module>
+    $ play_music(introduction,3, volume)
+NameError: name 'volume' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 529, in script
-    python hide:
+  File "game/script.rpy", line 18, in script
+    $ play_music(introduction,3, volume)
   File "/Applications/renpy-7.4.10-sdk/renpy/ast.py", line 1138, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "/Applications/renpy-7.4.10-sdk/renpy/python.py", line 1122, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 529, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 540, in _execute_python_hide
-    renpy.load(renpy.session["_reload_slot"])
-  File "/Applications/renpy-7.4.10-sdk/renpy/loadsave.py", line 816, in load
-    log.unfreeze(roots, label="_after_load")
-  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 1105, in unfreeze
-    self.rollback(0, force=True, label=label, greedy=greedy, on_load=True)
-  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 905, in rollback
-    self.load_failed()
-  File "/Applications/renpy-7.4.10-sdk/renpy/rollback.py", line 823, in load_failed
-    raise Exception("Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?")
-Exception: Couldn't find a place to stop rolling back. Perhaps the script changed in an incompatible way?
+  File "game/script.rpy", line 18, in <module>
+    $ play_music(introduction,3, volume)
+NameError: name 'volume' is not defined
 
 macOS-10.16-x86_64-i386-64bit x86_64
 Ren'Py 8.1.3.23091805
 Good Morning Morgan 1.0
-Tue Dec 31 21:29:53 2024
+Tue Dec 31 21:52:24 2024
