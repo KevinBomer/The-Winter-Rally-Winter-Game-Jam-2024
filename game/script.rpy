@@ -32,7 +32,7 @@ label start:
     show fin sky default at centerstage with dissolve
     "Wise, wild workaholic Finn..." 
     hide fin with dissolve
-    show morg sky happy at centerstage with dissolve:
+    show morg sky happy at centerstage with dissolve
     "And, of course, Morgan."
 
     "The five of us as a group ran like a clock, but life, as always..."
