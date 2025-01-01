@@ -15,6 +15,7 @@ init:
 
 label start:
     scene nightsky with slowerdissolve
+    $ play_music(introduction,5)
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
@@ -232,6 +233,7 @@ label start:
     ter "EXACTLY! Just like that!"
     ter default "Now, if we're kickin' this mission Off..."
     ter "We gotta go back to school."
+    stop music fadeout 10.0
     #show school with dissolve
     scene black with fade
     jump act2
