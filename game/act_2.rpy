@@ -5,8 +5,8 @@ label act2:
     scene dorm with dissolve
     show fin hospital default at centerstage with dissolve
 
+    $ play_music(finn_dorm,3)
     "Believe it or not, Finn's living space was in surprisingly good shape for a struggling college student."
-    $ play_music(finn_dorm,5)
     "Really nice place. Not a single cup, can or bottle in sight."
     "Well, in the common area, at least. Who knew what things were hiding on the other side of the door?"
     "All three of us were hoping we'd be able to find out. As long as Finn was all ears, of course."
@@ -82,9 +82,11 @@ label finnlament:
     fin inthought "And if not you, then whomever else in need!"
     morg "I've held on long enough, Finn."
     morg "Today, the best cure you can give me is a day of your time."
+    stop music fadeout 1.0
     fin tense "After which I shall still need to study... and you will still remain sickly."
     ter tense "Oh, for God's sake, Finn, this girl stood up for the first time in months to come say hi to us!"
     ter "You should have seen it! Or is it gonna take more to convince you, huh?"
+    $ play_music(finn_minigame,3)
     #MINIGAME START
     $game_player.addRelationship("Morgan")
 
@@ -207,6 +209,8 @@ init:
         xanchor .5
         yanchor .5
         zoom .25
+stop music fadeout 1.0
+$ play_music(finn_dorm,3)
 label minigame1success:
     fin melancholy "Alright, I yield."
     #TERRIE and MORGAN sigh with relief
@@ -331,6 +335,7 @@ label minigame1failure:
     "So it was just the three of us for the day." 
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone." 
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
+    stop music fadeout 10.0
     scene black with fade
     show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
