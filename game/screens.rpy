@@ -95,11 +95,19 @@ style frame:
 ## and id "window" to apply style properties.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
+
 transform quickmenu_hover:
     on hover:
         additive .5
     on idle:
         additive 0
+
+transform say_titlebox_init_transform:
+    xoffset 0 alpha 1
+transform say_titlebox_animate_transform:
+    xoffset -50 alpha 0
+    easein 0.2 xoffset 0 alpha 1
+
 screen say(who, what):
     style_prefix "say"
 screen say(who, what):
@@ -110,6 +118,7 @@ screen say(who, what):
         if who is not None:
 
             window:
+                at say_titlebox_init_transform, say_titlebox_animate_transform
                 id "namebox"
                 style "namebox"
                 text who id "who"
