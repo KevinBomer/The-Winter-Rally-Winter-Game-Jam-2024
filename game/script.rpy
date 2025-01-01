@@ -46,9 +46,9 @@ label start:
     "Mina made it big online and flew out to LA for all the brand deals you could dream of." 
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster." 
     "And Morgan?"
-    show corridor with paintmask2:
-        zoom 1.05
-        easein 1 zoom 1.0
+    scene corridor with paintmask2:
+        zoom .52
+        easein_cubic 1 zoom .5
     "They all said it was the most aggressive case they'd ever seen in their years of practicing medicine."
     "It was so deep in her system they couldn't even pin down what kind of cancer it was to start with." 
     "Being bound to a bed with two of her friends basically vanishing off the radar, I thought she'd never smile again..." 
