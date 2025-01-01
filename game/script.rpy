@@ -14,8 +14,11 @@ init:
 
 
 label start:
-    scene nightsky with slowerdissolve
+    scene black with dissolve
     $ play_music(introduction,3)
+    pause 1
+    scene nightsky with slowerdissolve
+
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."

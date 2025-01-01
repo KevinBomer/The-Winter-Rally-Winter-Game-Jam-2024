@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/init_game.rpy", line 12: invalid syntax
-    $ renpy.start_predict("gui/mainmenu*.*")
-     ^
+File "game/screens.rpy", line 910: 'hover_sound' is not a keyword argument or valid child of the key statement.
+    key "save_delete" hover_sound "audio/sfx/ui_click.ogg" action FileDelete(slot)
+                                 ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Tue Dec 31 20:30:42 2024
+Tue Dec 31 21:42:02 2024
