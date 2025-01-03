@@ -14,16 +14,9 @@ init:
 
 
 label start:
-<<<<<<< Updated upstream
-    scene black with dissolve
-    $ play_music(introduction,3)
-    pause 1
-    scene nightsky with slowerdissolve
-
-=======
+    scene black
     scene nightsky with slowerdissolve
     play music introduction fadein 3.0 volume .4
->>>>>>> Stashed changes
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
     "Just the five of us, watching time march on and the sky burst with colour... I could always count on them to join me."
@@ -261,8 +254,6 @@ label start:
     show morg hospital happy at centerstage with dissolve
     ter "EXACTLY! Just like that!"
     ter default "Now, if we're kickin' this mission Off..."
-    ter "We gotta go back to school."
     stop music fadeout 10.0
-    #show school with dissolve
-    scene black with fade
+    ter "We gotta go back to school."
     jump act2

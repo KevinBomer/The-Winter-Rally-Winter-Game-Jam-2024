@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 910: 'hover_sound' is not a keyword argument or valid child of the key statement.
-    key "save_delete" hover_sound "audio/sfx/ui_click.ogg" action FileDelete(slot)
-                                 ^
+File "game/script.rpy", line 17: expected statement.
+    <<<<<<< Updated upstream
+                            ^
+
+File "game/script.rpy", line 23: expected statement.
+    =======
+          ^
+
+File "game/script.rpy", line 26: expected statement.
+    >>>>>>> Stashed changes
+                           ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Tue Dec 31 21:42:02 2024
+Tue Dec 31 22:03:37 2024
