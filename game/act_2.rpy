@@ -254,7 +254,7 @@ label minigame1success:
             show image "gui/demoscene.jpg" with dissolve
             $ renpy.pause()
             scene black with fade
-            return
+            jump act3
 
 
         "Oh, you wish.":
@@ -268,7 +268,7 @@ label minigame1success:
             show image "gui/demoscene.jpg" with dissolve
             $ renpy.pause()
             scene black with fade
-            return
+            jump act3
 
         "Mina? Who's that? Never heard of her.":
 
@@ -281,7 +281,7 @@ label minigame1success:
             show image "gui/demoscene.jpg" with dissolve
             $ renpy.pause()
             scene black with fade
-            return
+            jump act3
 
 
 label minigame1failure:

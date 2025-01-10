@@ -1,4 +1,4 @@
-label withfinn:
+label act3:
     #EXT. CORRIDOR — THE SPOT
     "The next thing on the list was a meal worth dying for. And for that, it would require a restaurant capable of producing such a meal."
     "There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
@@ -39,15 +39,19 @@ label withfinn:
 label eureka:
     #Morgan fades in
     morg "Yes, that one! It didn’t get on the front page of our school paper for nothing."
+    jump statueop
 label memoryjog:
     #Terrie fades in
     ter "The statue incident... Right?"
     #Terrie fades out
     #Morgan fades in
     morg "I knew you’d remember, Terr. It was kind of hard to miss with it making the school paper and all."
+    jump statueop
 label confusion:
     morg "Surely it hasn’t been that long. Who could forget the statue incident that made the school paper?"
-    #Options converge here
+    jump statueop
+
+#Options converge here
 label statueop:
     morg "Terr was a true mastermind. If it weren’t for them convincing the teacher that we didn’t break their precious statue, who knows what would have happened."
     #Morgan fades out
