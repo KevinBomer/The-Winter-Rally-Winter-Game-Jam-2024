@@ -340,4 +340,5 @@ label minigame1failure:
     show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
     scene black with fade
+    jump label withoutfinn
     return

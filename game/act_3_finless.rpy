@@ -1,4 +1,4 @@
-label act3:
+label withoutfinn:
     #EXT. CORRIDOR — THE SPOT
     "The next thing on the list was a meal worth dying for. And for that, it would require a restaurant capable of producing such a meal."
     "There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
@@ -13,19 +13,15 @@ label act3:
     #Terrie fades out
     #Morgan enters stage left
     morg "It really has been a while, hasn’t it?"
-    morg "No time like today to make some new memories."
-    #Enter Finn
+    morg "No time like today to make some new memories with the three of us."
     #Morgan fades out
-    #Finn enters stage left
-    fin "I can’t recall the last time I’ve made time to come here."
-    fin "My work made me forget just how much I missed this place, I wonder just how much has changed."
-    fin "That being said, I quite like what’s been done with the place. The art adds a nice touch."
-    "It wasn’t a surprise that the artwork was the first thing to stand out. Lining the walls in various frames, hung art pieces that stood out compared to the aging interior of The Spot."
-    #Finn fades out
+    "Morgan’s attitude was to be expected. Finn not being there was weighing on all of our minds."
+    "However, her smile returned a moment later. She was trying to not let a single setback spoil every memory to come."
+    "Looking around, it wasn’t a surprise that the artwork was the first thing to stand out. Lining the walls in various frames, hung art pieces that stood out compared to the aging interior of The Spot."
     #CG START
     "The artwork feels familiar, you’ve seen something like this before. But where?"
     morg "You know, I feel like we’ve seen this before."
-    fin "What do you mean?"
+    ter "Funny you say that. I wonder why."
     morg "Remember that one time we all almost got busted in senior year?"
     #CG END
     #Choice
@@ -39,30 +35,28 @@ label act3:
 label eureka:
     #Morgan fades in
     morg "Yes, that one! It didn’t get on the front page of our school paper for nothing."
-    jump statueop
 label memoryjog:
     #Terrie fades in
     ter "The statue incident... Right?"
     #Terrie fades out
     #Morgan fades in
     morg "I knew you’d remember, Terr. It was kind of hard to miss with it making the school paper and all."
-    jump statueop
 label confusion:
     morg "Surely it hasn’t been that long. Who could forget the statue incident that made the school paper?"
-    jump statueop
-
-#Options converge here
+    #Options converge here
 label statueop:
     morg "Terr was a true mastermind. If it weren’t for them convincing the teacher that we didn’t break their precious statue, who knows what would have happened."
     #Morgan fades out
-    #Finn fades in
-    fin "It’s unthinkable how easily one can be blamed for others' tomfoolery."
-    fin "Wrong place, wrong time, I suppose."
-    #Finn fades out
-    #Terrie fades in
+    "Terrie looks away with a bashful smile on their face."
     ter "At least we made it here in time for dinner rush! Would’a sucked to be crammed in some lame fast-food chain after all that."
-    "It was a day to remember. We always found a way to come here whenever we needed to retreat from the world."
-    "After reminiscing about some highschool shenanigans, we all settle in."
+    morg "Oh, you know it. I can already picture how hangry Finn—"
+    ter "I’m way more hangry than that guy, I want my good eats now!"
+    #Terrie fades out
+    #Morgan fades out
+    "It was hard to watch. Each attempt to reminisce was a dagger. A reminder of Finn and Mina’s lack of attendance."
+    "That was a day to remember, regardless of the current circumstances. We always found a way to come here whenever we needed to retreat from the world."
+    "After a few more attempts to recall more highschool shenanigans, we all settle in."
+    "Something or someone needed to break the awkwardness that was forming."
     "It isn’t long before we’re met with a familiar face."
     #Terrie fades in
     #Miya enters stage left
@@ -70,15 +64,15 @@ label statueop:
     yum "My, how long has it been now? 10 years?"
     #Morgan enters stage right
     morg "Oh come on now. A measly 10 months could never stop me."
-    yum "You look so lively. Radiant, even."
-    yum "Are my eyes playing tricks on me? Is Finn here as well? It’s been so long! Just where have you been??"
-    #Morgan fades out
-    #Finn enters stage right
-    fin "It’s nice to see you too."
-    fin "I’ve been rather occupied with my studies, I apologize for not coming back sooner."
-    yum "You don’t have to be sorry for anything. You’re working so hard, just like Mina..."
-    #Finn fades out
-    #Morgan fades in
+    yum "You look..."
+    "Miya chooses her words with care, her gaze full of affection and worry."
+    yum "Better. You look well, Morgan. But something is troubling you, is it anything I can help with?"
+    morg "Thank you, I’m fine. I mean—"
+    "Morgan huffs." 
+    morg "Finn couldn’t join us today, and Mina is in a whole other state..."
+    morg "I’m beyond grateful that the three of us could come here, I just wish things could be different."
+    "It ached to hear Morgan so heartbroken over this."
+    yum "You’re all working very hard. Terrie has kept me up to date on Mina, I’d know."
     morg "Mina?"
     yum "Of course! Terrie told me all about her exciting move to LA, she has such a bright future ahead of her."
     #Morgan fades out
@@ -89,25 +83,18 @@ label statueop:
     #Morgan fades in
     morg "You think?"
     #Morgan fades out
-    #Fin fades in
-    fin "It would have been nice to know."
     yum "I’m sure they didn’t mean to keep it from you all! Terrie’s just a little shy about their artwork."
     "Terrie groaned."
     #Miya fades out
     #Morgan enters stage left
-    #MORGAN and FINN light up.
+    #MORGAN lights up a tiny bit.
     morg "Terrie, you did all this?"
-    #Morgan fades out
     #Terrie fades in
     ter "...Yeah."
-    #Finn enters stage right
-    fin "Woah..."
     ter "I’m just an aspiring artist tryin’ to get my stuff out there."
-    fin "It truly is wonderful, Terrie. You’ve always had a gift for this kind of thing."
+    morg "It truly is wonderful, Terrie. You’ve always had a gift for this kind of thing."
     ter "What are you talking about?"
     ter "Please, save the praise for someone who’s actually worth it. "
-    #Finn fades out
-    #Morgan enters stage right
     morg "You have just as much a right to praise as anyone else. "
     ter "Is it really worth that much if I’m still {i}stuck{/i} here—"
     morg "What, you mean in the restaurant?"
@@ -116,9 +103,6 @@ label statueop:
     yum "Terrie... You can’t really think that, can you?"
     ter "I guess? Sorry, I know it’s kind of pathetic. If only I worked a little harder, maybe I’d be in art school by now."
     #Miya fades out
-    #Finn enters stage right
-    fin "It’s not too late, you still have time."
-    #Finn fades out
     #Morgan fades in
     morg "You’ve been working your butt off! There’s no way you won’t succeed, Terr."
     #Morgan fades out
@@ -129,23 +113,24 @@ label statueop:
     ter "My stuff just isn’t “woah” material, you know?"
     yum "Oh, that’s not true at all. I think you’re blind to the admiration surrounding you."
     yum "You work too hard, you’re nearly just as bad as Finn."
-    ter "What? Fat chance! I’m {i}way{/i} better than Finnster, here."
-    ter "I’ve been good about giving myself time off, unlike a certain someone."
     #Miya fades out
-    #Morgan fades in
-    "Morgan looked distant."
-    morg "I wish she could be here."
     #Terrie fades out
-    #Finn enters stage left
-    fin "I’m sure she wishes that too."
-    #Morgan fades out
-    #Finn fades out
-    #Miya fades in
-    yum "You’re all such hard workers, Mina’s out here making a living just by being her authentic self. I’m sure you’ll do just the same."
+    "The room seemed to freeze for a second. Despite one less person being there, their lack of presence was being felt the whole time."
     #Terrie enters stage right
-    ter "I’m doing my best." 
-    yum "Yet despite all of that, you work harder than almost anyone else I know. That’s why you’re here, right?"
-    ter "Right. It is why I’m doing my best to earn enough to attend art school. To have art worthy of being praised by everyone."
+    ter "Hey! I’m way better than Finn, at least I’m actually here."
+    ter "I’ve been good about giving myself time off, unlike those two."
+    #Morgan enters stage left
+    "Morgan looks distant."
+    morg "I wish both could be here."
+    #Terrie fades out
+    #Miya enters stage right
+    yum "Morgan. You’re all such hard workers, Mina’s out here making a living just by being her authentic self. Finn as well. I’m sure you’ll get that chance to be together again."
+    yum "And Terrie."
+    #Morgan fades out
+    #Terrie enters stage right
+    ter "I’m doing my best, but clearly it isn’t good enough. Most would’ve called it quits by now."
+    yum "And yet? You haven’t. You work harder than almost anyone else I know. That’s why you’re here, right?"
+    ter "Right. It’s why I’m doing everything possible to claw my way into art school. To have art worthy of being praised by everyone."
     yum "Well, young Terr. Success is something that requires many things. Persistence goes a long way. It is why I continue to endure despite the tough times."
     #Terrie fades out
     #Morgan enters stage right
@@ -155,47 +140,36 @@ label statueop:
     yum "I just hope I can pay this month’s bills."
     #Miya fades out
     #Morgan fades out
-    "A tense silence filled the room, the once cheerful mood gone. Just then, Morgan stood up from her seat."
-    #Morgan fades in
-    morg "I have a brilliant idea!"
-    morg "Why don’t we have Mina pull some strings to reel in some customers? We can even help with the dinner rush!"
+    "Another tense silence filled the room, the small wave of peace snuffed out in an instant. Just then, Morgan stood up from her seat."
+    #Morgan enters stage left
+    morg "No. I won’t let this memory be ruined anymore. I have an idea..."
+    morg "Why don’t we have Mina pull some strings to reel in some customers? That’s sure to get Miya the help she needs, we can even help with the dinner-rush."
     #Terrie enters stage right
     ter "Dude. You’re a {i}genius.{/i} Has anyone ever told you that, Morgs?"
     ter "Someone get this girl a damn phone, we got an influencer to ring up!"
     #Terrie fades out
-    #Finn enters stage right
-    fin "I’m not sure my sister would approve of this, but it doesn’t hurt to try."
-    fin "However, if Mina is on board, I have no doubt success awaits us."
     morg "Let’s give her a ring."
     #Morgan fades out
-    #Finn fades out
-    "We waited in anticipation as Finn dialed her number. It only took a single ring before an all-too familiar voice came out through the phone’s speaker."
+    "We waited in anticipation as I dialed her number. It only took a single ring before an all-too familiar voice came out through the phone’s speaker."
     #Mina enters stage right
-    mina "At long last, my precious brother has finally gotten in contact with me after {i}years{/i} of neglect..."
-    #Finn enters stage left
-    fin "It has been one week."
-    mina "Exactly!"
-    mina "Fear not, your favorite sister is here for you. What’s going on in Finn-land?"
-    "Finn groaned, running a hand down his face."
-    fin "Only sister does not translate to favorite."
-    mina "Awww, you’re so mean! You’re still my favorite, even after you totally tr—"
-    fin "{i}Mina—{/i} You’re on speaker."
-    fin "I’m with Morgan and the others, we’re at Miya’s."
-    mina "Oh, for reals? Hello to my favorite people in the whole wide world! How’s it hanging?"
-    #Finn fades out
+    mina "Who would this happen to be? A salesman? Perhaps a long lost relative or oil prince?"
     #Morgan enters stage left
+    morg "Awww, you’re so mean! How could you forget us?"
+    "Mina, you’re on speaker. I’m here with the others."
+    mina "Oh, for reals? Hello to my favorite people in the whole wide world! How’s it hanging?"
     morg "Hi Mina, I have a favor to ask. Do you mind helping us advertise Miya’s?"
     mina "No way, The Spot?"
     mina "That place brings back so many memories! It feels like forever ago... I can’t believe I’m missing this nostalgia trip right now!"
-    mina "Ugh, I don’t know if it really fits my brand though..."
+    mina "Finn probably loves this place more than I do. Where is he anyways?"
+    "The silence speaks for itself."
+    mina "Ugh. That’s so like him. The nerve. Not that I’m any better."
+    "Mina shifts uncomfortably."
+    mina "Anyway, I don’t know if it really fits my brand..."
     #Morgan fades out
     #Terrie enters stage left
     ter "C’mon, Mina! It’s a cozy sushi place that THE Mina used to frequent all the time. There’s no way people won’t jump at the chance to eat here!"
     "Mina hummed in thought."
     #Terrie fades out
-    #Finn enters stage left
-    fin "You don’t have to do anything you don’t want to, Mina."
-    #Finn fades out
     #Miya enters stage left
     yum "Of course! It’s more than enough just to hear from you, please don’t trouble yourself with something like this."
     #Miya fades out
@@ -203,23 +177,18 @@ label statueop:
     mina "You guys just scored a super free and super AWESOME sponsorship from yours truly!"
     #Morgan enters stage left
     morg "Really? I’m touched, really. But is it okay?"
-    mina "Oh, stop it. I love my friends and I’m gonna do everything I can to help you guys out! Have fun today, alright?"
+    mina "Oh, stop it. I love my friends and I’m gonna do everything I can to help you guys out! Not to mention my no-show brother must be hampering the mood."
+    mina "Just remember. Above all else, make sure you all have fun!"
     morg "...Alright."
-    morg "Thank you. Truly."
+    #Pause
+    morg "Mina, thank you. Truly."
     mina "Make it count, you guys got this in the bag. See you later, lots of love!"
     #Mina fades out
     "The moment Mina hung up, the group turned to Morgan, who was now brimming with excitement."
     morg "Alright, we’ve got work to do. But before we do anything, we need to pick out jobs!"
     #Terrie enters stage right
     ter "Oh, oh! Let me be the waiter {i}please.{/i} I’m uber experienced, they’ll give us mad tips thanks to my mad skills."
-    morg "It’s all yours. Finn, how would you feel about manning the front counter and acting as our host?"
-    #Terrie fades out
-    #Finn enters stage right
-    fin "I get to work with the register, that sounds perfect to me."
-    #Finn fades out
-    #Miya enters stage right
-    yum "You know where I’ll be. Though, it would be nice if someone could help me bring out orders to customers."
-    morg "You can count on me."
+    morg "It’s all yours. It’d be nice to have someone not here manning the front counter and acting as our host, but beggars can’t be choosers. I shall handle that front instead!"
     morg "How does dishes sound to you? I hope it’s not too boring."
     mc "I was born to scrub."
     #Miya fades out
@@ -228,9 +197,6 @@ label statueop:
     ter "Thanks for being on top of things, everyone. Any questions before we get trampled by Mina’s fans?"
     morg "Nope, I’m ready to go. I’ll give it my all!"
     #Terrie fades out
-    #Finn fades in
-    fin "I’ll do my best to utilize my skills to get customers situated."
-    #Finn fades out
     #Morgan fades out
     "With no questions on my end, Morgan responded with a firm nod."
     "Perhaps my job of washing dishes was simple, but every cog in this machine was important."
@@ -268,137 +234,97 @@ label statueop:
     c2 Is that shellfish? I said I was allergic. Take it back.
     #Group 2
     c3 Can I get the Shrimp Tempura roll? Also, I’m allergic to ginger.
-    Customer four
-    I would like the BC Roll.
-    Customer five
-    The Yummy Yam Roll please!
+    c4 I would like the BC Roll.
+    c5 The Yummy Yam Roll please!
     #Miya enters stage right
-    Miya
-    What did customer three want?
+    yum What did customer three want?
+    ter Yummy Yam Roll
+    ter BC Roll
+    ter Shrimp Tempura roll
+    yum What did customer four want?
+    ter Dragon Roll
+    ter Shrimp Tempura roll
+    ter BC Roll
+    yum What did customer five want?
+    ter BC Roll
+    ter Yummy Yam Roll
+    ter Shrimp Tempura roll
+    yum Any allergies?
+    ter Yes
+    ter No
+    yum Who has an allergy and what is it?
     Terrie
-    Yummy Yam Roll
-    BC Roll
-    Shrimp Tempura roll
-    Miya
-    What did customer four want?
-    Terrie
-    Dragon Roll
-    Shrimp Tempura roll
-    BC Roll
-    Miya
-    What did customer five want?
-    Terrie
-    BC Roll
-    Yummy Yam Roll
-    Shrimp Tempura roll
-    Miya
-    Any allergies?
-    Terrie
-    Yes
-    No
-    Miya
-    Who has an allergy and what is it?
-    Terrie
-    Customer three and it’s a ginger allergy.
-    Customer four and it’s a ginger allergy.
-    Customer five and it’s a shellfish allergy.
+    Customer three has a ginger allergy.
+    Customer four has a ginger allergy.
+    Customer five has a shellfish allergy.
     #Miya fades out
-    If Correct
-    Terrie
-    Here’s your orders!
-    Customer three
-    Ah. That looks perfect. Thanks!
-    Customer four
-    You made sure to remove the ginger, right? Phew. Thank you.
-    Customer five
-    This looks like a ten out of ten. Amazing.
-    If Incorrect
-    Customer three
-    Eh… This is not what I asked for. Can you take it back?
-    Customer four
-    Hey! This isn’t what I ordered! Take it back.
-    Customer four
-    What are you doing? I said I have a ginger allergy and there’s ginger on the plate. Take it back. Immediately.
-    Customer five
-    Uh… I’m pretty sure I ordered the Yummy Yam Roll. Can you take it back?
+    #If Correct
+    ter Here’s your orders!
+    c3 Ah. That looks perfect. Thanks!
+    c4 You made sure to remove the ginger, right? Phew. Thank you.
+    c5 This looks like a ten out of ten. Amazing.
+    #If Incorrect
+    c3 Eh… This is not what I asked for. Can you take it back?
+    c4 Hey! This isn’t what I ordered! Take it back.
+    c4 What are you doing? I said I have a ginger allergy and there’s ginger on the plate. Take it back. Immediately.
+    c5 Uh… I’m pretty sure I ordered the Yummy Yam Roll. Can you take it back?
+    #Terrie fades out
     #Mini Game End
-    #terrie fades out
-    Narration
-    With the hustle and bustle of the evening fading away, what was left was the fruits of our labor.
+    #Terrie fades out
+    "With the hustle and bustle of the evening fading away, what was left was the fruits of our labor."
     #If successful but Finn isn’t there
-    THE SPOT - DAY
-    Narration
-    All of us stood proudly together as one. The night was a clear success, and the Miya was filled with joy.            	
+    label successfinless:
+    "All of us stood proudly together as one. The night was a clear success, and the Miya was filled with joy."            	
     #Miya enters stage right
-    Miya (happy)
-    I cannot thank you enough for everything. This certainly will keep us afloat for a good while.
-    Miya (overjoyed)
-    This calls for our own feast to celebrate!
+    yum "I cannot thank you enough for everything. This certainly will keep us afloat for a good while."
+    yum "This calls for our own feast to celebrate!"
     #Miya fades out
-    Narration
-    We soon began setting up one final table. One filled with everything we could ever want.
-    Narration (cont’d)
-    As we began absorbing the moment, Morgan spoke up, exuding an energy that didn’t fit the mood.
-    Narration (cont’d)
-    A rather negative energy.
+    "We soon began setting up one final table. One filled with everything we could ever want."
+    "As we began absorbing the moment, Morgan spoke up, exuding an energy that didn’t fit the mood."
+    "A rather negative energy."
     #Morgan enters stage left
-    Morgan (neutral)
-    This should have been the perfect moment… A meal that we all worked hard to eat.
-    Morgan (sad)
-    We might have had a successful night, but…
-    Morgan (sad)
-    I wish Finn was here to share it with us.
+    morg "This should have been the perfect moment... A meal that we all worked hard to eat."
+    morg "We might have had a successful night, but..."
+    morg "I wish Finn was here to share it with us."
     #If unsuccessful
-    THE SPOT - CORRIDOR
-    Narration
-    And so, the service came to a close. It was hard to call it a success.
-    Narration (cont’d)
-    In fact, it felt as if the restaurant was worse off than when we started.
+    label failurefinless:
+    "And so, the service came to a close. It was hard to call it a success."
+    "In fact, it felt as if the restaurant was worse off than when we started."
     #Miya enters stage right
-    Miya (Disappointed)
-    I appreciate the effort everyone… truly.
-    Miya (Disappointed) (cont’d)
-    Perhaps this might be a minor setback, but it was great seeing you all try your best. That’s what matters.
+    yum "I appreciate the effort everyone… truly."
+    yum "Perhaps this might be a minor setback, but it was great seeing you all try your best. That’s what matters."
     #Morgan enters stage left
-    Morgan (sad)
-    I’m so sorry… I know we did our best, but… I guess it was too much for us.
+    morg "I’m so sorry… I know we did our best, but… I guess it was too much for us."
     #Morgan exits
-    Narration
-    Terr remained silent, thinking about how this was another failure he had to deal with.
-    Narration (cont’d)
-    I’d have to apologize to Mina later on.
+    "Terr remained silent, fixated on tonight's failures."
+    "We'll have to apologize to Mina later."
     #Branches merge
-    THE SPOT - DAY
-    Narration
-    As things settled down, the Miya retreated into the back and came back moments later with a full platter of food for everyone.
+    "As things settled down, the Miya retreated into the back and came back moments later with a full platter of food for everyone."
     #Miya enters stage right
-    Miya (smiling)
-    All of you did your best today, thank you so much for all that you’ve done. Please enjoy.
+    yum "All of you did your best today, thank you so much for all that you’ve done. Please enjoy."
     #Miya fades out
     #Morgan enters stage left
-    Morgan
-        Thank you for letting us do this.
+    morg "Thank you for letting us do this."
     #Terrie enters stage right
-    Terrie
-        No need to get all mushy on us now, Morgan. We all wanted to do this!
-    Morgan lets out a sigh of relief.
-    Morgan
-        I’m so glad.
+    ter "No need to get all mushy on us now, Morgan. We all wanted to do this!"
+    "Morgan lets out a sigh of relief."
+    morg "I’m so glad."
     #Morgan fades out
     #Terrie fades out
-    Narration (cont’d)
     As if on cue, my phone began to ring.
-    Narration
     It was Mina. I gave her the news.
-    MC picks up, and is greeted by Mina letting out either a happy squeal or disappointed sigh.
     #Mina enters stage right
     #If Minigame is Successful
+    label success:
+    [povname] picks up, and is greeted by Mina letting out a happy squeal.
     Mina (happy)
     Aaah, you guys! I’m getting tagged in so many posts right now, you have no idea. Whatever magic you guys conjured up is WORKING!
     A wave of relief washes over everyone.
     Mina (happy)(cont’d)
     Hopefully it isn’t too much for Miya to handle. I know Terr is there, but you can never underestimate the power from a rising star!
     #If Minigame is Unsuccessful
+    label failure:
+    [povname] picks up, and is greeted by Mina letting out a disappointed sigh.
     Mina (disappointed)
     You guys… I’m getting tagged in a lot of posts. There’s a lot of people complaining about mistakes.
     Mina (disappointed)(cont’d)
