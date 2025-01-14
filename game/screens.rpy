@@ -4,8 +4,6 @@
 
 init offset = -1
 
-#this is how much time a choice has to be made
-define Choicetime = 5
 ################################################################################
 ## Styles
 ################################################################################
@@ -82,22 +80,6 @@ style frame:
 ## In-game screens
 ################################################################################
 
-
-## Say screen ##################################################################
-##
-## The say screen is used to display dialogue to the player. It takes two
-## parameters, who and what, which are the name of the speaking character and
-## the text to be displayed, respectively. (The who parameter can be None if no
-## name is given.)
-##
-## This screen must create a text displayable with id "what", as Ren'Py uses
-## this to manage text display. It can also create displayables with id "who"
-## and id "window" to apply style properties.
-##
-## https://www.renpy.org/doc/html/screen_special.html#say
-
-
-
 ##Splash screen played before the game is run
 label splashscreen:
     scene black
@@ -115,14 +97,30 @@ transform quickmenu_hover:
 
 transform say_titlebox_init_transform:
     xoffset 0 alpha 1
+
 transform say_titlebox_animate_transform:
     xoffset -50 alpha 0
     easein 0.2 xoffset 0 alpha 1
 
+
+
+## Say screen ##################################################################
+##
+## The say screen is used to display dialogue to the player. It takes two
+## parameters, who and what, which are the name of the speaking character and
+## the text to be displayed, respectively. (The who parameter can be None if no
+## name is given.)
+##
+## This screen must create a text displayable with id "what", as Ren'Py uses
+## this to manage text display. It can also create displayables with id "who"
+## and id "window" to apply style properties.
+##
+## https://www.renpy.org/doc/html/screen_special.html#say
+
 screen say(who, what):
+
     style_prefix "say"
-screen say(who, what):
-    style_prefix "say"
+
     window:
         id "window"
 
@@ -137,73 +135,50 @@ screen say(who, what):
         text what id "what"
 
     ### Icons
-    fixed:
-        pos(1400, 980)
+    hbox:
+        pos (1400, 980+31) spacing 25
 
         ## Rollback button
-        imagebutton:
+        button:
             at quickmenu_hover
-            focus_mask True
-            pos (0,31)
-            xysize (50, 50)
-            idle "images/gui/flowcontrol/back.png"
-            hover "images/gui/flowcontrol/back.png"
-            selected_idle "images/gui/flowcontrol/back.png"
-            selected_hover "images/gui/flowcontrol/back.png"
+            xysize (50, 50) focus_mask True
+            background "images/gui/flowcontrol/back.png"
             action Rollback()
             tooltip "Show Previous."
             alt "Show Previous"
+
         #Auto Play
-        imagebutton:
+        button:
             at quickmenu_hover
-            focus_mask True
-            pos (75, 31)
-            xysize (50, 50)
-
-            idle "images/gui/flowcontrol/play.png"
-            hover "images/gui/flowcontrol/play.png"
-            selected_idle "images/gui/flowcontrol/stop.png"
-
-            selected_hover "images/gui/flowcontrol/stop.png"
-
+            xysize (50, 50) focus_mask True
+            background "images/gui/flowcontrol/play.png"
+            selected_background "images/gui/flowcontrol/stop.png"
             action Preference("auto-forward", "toggle")
             tooltip "AutoPlay"
             alt "Auto Play"
-        ## Quick save button
-        imagebutton:
-            at quickmenu_hover
-            focus_mask True
-            pos (150, 31)
-            xysize (50, 50)
 
-            idle "images/gui/flowcontrol/quicksave.png"
-            hover "images/gui/flowcontrol/quicksave.png"
-            selected_idle "images/gui/flowcontrol/quicksave.png"
-            selected_hover "images/gui/flowcontrol/quicksave.png"
+        ## Quick save button
+        button:
+            at quickmenu_hover
+            xysize (50, 50) focus_mask True
+            background "images/gui/flowcontrol/quicksave.png"
             action QuickSave()
             tooltip "Quick Save."
             alt "Quick Save"
+
         ##Skip Button
-        imagebutton:
+        button:
             at quickmenu_hover
-            focus_mask True
-            pos (225, 31)
-            xysize (50, 50)
-
-            idle "images/gui/flowcontrol/fastfoward.png"
-            hover "images/gui/flowcontrol/fastfoward.png"
-            selected_idle "images/gui/flowcontrol/fastfoward.png"
-            selected_hover "images/gui/flowcontrol/fastfoward.png"
-
+            xysize (50, 50) focus_mask True
+            background "images/gui/flowcontrol/fastfoward.png"
             action Skip() alternate Skip(fast=True, confirm=True)
             tooltip "Fast Forward."
             alt "Fast Forward"
-        
+
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
-    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
 
 ## Make the namebox available for styling through the Character object.
 init python:
@@ -216,7 +191,6 @@ style say_thought is say_dialogue
 
 style namebox is default
 style namebox_label is say_label
-
 
 style window:
     xalign 0.5
@@ -304,18 +278,18 @@ transform choiceappear:
         easein 0.3 yoffset 0
     on hover:
         easein 0.3 yoffset -10
+
 transform snowflakerotation:
     zoom .5
     rotate 0
     xanchor .5 yanchor .5
     linear 10 rotate 360 #5 seconds, 360 degrees
     repeat #infinity
-transform snowflakefalling:
-    subpixel True 
-    linear Choicetime ypos .7 zoom .2
-    easeout .5 alpha 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(1.00)*HueMatrix(0.0) 
 
-
+transform snowflakefalling(t=5):
+    subpixel True
+    linear t ypos .7 zoom .2
+    easeout .5 alpha 0.0 matrixcolor InvertMatrix(0.0)*ContrastMatrix(1.0)*SaturationMatrix(1.0)*BrightnessMatrix(1.00)*HueMatrix(0.0)
 
 transform snowflakeblowing:
     spring3 5 xpos .15
@@ -323,23 +297,27 @@ transform snowflakeblowing:
 transform minigame1background_transform:
     blend "normal"
 
-screen choice(items):
+screen choice(items, timed_choice=False, choice_timer=5, timeout_label="minigame1failure"):
 
+    if timed_choice:
+        timer choice_timer action Jump(timeout_label)
 
-    timer Choicetime action Jump(Failstate)
-    add "images/Minigames/MinigameBG.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at minigame1background_transform
+    add "minigamebg" align (0.5, 0.5) at minigame1background_transform
+
     style_prefix "choice"
+
     vbox:
         for i in items:
             textbutton i.caption action i.action at choiceappear
-    add "images/Minigames/1/Minigame1flamemeter.png" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling, snowflakeblowing
-    if Minigame1 == True:
-        $Morgan = game_player.getRelationship("Morgan")
-        if Morgan <= 1:
+
+    add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(choice_timer), snowflakeblowing
+
+    if Minigame1:
+        if morgan_relationship <= 1:
             add 'fin chibi sad' at finchibi_transform
-        elif Morgan >=2 and Morgan <3:
+        elif morgan_relationship == 2:
             add 'fin chibi neutral' at finchibi_transform
-        elif Morgan >=3:
+        elif morgan_relationship >= 3:
             add 'fin chibi happy' at finchibi_transform
 
 style choice_vbox is vbox
@@ -382,94 +360,153 @@ style quick_button_text:
 
 
 ## This transform assigns position for the phone UI menu in it's idle an hovered states
-init:
-    transform phoneappear:
-            rotate 15
-            zoom .5
-            xpos .9
-            ypos .9
-            xanchor .5
-            yanchor .5
-            alpha 0
-            pause 0
-            easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.0)
-    transform phonebackground:
-        xpos .5
-        ypos .5
-        xanchor .5
-        yanchor .5
-        alpha .5
-    transform phonemenu_appear:
-        zoom .5
-        xpos .7
-        ypos .25
-        alpha 0
-        pause .5
-        matrixcolor BrightnessMatrix(.5)
-        easein .5 alpha 1 matrixcolor BrightnessMatrix(0.0)
-    transform phonemenu_idle:
-        zoom .25
-        yanchor .5
-        xanchor .5
-        xpos .99
-        ypos .95
-        on hover:
-            easein .25 zoom .25 ypos .95 xpos .97
-        on idle:
-            easein .25 zoom .25 ypos .95 xpos 1.03
 
+transform phoneappear:
+    rotate 15 zoom .5
+    xpos .9 ypos .9
+    xanchor .5 yanchor .5
+    alpha 0
+    pause 0
+    easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.0)
+
+transform phonebackground:
+    align (0.5, 0.5)
+    alpha .5
+
+transform phonemenu_appear:
+    zoom .5
+    xpos .7 ypos .25
+    alpha 0
+    pause .5
+    matrixcolor BrightnessMatrix(.5)
+    easein .5 alpha 1 matrixcolor BrightnessMatrix(0.0)
+
+transform phonemenu_idle:
+    zoom .25
+    yanchor .5 xanchor .5
+    xpos .99 ypos .95
+    on hover:
+        easein .25 zoom .25 ypos .95 xpos .97
+    on idle:
+        easein .25 zoom .25 ypos .95 xpos 1.03
+
+define config.game_menu_action = Show("phone_menu")
 
 screen phone_menu():
-    zorder 100
+
+    zorder 101
     modal True
-    add "images/GUI/bigphone.png" at phoneappear
-    vbox:
-        hbox at phonemenu_appear:
-            vbox:
-                xanchor .5
-                yanchor .5
-                xpos 2600
-                ypos 700
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('save'), Hide('preferences', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
-                    hover_foreground Text(_("Save"), xalign=0.75, yalign=0.5, color='#eff', size=80)
-                    idle_foreground Text(_("Save" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('load'), Hide('preferences', transition=None), Hide('save', transition=None), Hide('history', transition=None)]:
-                    hover_foreground Text(_("Load"), xalign=0.75, yalign=0.5, color='#eff', size=80)
-                    idle_foreground Text(_("Load" ), xalign=0.75, yalign=0.5, color='#5f6fa1', size=70)
-                imagebutton auto "images/GUI/smartphone_SavePartol_%s.png" hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu('preferences'), Hide('save', transition=None), Hide('load', transition=None), Hide('history', transition=None)]:
-                    hover_foreground Text(_("Settings"), xalign=0.85, yalign=0.5, color='#eff', size=80)
-                    idle_foreground Text(_("Settings" ), xalign=0.85, yalign=0.5, color='#5f6fa1', size=70)
-    hbox at phonemenu_appear:
-        ypos 2000
-        yoffset 350
+
+    key "game_menu" action Hide()
+
+    on "show" action Show('phone_background', transition=paintmask2)
+    on "hide" action Hide('phone_background', transition=paintmask)
+
+    fixed:
+        at transform:
+            on hide:
+                alpha 1.0
+                linear 0.5 alpha 0.0
+        add "bigphone":
+            at phoneappear
+        vbox:
+            hbox:
+                at phonemenu_appear
+                vbox:
+                    xanchor .5
+                    yanchor .5
+                    xpos 2600
+                    ypos 700
+
+                    style_prefix "phone_nav"
+                    button:
+                        text _("Save") at phone_nav_text_effect
+                        action Show("save")
+                        sensitive not main_menu
+
+                    button:
+                        text _("Load") at phone_nav_text_effect
+                        action Show("load")
+
+                    button:
+                        text _("Settings") at phone_nav_text_effect
+                        action Show("preferences")
+
         if not main_menu:
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action [ShowMenu("history"), Hide('preferences', transition=None), Hide('load', transition=None),Hide('save', transition=None)]:
-                hover_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#eff', size=60)
-                idle_foreground Text(_("History"), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action MainMenu():
-                hover_foreground Text(_("Menu"), xalign=0.4, yalign=.5, color='#eff', size=60)
-                idle_foreground Text(_("Menu" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
-            imagebutton auto "images/GUI/smartphone_QuitPartol_%s.png" ypos .9 hover_sound "audio/sfx/ui_click.ogg" action Quit(confirm=not main_menu):
-                hover_foreground Text(_("Quit"), xalign=0.4, yalign=.5, color='#eff', size=60)
-                idle_foreground Text(_("Quit" ), xalign=0.4, yalign=.5, color='#5f6fa1', size=45)
-        key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
+            hbox:
+                at phonemenu_appear
+                ypos 2000
+                yoffset 470
+
+                style_prefix "phone_nav_bottom"
+
+                button:
+                    text _("History") at phone_nav_text_effect
+                    action Show("history")
+
+                button:
+                    text _("Menu") at phone_nav_text_effect
+                    action MainMenu()
+
+                button:
+                    text _("Quit") at phone_nav_text_effect
+                    action MainMenu()
+
+
+style phone_nav_button:
+    xysize (739, 331)
+    background "images/GUI/smartphone_SavePartol_idle.png"
+    hover_background "images/GUI/smartphone_SavePartol_hover.png"
+    selected_background "images/GUI/smartphone_SavePartol_hover.png"
+
+style phone_nav_text:
+    xanchor 0.5 xpos 0.7 yalign 0.5
+    color '#5f6fa1'
+    hover_color '#eff'
+    selected_color '#eff'
+    size 70
+    hover_sound "audio/sfx/ui_click.ogg"
+
+transform phone_nav_text_effect:
+    on insensitive, idle:
+        zoom 1.0
+    on hover, selected:
+        zoom 1.2
+
+style phone_nav_bottom_button:
+    xysize (288, 254)
+    background "images/GUI/smartphone_QuitPartol_idle.png"
+    hover_background "images/GUI/smartphone_QuitPartol_hover.png"
+    selected_background "images/GUI/smartphone_QuitPartol_hover.png"
+
+style phone_nav_bottom_text:
+    is phone_nav_text
+    xpos 0.45
+    size 45
 
 screen phone_background():
-    zorder 99
+
+    zorder 98
+    modal True
+    key "game_menu" action NullAction()
+
     add Solid("#2b4255", xsize=1920, ysize=1080) at phonebackground
+
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
+    key "game_menu" action Show("phone_menu")
+
+    key "P" action Function(renpy.invoke_in_new_context, _viewers.open_action_editor)
+    key "U" action Function(_viewers.open_image_viewer)
+    key "S" action Function(_viewers.open_sound_viewer)
+
     if quick_menu:
         imagebutton:
             focus_mask True
-            idle "images/gui/phone.png" at phonemenu_idle hover_sound "audio/sfx/ui_click.ogg" action [Show('phone_menu',transition=dissolve),Show('phone_background', transition=paintmask2)]
-
-            
-
-
+            idle "images/gui/phone.png" at phonemenu_idle hover_sound "audio/sfx/ui_click.ogg" action ShowMenu()
 
 
 ################################################################################
@@ -580,8 +617,8 @@ transform waveshader_stars:
         function WaveShader(speed=.1, amp=1, period=10)
     #looping additive %
     parallel:
-        ease 4 additive 1.0 
-        ease 4 additive 0 
+        ease 4 additive 1.0
+        ease 4 additive 0
         repeat
     #looping rotation
     parallel:
@@ -596,8 +633,8 @@ transform waveshader_stars2:
     parallel:
         function WaveShader(speed=.1, amp=1, period=10)
     parallel:
-        ease 2 additive 1.0 
-        ease 2 additive 0 
+        ease 2 additive 1.0
+        ease 2 additive 0
         repeat
     parallel:
         linear 60 rotate 360
@@ -607,7 +644,7 @@ transform waveshader_clouds:
     alpha 0 matrixcolor BrightnessMatrix(0)
     pause 1
     easein 1 alpha 1 matrixcolor BrightnessMatrix(-.2)
-    
+
 transform waveshader_background:
     subpixel True
     alpha 0
@@ -652,10 +689,12 @@ transform menubuttons5:
     alpha 0 additive 0
     pause 1.8
     easein_cubic 3 alpha 1 additive 1
+
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
+
     add Solid ("#000000")
     add gui.main_menu_background at waveshader_background
     add "gui/mainmenu/texture.png" xanchor .5 yanchor .5 xpos .5 ypos .5 at waveshader_texture
@@ -671,8 +710,8 @@ screen main_menu():
     vbox:
         xpos .5 ypos .8 xanchor .5 yanchor .5
         imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 hover_sound "audio/sfx/ui_click.ogg" action Start()
-        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 hover_sound "audio/sfx/ui_click.ogg" action ShowMenu("load")
-        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 hover_sound "audio/sfx/ui_click.ogg" action ShowMenu("preferences")
+        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 hover_sound "audio/sfx/ui_click.ogg" action Show("load")
+        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 hover_sound "audio/sfx/ui_click.ogg" action Show("preferences")
         imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 hover_sound "audio/sfx/ui_click.ogg" action OpenURL("https://eeecee.itch.io/good-morning-morgan")
         imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 hover_sound "audio/sfx/ui_click.ogg" action Quit(confirm=not main_menu)
 
@@ -718,7 +757,7 @@ style main_menu_version:
 
 transform settingscaling:
     zoom .5
-    on hover:
+    on hover, selected_idle:
         matrixcolor TintMatrix('ddffdd')
         matrixcolor ContrastMatrix(1.5)
         additive .2
@@ -726,6 +765,7 @@ transform settingscaling:
         matrixcolor TintMatrix('ffffff')
         matrixcolor ContrastMatrix(.5)
         additive 0
+
 screen game_menu(title, scroll=None, yinitial=0.0):
 
     if main_menu:
@@ -834,16 +874,19 @@ transform from_right:
         easein 1.0 alpha 1.0
     parallel:
         easein 1.0 xalign 0.5
-    on hide:            
+    on hide:
         alpha 1 zoom 1 xalign 0.5 yalign 0.5
         block:
             linear 0.1 zoom 1.1
             linear 0.5 zoom 0
 
 screen save():
-    tag menu
-    zorder 100
+
+    zorder 102
+    tag phone_menu_screen
+
     use file_slots(_("Save"))
+
     add "gui/saveload/save.png" xpos .09 ypos .09 at saveloadslide:
         at transform:
             alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
@@ -851,24 +894,36 @@ screen save():
 
 screen load():
 
-    tag menu
-    zorder 100
+    zorder 102
+    tag phone_menu_screen
+
     use file_slots(_("Load"))
+
     add "gui/saveload/load.png" xpos .09 ypos .09 at saveloadslide:
         at transform:
             alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
             spring3 1 alpha 1 additive 0 matrixcolor BrightnessMatrix(0.0)
 
 #This transform controls the "slide" from the phone to the final menu location. It is needed on every element that needs to move.
-transform saveloadslide:    
+transform saveloadslide:
     xoffset 1000 alpha 0 additive 1
     easein .5 xoffset 0 alpha 1 additive 0
 
 screen file_slots(title):
-    zorder 100
-    default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Automatic saves"), quick=_("Quick saves"))
+
+    zorder 102
+
+    key "game_menu" action Hide(transition=dissolve)
+
+    default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Autosaves"), quick=_("Quick saves"))
+
     add "gui/saveload/saveloadbg.png" at saveloadslide
-    use phone_menu
+    if main_menu:
+        button:
+            xysize (1920, 1080)
+            action NullAction()
+        use phone_menu()
+
     ## The page name, which can be edited by clicking on a button.
     button at saveloadslide:
         style "page_label"
@@ -901,11 +956,13 @@ screen file_slots(title):
 
                 add FileScreenshot(slot) xalign 0.5
 
+                null height 20
+
                 text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("empty slot")):
                     style "slot_time_text"
 
-                text FileSaveName(slot):
-                    style "slot_name_text"
+                # text FileSaveName(slot):
+                #     style "slot_name_text"
 
                 key "save_delete" action FileDelete(slot)
 
@@ -977,6 +1034,7 @@ style slot_button:
 
 style slot_button_text:
     properties gui.button_text_properties("slot_button")
+    insensitive_color "#5f6fa1"
 
 
 ## Preferences screen ##########################################################
@@ -994,10 +1052,21 @@ transform sliderhover:
         additive 0
 
 screen preferences():
-    zorder 100
-    use game_menu('preferences')
+
+    zorder 102
+    tag phone_menu_screen
+
+    key "game_menu" action Hide(transition=dissolve)
+
+    # use game_menu('preferences')
     add gui.game_menu_background at saveloadslide
-    use phone_menu
+
+    if main_menu:
+        button:
+            xysize (1920, 1080)
+            action NullAction()
+        use phone_menu()
+
     hbox at saveloadslide:
         xpos 250
         ypos 190
@@ -1016,18 +1085,24 @@ screen preferences():
         vbox:
             xpos 200
             spacing 10
-            imagebutton auto "images/GUI/settings/windowed_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "window")  xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/windowed_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "window") xanchor .5 yanchor 1 at settingscaling selected not preferences.fullscreen
+
             imagebutton auto "images/GUI/settings/default_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/alltext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
+
+            imagebutton auto "images/GUI/settings/alltext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "all") xanchor .5 yanchor 1 at settingscaling
+
             imagebutton auto "images/GUI/settings/on_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+
         vbox:
             xpos 250
             spacing 10
             imagebutton auto "images/GUI/settings/fullscreen_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "fullscreen")  xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/large_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/readtext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "Toggle") xanchor .5 yanchor 1 at settingscaling
-            imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
 
+            imagebutton auto "images/GUI/settings/large_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+
+            imagebutton auto "images/GUI/settings/readtext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "seen") xanchor .5 yanchor 1 at settingscaling
+
+            imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
 
     hbox at saveloadslide:
         style_prefix "slider"
@@ -1043,9 +1118,6 @@ screen preferences():
                 at sliderhover
                 xsize 240
                 ysize 48
-
-
-
 
             if config.has_music:
                 add "gui/slider/musicvolume.png" xoffset 35
@@ -1094,11 +1166,7 @@ screen preferences():
                 textbutton _("Mute All"):
                     action Preference("all mute", "toggle")
                     style "mute_all_button"
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
-        key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
-    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
-    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('preferences', transition=None),Hide('phone_menu', transition=None)]
+
 
 
 style pref_label is gui_label
@@ -1190,7 +1258,7 @@ screen history():
     $ close_action = Return()
     key config.keymap["game_menu"] action close_action
 
-    fixed:           
+    fixed:
         add "images/gui/history.png" at saveloadslide
 
         vpgrid at saveloadslide:
@@ -1236,7 +1304,7 @@ screen history():
 
             if not _history_list:
                 label _("The dialogue history is empty.")
-        
+
 
 ## This determines what tags are allowed to be displayed on the history screen.
 

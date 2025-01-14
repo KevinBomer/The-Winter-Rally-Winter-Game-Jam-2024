@@ -5,7 +5,7 @@ screen _new_action_editor(opened=None, time=0, previous_time=None, in_graphic_mo
             renpy.notify(_("ActionEditor can't show images with 'at clause'"))
             _viewers.at_clauses_flag = False
 
-        int_format = "{:> .0f}" 
+        int_format = "{:> .0f}"
         float_format = "{:> .2f}"
         pos_format = "(abs={:> .0f}, rel={:> .2f})"
 
@@ -115,7 +115,7 @@ screen _new_action_editor(opened=None, time=0, previous_time=None, in_graphic_mo
                 $ypos = 0
             add _viewers.ImagePins(layer) xpos xpos ypos ypos
     key "K_SPACE" action play_action
-    key "action_editor" action NullAction()
+    key "P" action NullAction()
 
     $state=_viewers.get_image_state(layer)
     $tag_list =  []
@@ -152,7 +152,7 @@ screen _new_action_editor(opened=None, time=0, previous_time=None, in_graphic_mo
             hbox:
                 xalign 1.
                 textbutton _("remove keys") action [
-                    SensitiveIf(current_time in get_sorted_keyframes(current_scene)), 
+                    SensitiveIf(current_time in get_sorted_keyframes(current_scene)),
                     Function(_viewers.remove_all_keyframe, current_time), renpy.restart_interaction]
                 textbutton _("move keys") action [
                     SensitiveIf(current_time in get_sorted_keyframes(current_scene)),
@@ -665,13 +665,13 @@ init -996:
     style _viewers_alternate_menu_button_text is new_action_editor_button_text:
         insensitive_color "#AAA"
 
-# tab="images"/"camera", layer="master",  
+# tab="images"/"camera", layer="master",
 screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
     python:
         if _viewers.at_clauses_flag:
             renpy.notify(_("ActionEditor can't show images with 'at clause'"))
             _viewers.at_clauses_flag = False
-        int_format = "{:> .0f}" 
+        int_format = "{:> .0f}"
         float_format = "{:> .2f}"
         pos_format = "(abs={:> .0f}, rel={:> .2f})"
         generate_changed = _viewers.generate_changed
@@ -827,8 +827,8 @@ screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
                     # textbutton _("reset") action [_viewers.camera_reset, renpy.restart_interaction] size_group None
                 else:
                     textbutton _("remove") action [
-                        SensitiveIf(tab in _viewers.image_state[current_scene][layer]), 
-                        Show("_action_editor", tab="camera", layer=layer, opened=opened, page=page), 
+                        SensitiveIf(tab in _viewers.image_state[current_scene][layer]),
+                        Show("_action_editor", tab="camera", layer=layer, opened=opened, page=page),
                         Function(_viewers.remove_image, layer, tab)] size_group None
                     textbutton _("clipboard"):
                         action Function(_viewers.put_image_clipboard, tab, layer)
@@ -874,7 +874,7 @@ screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
                                             Function(_viewers.edit_any, key, time=scene_keyframes[current_scene][1])]
                                     elif p == "function":
                                         textbutton "[value[0]]":
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.edit_function, key)]
                                     elif p in _viewers.any_props:
                                         if isinstance(value, str):
@@ -882,11 +882,11 @@ screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
                                         else:
                                             $caption = "[value]"
                                         textbutton caption:
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.edit_any, key)]
                                     elif p in _viewers.boolean_props:
                                         textbutton "[value]":
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.toggle_boolean_property, key)]
                                     else:
                                         if isinstance(value, (int, float)):
@@ -936,23 +936,23 @@ screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
                                         $shown_p = p2
                                 hbox:
                                     textbutton "  [shown_p]":
-                                        action [SensitiveIf(key in all_keyframes[current_scene]), 
-                                        SelectedIf(keyframes_exist(key)), 
+                                        action [SensitiveIf(key in all_keyframes[current_scene]),
+                                        SelectedIf(keyframes_exist(key)),
                                         Show("_edit_keyframe", key=key, change_func=f)]
                                     if p == "child":
                                         textbutton "[value[0]]":
-                                            action [SelectedIf(keyframes_exist((tab, layer, "child"))), 
+                                            action [SelectedIf(keyframes_exist((tab, layer, "child"))),
                                             Function(_viewers.change_child, tab, layer, default=value[0])]
                                             size_group None
                                         textbutton "with" action None size_group None
                                         textbutton "[value[1]]":
-                                            action [SensitiveIf(key in all_keyframes[current_scene]), 
-                                            SelectedIf(keyframes_exist((tab, layer, "child"))), 
+                                            action [SensitiveIf(key in all_keyframes[current_scene]),
+                                            SelectedIf(keyframes_exist((tab, layer, "child"))),
                                             Function(_viewers.edit_transition, tab, layer)]
                                             size_group None
                                     elif p == "function":
                                         textbutton "[value[0]]":
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.edit_function, key)]
                                     elif p in _viewers.any_props:
                                         if isinstance(value, str):
@@ -960,11 +960,11 @@ screen _action_editor(tab="camera", layer="master", opened=0, time=0, page=0):
                                         else:
                                             $caption = "[value]"
                                         textbutton caption:
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.edit_any, key)]
                                     elif p in _viewers.boolean_props:
                                         textbutton "[value]":
-                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)), 
+                                            action [SelectedIf(get_value(key, scene_keyframes[current_scene][1], True)),
                                             Function(_viewers.toggle_boolean_property, key)]
                                     else:
                                         if isinstance(value, (int, float)):
@@ -1131,18 +1131,18 @@ screen _warper_graph(warper):
     $ length=300
     $ xpos=config.screen_width-400
     $ ypos=200
-    # add Solid("#000", xsize=3, ysize=1.236*length, xpos=xpos+length/2, ypos=length/2+xpos, rotate=45, anchor=(.5, .5)) 
-    add Solid("#CCC", xsize=length, ysize=length, xpos=xpos, ypos=ypos ) 
-    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=length+ypos ) 
-    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=ypos ) 
+    # add Solid("#000", xsize=3, ysize=1.236*length, xpos=xpos+length/2, ypos=length/2+xpos, rotate=45, anchor=(.5, .5))
+    add Solid("#CCC", xsize=length, ysize=length, xpos=xpos, ypos=ypos )
+    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=length+ypos )
+    add Solid("#000", xsize=length, ysize=3, xpos=xpos, ypos=ypos )
     add Solid("#000", xsize=3, ysize=length, xpos=xpos+length, ypos=ypos)
     add Solid("#000", xsize=3, ysize=length, xpos=xpos, ypos=ypos)
     for i in range(1, t):
         $ysize=int(length*renpy.atl.warpers[warper](i/float(t)))
         if ysize >= 0:
-            add Solid("#000", xsize=length//t, ysize=ysize, xpos=xpos+i*length//t, ypos=length+ypos, yanchor=1.) 
+            add Solid("#000", xsize=length//t, ysize=ysize, xpos=xpos+i*length//t, ypos=length+ypos, yanchor=1.)
         else:
-            add Solid("#000", xsize=length//t, ysize=-ysize, xpos=xpos+i*length//t, ypos=length+ypos-ysize, yanchor=1.) 
+            add Solid("#000", xsize=length//t, ysize=-ysize, xpos=xpos+i*length//t, ypos=length+ypos-ysize, yanchor=1.)
 
 screen _move_keyframes():
     modal True
@@ -1864,7 +1864,7 @@ init 1 python in _viewers:
                         new_children.append(child)
             elif self.kind == "sounds" and self.key is not None:
                 for t in sound_keyframes[self.key]:
-                    child = KeyFrame(key_child, t, key_hovere_child, key=self.key, is_sound=True, 
+                    child = KeyFrame(key_child, t, key_hovere_child, key=self.key, is_sound=True,
                         clicked=Function(change_time, t),
                         alternate=ShowAlternateMenu(
                             generate_sound_menu(channel=self.key, time=t),
@@ -2210,9 +2210,9 @@ init 1 python in _viewers:
             if (top_pos - bottom_pos) == 0:
                 k = 0.5
             elif self.v > self.last_v:
-                k = (float(y) - bottom_pos) / (top_pos - bottom_pos) 
+                k = (float(y) - bottom_pos) / (top_pos - bottom_pos)
             else:
-                k = 1 - (float(y) - bottom_pos) / (top_pos - bottom_pos) 
+                k = 1 - (float(y) - bottom_pos) / (top_pos - bottom_pos)
             for i, (_, t, _) in enumerate(all_keyframes[self.scene][self.key]):
                 if t == self.key_time:
                     break
@@ -2551,7 +2551,7 @@ init 1 python in _viewers:
                 else:
                     for _, t, _ in all_keyframes[current_scene][(tag, layer, p)]:
                         result.add(t)
-            
+
             return sorted(list(result))
 
 
@@ -2641,13 +2641,13 @@ init 1 python in _viewers:
                 self.r_changed = generate_changed((self.tag, self.layer, "rotate"))
                 self.alternate = ShowAlternateMenu(
                         [("{}".format(tag), Show("_new_action_editor", opened={scene_num:[(tag, layer, None), (tag, layer, "Child/Pos    ")]})),
-                        ("edit: xpos {}".format(xpos), 
+                        ("edit: xpos {}".format(xpos),
                          [Function(edit_value, self.x_changed, xpos, is_wide_range((tag, layer, "xpos")), is_force_plus("xpos"), time), Function(change_time, time), SensitiveIf(exclusive_check((tag, layer, "xpos")))]),
-                        ("edit: ypos {}".format(ypos),             
+                        ("edit: ypos {}".format(ypos),
                          [Function(edit_value, self.y_changed, ypos, is_wide_range((tag, layer, "ypos")), is_force_plus("ypos"), time), Function(change_time, time), SensitiveIf(exclusive_check((tag, layer, "ypos")))]),
-                        ("edit: zpos {}".format(zpos),             
+                        ("edit: zpos {}".format(zpos),
                          [Function(edit_value, self.z_changed, zpos, is_wide_range((tag, layer, "zpos")), is_force_plus("zpos"), time), Function(change_time, time)]),
-                        ("edit: rotate {}".format(rotate), 
+                        ("edit: rotate {}".format(rotate),
                          [Function(edit_value, self.r_changed, rotate, is_wide_range((tag, layer, "rotate")), is_force_plus("rotate"), time), Function(change_time, time)]),
                         ("remove",
                          [SensitiveIf(tag in image_state[self.scene_num][layer]), Show("_new_action_editor", layer=layer), Function(remove_image, layer, tag)])],
@@ -2807,7 +2807,7 @@ init 1 python in _viewers:
             if self.draggable and ev.type == self.MOUSEMOTION and self.clicking:
                 self.dragging = True
                 self.pos_to_value(x, y)
-                
+
 
             self.hovered = False
             if not self.dragging and \
@@ -2924,13 +2924,13 @@ init 1 python in _viewers:
                     rotate = round(rotate, 2)
                 self.alternate = ShowAlternateMenu([
                         ("camera", NullAction()),
-                        ("edit: xpos {}".format(xpos), 
+                        ("edit: xpos {}".format(xpos),
                          [Function(edit_value, self.x_changed, xpos, is_wide_range((None, self.layer, "xpos")), is_force_plus("xpos"), time), Function(change_time, time), SensitiveIf(exclusive_check((None, layer, "xpos")))]),
-                        ("edit: ypos {}".format(ypos),             
+                        ("edit: ypos {}".format(ypos),
                          [Function(edit_value, self.y_changed, ypos, is_wide_range((None, self.layer, "ypos")), is_force_plus("ypos"), time), Function(change_time, time), SensitiveIf(exclusive_check((None, layer, "ypos")))]),
-                        ("edit: zpos {}".format(zpos),             
+                        ("edit: zpos {}".format(zpos),
                          [Function(edit_value, self.z_changed, zpos, is_wide_range((None, self.layer, "zpos")), is_force_plus("zpos"), time), Function(change_time, time)]),
-                        ("edit: rotate {}".format(rotate), 
+                        ("edit: rotate {}".format(rotate),
                          [Function(edit_value, self.r_changed, rotate, is_wide_range((None, self.layer, "rotate")), is_force_plus("rotate"), time), Function(change_time, time)])],
                         style_prefix="_viewers_alternate_menu")
 
@@ -3139,12 +3139,12 @@ init 1 python in _viewers:
         button_list = []
 
         if p == "child":
-            button_list.append((("edit child: {}".format(v[0])), 
+            button_list.append((("edit child: {}".format(v[0])),
                 [Function(change_child, n, l, time=t, default=v[0]), Function(change_time, current_time)]))
-            button_list.append((("edit transform: {}".format(v[1])), 
+            button_list.append((("edit transform: {}".format(v[1])),
                 [Function(edit_transition, n, l, time=t), Function(change_time, current_time)]))
         elif p in boolean_props | any_props:
-            button_list.append((("edit value: {}".format(v)), 
+            button_list.append((("edit value: {}".format(v)),
                 [Function(edit_any, key, time=t), Function(change_time, current_time)]))
         else:
             button_list.append(( _("edit value: {}".format(v)),
@@ -3163,9 +3163,9 @@ init 1 python in _viewers:
             if (check_result is None and p not in disallow_spline) or (check_result[0] not in disallow_spline):
                 if i > 0:
                     button_list.append(( _("spline editor"),
-                        [SelectedIf(t in splines[current_scene][key]), 
-                        Show("_spline_editor", change_func=change_func, 
-                            key=key, pre=check_points[i-1], post=check_points[i], default=v, 
+                        [SelectedIf(t in splines[current_scene][key]),
+                        Show("_spline_editor", change_func=change_func,
+                            key=key, pre=check_points[i-1], post=check_points[i], default=v,
                             force_plus=is_force_plus(p), time=t)]))
                 if len(check_points) >= 2:
                     if key in in_graphic_mode:

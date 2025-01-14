@@ -75,7 +75,7 @@ define config.main_menu_music = "audio/Menu_Music_LOOP.ogg"
 ## Entering or exiting the game menu.
 
 define config.enter_transition = None
-define config.exit_transition = dissolve
+define config.exit_transition = None #dissolve
 
 
 ## Between screens of the game menu.

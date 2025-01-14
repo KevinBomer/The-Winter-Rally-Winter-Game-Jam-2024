@@ -1,11 +1,11 @@
 # CHARACTER DEFINITIONSV
-define mc = Character("[povname]", image = "mc", voice_tag = "mc",callback=speaker("mc"), color = "#ffffffff")
-define morg = Character("Morgan", image = "morg", voice_tag = "morg",callback=speaker("morg"),color = "#ffffffff")
-define mina = Character("Mina", image = "mina", voice_tag = "mina",callback=speaker("mina"), color = "#ffffffff")
-define fin = Character("Finn", image = "fin", voice_tag = "fin",callback=speaker("fin"), color = "#ffffffff")
-define ter = Character("Terrie", image = "ter", voice_tag = "ter",callback=speaker("ter"), color = "#ffffffff")
-define yum = Character("Miya", image = "miya", voice_tag = "miya", callback=speaker("miya"), color = "#ffffffff")
-define mortis = Character("Mortis", voice_tag = "mortis",callback=speaker("mortis"), color = "#000000ff")
+define mc = Character("[povname]", image = "mc", voice_tag = "mc", color = "#ffffffff")
+define morg = Character("Morgan", image = "morg", voice_tag = "morg",color = "#ffffffff")
+define mina = Character("Mina", image = "mina", voice_tag = "mina",color = "#ffffffff")
+define fin = Character("Finn", image = "fin", voice_tag = "fin",color = "#ffffffff")
+define ter = Character("Terrie", image = "ter", voice_tag = "ter", color = "#ffffffff")
+define yum = Character("Miya", image = "miya", voice_tag = "miya", color = "#ffffffff")
+define mortis = Character("Mortis", voice_tag = "mortis", color = "#000000ff")
 
 define slowerdissolve = Dissolve(2.0)
 define slowdissolve = Dissolve(1.0)

@@ -1,6 +1,7 @@
-    #FADE IN
-    #INT. FINN'S DORM AREA - DAY
-    #NARRATOR FADE IN:
+#FADE IN
+#INT. FINN'S DORM AREA - DAY
+#NARRATOR FADE IN:
+
 label act2:
     scene dorm with dissolve
     show fin hospital default at centerstage with dissolve
@@ -88,10 +89,8 @@ label finnlament:
     ter "You should have seen it! Or is it gonna take more to convince you, huh?"
     $ play_music(finn_minigame,3)
     #MINIGAME START
-    $game_player.addRelationship("Morgan")
 
 label minigame1q1:
-    $Morgan = game_player.getRelationship("Morgan")
     $ Minigame1 = True
     ###Defined at script.rpy, this is where you go if you fail to select a choice before the timer expires
     $ Failstate = 'minigame1q2'
@@ -99,8 +98,7 @@ label minigame1q1:
         "What will you be doing today that absolutely needs me to be there?"
 
         "No idea... BUT, nobody has an eye for putting together a plan like you, Finn.":
-            $Morgan = game_player.getRelationship("Morgan")
-            $game_player.increaseRelationship("Morgan",1)
+            $ morgan_relationship += 1
             jump minigame1q2
         "I need help with my homework, like URGENTLY.":
             jump minigame1q2
@@ -117,8 +115,7 @@ label minigame1q2:
         "Because we actually care about you enough to be here! No jokes!":
             jump minigame1q3
         "What do you mean?! This is fun!! I missed back-and-forth tussles like these.":
-            $Morgan = game_player.getRelationship("Morgan")
-            $game_player.increaseRelationship("Morgan",1)
+            $ morgan_relationship += 1
             jump minigame1q3
 
 label minigame1q3:
@@ -132,8 +129,7 @@ label minigame1q3:
         "We’ll all collectively cover all of your extra credit work for a month.":
             jump minigame1q4
         "$200. Take it or leave it.":
-            $Morgan = game_player.getRelationship("Morgan")
-            $game_player.increaseRelationship("Morgan",1)
+            $ morgan_relationship += 1
             jump minigame1q4
 
 label minigame1q4:
@@ -147,24 +143,22 @@ label minigame1q4:
         "See this medical textbook? See that window? I’d hate to make the two meet.":
             jump minigame1q5
         "We’re calling Mina and telling on you.":
-            $Morgan = game_player.getRelationship("Morgan")
-            $game_player.increaseRelationship("Morgan",1)
+            $ morgan_relationship += 1
             jump minigame1q5
 
 label minigame1q5:
-    $Morgan = game_player.getRelationship("Morgan")
-    if Morgan <3:
+
+    if morgan_relationship < 3:
         $ Failstate = 'minigame1failure'
-    elif Morgan <=3:
+    elif morgan_relationship <=3:
         $ Failstate = 'minigame1success'
+
     menu:
         "What if I simply decide to stay in?"
 
         "One by one, you’re gonna find those bottles on your shelf sloooowly get emptier.":
 
-            $Morgan = game_player.getRelationship("Morgan")
-
-            if Morgan >= 3:
+            if morgan_relationship >= 3:
                 #"DEBUG" "Success"
                 $ Minigame1 = False
                 jump minigame1success
@@ -172,12 +166,12 @@ label minigame1q5:
                 #"DEBUG" "Failure"
                 $ Minigame1 = False
                 jump minigame1failure
+
         "We’ll stay in the common area and act loud and annoying. Can’t study peacefully with the source of the problem, can you?":
 
-            $game_player.increaseRelationship("Morgan",1)
-            $Morgan = game_player.getRelationship("Morgan")
+            $ morgan_relationship += 1
 
-            if Morgan >= 3:
+            if morgan_relationship >= 3:
                 #"DEBUG" "Success"
                 $ Minigame1 = False
                 jump minigame1success
@@ -188,9 +182,7 @@ label minigame1q5:
 
         "Let’s get the dean on the line. He’d hate to hear that a star student’s got a poor work ethic.":
 
-            $Morgan = game_player.getRelationship("Morgan")
-
-            if Morgan >= 3:
+            if morgan_relationship >= 3:
                 #"DEBUG" "Success"
                 $ Minigame1 = False
                 jump minigame1success
@@ -200,17 +192,10 @@ label minigame1q5:
                 jump minigame1failure
     #"DEBUG" "you have %(Morgan)d points."
 
+    stop music fadeout 1.0
+    $ play_music(finn_dorm,3)
 
-init:
-    ##FinChibi Transform
-    transform finchibi_transform:
-        xpos .75
-        ypos .25
-        xanchor .5
-        yanchor .5
-        zoom .25
-stop music fadeout 1.0
-$ play_music(finn_dorm,3)
+
 label minigame1success:
     fin melancholy "Alright, I yield."
     #TERRIE and MORGAN sigh with relief
@@ -285,60 +270,60 @@ label minigame1success:
 
 
 label minigame1failure:
-    fin inthought "We're going round in circles here." 
-    fin tense "You want me to engage in a day of folly, but I want to hold tight for the better part of a week to secure my entire future." 
-    fin default "Are there any other observations you have yet to make clear to me yet?" 
-    ter tense "How about we just care a lot and wanna see you outside your room for a change?!" 
-    fin upset "You're doing it again..." 
-    ter smilehurt "Alright, fine, then it's because you stink of old books and party pooping and freshening up would do miracles for you!" 
-    fin inthought "Oh, don't be so puerile." 
+    fin inthought "We're going round in circles here."
+    fin tense "You want me to engage in a day of folly, but I want to hold tight for the better part of a week to secure my entire future."
+    fin default "Are there any other observations you have yet to make clear to me yet?"
+    ter tense "How about we just care a lot and wanna see you outside your room for a change?!"
+    fin upset "You're doing it again..."
+    ter smilehurt "Alright, fine, then it's because you stink of old books and party pooping and freshening up would do miracles for you!"
+    fin inthought "Oh, don't be so puerile."
     ter "Finn—"
-    ter embarrassed "Okay. Okay." 
-    morg default "If you won't listen to us then just make a decision yourself." 
-    morg tense "Finn, are you coming with us or not?" 
-    #Tense pause. 
+    ter embarrassed "Okay. Okay."
+    morg default "If you won't listen to us then just make a decision yourself."
+    morg tense "Finn, are you coming with us or not?"
+    #Tense pause.
     fin inthought "I want..."
     morg "Yes?"
-    fin default "...for you to get back in contact with me in a few days' time." 
-    "Terrie groans, and Morgan's face SINKS." 
-    fin melancholy "I believe that compromise will satisfy both worlds." 
-    fin inthought "Now, it's been lovely to see you all again, and I really mean that, but I don't want to imagine what a failure at this level could mean." 
-    fin "I look forward to the next few days." 
-    fin "Bye-bye, all." 
+    fin default "...for you to get back in contact with me in a few days' time."
+    "Terrie groans, and Morgan's face SINKS."
+    fin melancholy "I believe that compromise will satisfy both worlds."
+    fin inthought "Now, it's been lovely to see you all again, and I really mean that, but I don't want to imagine what a failure at this level could mean."
+    fin "I look forward to the next few days."
+    fin "Bye-bye, all."
     scene corridor day with dissolve
     show ter c-day grief at centerstage with dissolve:
         xpos .35
     show morg c-day sad at centerstage with dissolve:
         xpos .65
     ter c-day grief "But Finn, we don't HAVE—"
-    #Fade out Finn, with the door shutting again. 
+    #Fade out Finn, with the door shutting again.
     morg c-day sad "No..."
-    ter c-day melancholy "Man." 
-    ter "Was this guy always such a jerk, or does Med school just do that to you?" 
-    ter "I swear, I'll bust down that door n' carry him out myself if it means you—" 
-    morg default "Please don't." 
-    morg "We can't afford to lose any friendships anymore." 
-    morg "Let's just try to enjoy our day." 
-    ter melancholy "Alright, I gotchu." 
-    ter happy "Y'know what cures hangriness? Sushi. At Miya's. Made to order, just for you." 
-    "Morgan smiles weakly." 
+    ter c-day melancholy "Man."
+    ter "Was this guy always such a jerk, or does Med school just do that to you?"
+    ter "I swear, I'll bust down that door n' carry him out myself if it means you—"
+    morg default "Please don't."
+    morg "We can't afford to lose any friendships anymore."
+    morg "Let's just try to enjoy our day."
+    ter melancholy "Alright, I gotchu."
+    ter happy "Y'know what cures hangriness? Sushi. At Miya's. Made to order, just for you."
+    "Morgan smiles weakly."
     show morg sad
     ter playful "Okay girl, okay! I see that smile!"
     morg "It's on the list, so... why not?"
-    ter happy "Exactly! Exactly why not?! Item Two: Eating A Meal Worth... well, worth every bite." 
-    ter "We'll get you double servings, okay?" 
+    ter happy "Exactly! Exactly why not?! Item Two: Eating A Meal Worth... well, worth every bite."
+    ter "We'll get you double servings, okay?"
     morg "Okay."
-    morg "With extra avocado?" 
-    ter default "The whole orchard, dude. C'mon." 
+    morg "With extra avocado?"
+    ter default "The whole orchard, dude. C'mon."
     hide morg with dissolve
     hide ter with dissolve
-    "So it was just the three of us for the day." 
-    "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone." 
+    "So it was just the three of us for the day."
+    "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone."
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
     stop music fadeout 10.0
     scene black with fade
     show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
     scene black with fade
-    jump label withoutfinn
+    jump withoutfinn
     return
