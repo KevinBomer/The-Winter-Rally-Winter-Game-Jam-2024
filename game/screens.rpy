@@ -327,11 +327,11 @@ screen choice(items, choice_timer=5, timeout_label=""):
 
     if Minigame1:
         if morgan_relationship <= 1:
-            add 'fin chibi sad' at finchibi_transform
+            add 'fin_chibi bad' at finchibi_transform
         elif morgan_relationship == 2:
-            add 'fin chibi neutral' at finchibi_transform
+            add 'fin_chibi default' at finchibi_transform
         elif morgan_relationship >= 3:
-            add 'fin chibi happy' at finchibi_transform
+            add 'fin_chibi good' at finchibi_transform
 
 
 style choice_vbox is vbox
@@ -513,9 +513,10 @@ screen quick_menu():
 
     key "game_menu" action Show("phone_menu")
 
-    key "P" action Function(renpy.invoke_in_new_context, _viewers.open_action_editor)
-    key "U" action Function(_viewers.open_image_viewer)
-    key "S" action Function(_viewers.open_sound_viewer)
+    if config.developer:
+        key "P" action Function(renpy.invoke_in_new_context, _viewers.open_action_editor)
+        key "U" action ShowMenu("image_tools")
+        key "S" action Function(_viewers.open_sound_viewer)
 
     if quick_menu:
         imagebutton:
@@ -790,7 +791,6 @@ screen game_menu(title, scroll=None, yinitial=0.0):
 
     if main_menu:
         add gui.main_menu_background
-    key [ 'K_ESCAPE', 'K_MENU', 'K_PAUSE', 'mouseup_3' ] action [ Return(), Hide('phone_background', transition=paintmask), Hide('phone_menu', transition=None)]
 
 style game_menu_outer_frame is empty
 style game_menu_navigation_frame is empty

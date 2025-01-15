@@ -2,8 +2,6 @@
 define config.say_attribute_transition = dissolve
 
 default Minigame1 = False
-default Failstate = 'minigame1failure'
-
 default morgan_relationship = 0
 
 label start:
@@ -180,18 +178,19 @@ label start:
     "After some feedback and mic bumping on the other side of the phone, Mina picks up."
     #Pop-in chibi MINA.
     show screen minaphone
-    show mina chibi default at minachibi_transform, minaphone_pos with dissolve:
+    show mina_chibi default at minachibi_transform, minaphone_pos with dissolve:
         xoffset 10
         additive .1
         matrixcolor ContrastMatrix(1.2)
         pause .15
+
     mina "—llo? Hello? You there?"
     morg happy "Mina. It's me, Morgan. I'm here with the others."
     morg inthought "Well, just Terrie and—"
     show morg default
     mina overjoyed "Get outta town, MORGAN?! Girly it's been forever! How are things?!"
     mina pained "Uh, I mean, outside of the... hospital stuff."
-    show mina default
+    show mina_chibi default
     morg playful "That's why I'm calling."
     morg "I've got a day outside to myself, and I was thinking of crossing a few items off of my to-do list."
     morg default "In the company of whoever I wished."
@@ -219,7 +218,7 @@ label start:
     morg "Everyone will be cheering you on. We'll talk soon. Lots of love from us all."
     mina overjoyed "Okay thank you guys miss you talk later byeeeeeee~! Sorry again bye gang. Buh-bye."
     "Awkward second of Mina's clothes rustling against her phone's microphone before she hangs up."
-    show mina at minachibi_transform, minaphone_pos:
+    show mina_chibi at minachibi_transform, minaphone_pos:
         xzoom 1 yzoom 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
         easeout .2 xzoom 0 yzoom 1.2 matrixcolor BrightnessMatrix(0.3)
         parallel:

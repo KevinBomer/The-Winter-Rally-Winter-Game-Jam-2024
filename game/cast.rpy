@@ -1,7 +1,7 @@
 # CHARACTER DEFINITIONSV
 define mc = Character("[povname]", image = "mc", voice_tag = "mc", color = "#ffffffff")
 define morg = Character("Morgan", image = "morg", voice_tag = "morg",color = "#ffffffff")
-define mina = Character("Mina", image = "mina", voice_tag = "mina",color = "#ffffffff")
+define mina = Character("Mina", image = "mina_chibi", voice_tag = "mina",color = "#ffffffff")
 define fin = Character("Finn", image = "fin", voice_tag = "fin",color = "#ffffffff")
 define ter = Character("Terrie", image = "ter", voice_tag = "ter", color = "#ffffffff")
 define yum = Character("Miya", image = "miya", voice_tag = "miya", color = "#ffffffff")

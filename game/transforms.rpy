@@ -4,7 +4,7 @@ transform centerstage:
 
 transform minachibi_transform:
     subpixel True
-    pos (0.35, 0.66) yzoom 1.0 zoom 0.4
+    pos (0.35, 0.66) yzoom 1.0
 
 ##FinChibi Transform
 transform finchibi_transform:
