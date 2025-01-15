@@ -1,3 +1,5 @@
+default act4_focus_minigame_success = False
+
 label act4:
 
     "The ice rink sounded like a good idea on paper, we all thought."
