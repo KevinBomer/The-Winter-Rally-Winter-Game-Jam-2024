@@ -84,8 +84,9 @@ style frame:
 label splashscreen:
     scene black
     with Pause(1)
-    show image "gui/demoscene.jpg" with dissolve
-    with Pause(2)
+    show demo_splashscreen with dissolve:
+        xysize (1920, 1080)
+    with Pause(3)
     scene black with fade
     return
 
