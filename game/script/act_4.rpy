@@ -39,30 +39,29 @@ label act4:
 
                 morg "Oh, how will he and his pit crew ever hope to topple the current defending champion?" # fake gasp
 
-                fin "When the defending champion talks like that, perhaps she should let her actions speak"
-                instead.
+                fin "When the defending champion talks like that, perhaps she should let her actions speak instead."
 
-        "Link arms and pull him along":
+            "Link arms and pull him along":
 
-            fin "YIKES! Bold today, are we?!"
+                fin "YIKES! Bold today, are we?!"
 
-            morg "You'll both bring yourselves down with technique like that!"
+                morg "You'll both bring yourselves down with technique like that!"
 
-            morg "Oop...and there it is. Do you guys need a pair of hands?"
+                morg "Oop...and there it is. Do you guys need a pair of hands?"
 
-            fin "Like we need air to breathe." # groans
+                fin "Like we need air to breathe." # groans
 
-            #beat
+                #beat
 
-            "Thank you. Now you try zipping forward with such velocity."
+                "Thank you. Now you try zipping forward with such velocity."
 
-        "You're a great friend and you'll kick ass on the ice!":
+            "You're a great friend and you'll kick ass on the ice!":
 
-            fin "Enthusiasm appreciated, but wrong kind of boost. I suppose it'll suffice... and we're off."
+                fin "Enthusiasm appreciated, but wrong kind of boost. I suppose it'll suffice... and we're off."
 
-            ter "Attaboy, Finn! Come join me and… Wow, never mind, Morgan's skatin' circles around us already."
+                ter "Attaboy, Finn! Come join me and… Wow, never mind, Morgan's skatin' circles around us already."
 
-            fin "Oh, really? I think she could do better."
+                fin "Oh, really? I think she could do better."
 
         #Paths converge
 
