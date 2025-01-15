@@ -232,7 +232,6 @@ label act3:
     if not act2_finn_success:
         #MIYA fades out
         #TERRIE fades out
-        NARRATOR
         "The room seemed to freeze for a second. Despite one less person being there, their lack of presence was being felt the whole time."
         #TERRIE enters stage right
         ter "Hey! I’m {i}way{/i} better than Finn, at least I’m actually here."
