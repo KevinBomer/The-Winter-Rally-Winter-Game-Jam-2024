@@ -331,7 +331,7 @@ label act3:
         mina "Who would this happen to be? A salesman? Perhaps a long lost relative or oil prince? "
         #MORGAN enters stage left
         morg "Awww, you’re so mean! How could you forget us?"
-        mc "Mina, you’re on speaker. I’m here with the others."
+        "Mina, you’re on speaker. I’m here with the others."
         mina "Oh, for reals? Hello to my favorite people in the whole wide world! How’s it hanging?"
 
     #Morgan enters stage left
@@ -399,7 +399,7 @@ label act3:
         morg "It’s all yours. It’d be nice to have someone not here manning the front counter and acting as our host, but beggars can’t be choosers. I shall handle that front instead!"
 
     morg "How does dishes sound to you? I hope it’s not too boring."
-    mc "I was born to scrub."
+    "I was born to scrub."
     #Miya fades out
     #Terrie enters stage right
     ter "You better be. If those dishes pile up, we’re screwed. We believe in you, dude!"
