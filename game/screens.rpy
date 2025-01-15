@@ -304,13 +304,16 @@ transform snowflakeblowing:
 transform minigame1background_transform:
     blend "normal"
 
-screen choice(items, choice_timer=5, timeout_label=""):
+screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=False):
 
     if timeout_label:
         if persistent.longer_choice_timers:
             timer choice_timer*2 action Jump(timeout_label)
         else:
             timer choice_timer action Jump(timeout_label)
+
+    if special_multi_choice:
+        timer 1 action IncrementVariable("act5_minigame_timer", -1) repeat True
 
     add "minigamebg" align (0.5, 0.5) at minigame1background_transform
 
@@ -320,7 +323,7 @@ screen choice(items, choice_timer=5, timeout_label=""):
         for i in items:
             textbutton i.caption action i.action at choiceappear
 
-    if timeout_label:
+    if timeout_label and not special_multi_choice:
         if persistent.longer_choice_timers:
             add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(choice_timer*2), snowflakeblowing
         else:
@@ -334,6 +337,12 @@ screen choice(items, choice_timer=5, timeout_label=""):
         elif morgan_relationship >= 3:
             add 'fin_chibi good' at finchibi_transform
 
+screen act5_vow_choice_snowflake():
+    zorder 97
+    if persistent.longer_choice_timers:
+        add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer*2), snowflakeblowing
+    else:
+        add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer), snowflakeblowing
 
 style choice_vbox is vbox
 style choice_button is button
