@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "1.0"
+define config.version = "1.1"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -189,6 +189,21 @@ init python:
 
     build.classify('game/**.png', 'archive')
     build.classify('game/**.jpg', 'archive')
+    build.classify('game/**.webp', 'archive')
+
+    build.classify('game/**.otf', 'archive')
+    build.classify('game/**.ttf', 'archive')
+
+    build.classify('game/**.ogg', 'archive')
+    build.classify('game/**.wav', 'archive')
+    build.classify('game/**.mp3', 'archive')
+
+    build.classify('game/script/act_3.rpyc', None)
+    build.classify('game/script/act_3_finless.rpyc', None)
+    build.classify('game/**.rpyc', 'archive')
+
+    build.classify('game/**.rpy', None)
+    build.classify('game/**.txt', None)
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.

@@ -1,3 +1,5 @@
+default act2_finn_success = False
+
 #FADE IN
 #INT. FINN'S DORM AREA - DAY
 #NARRATOR FADE IN:
@@ -177,6 +179,8 @@ label minigame1q5:
 
 
 label minigame1success:
+    $ act2_finn_success = True
+
     fin melancholy "Alright, I yield."
     #TERRIE and MORGAN sigh with relief
     fin "How opportune is this line-up of friends outside my door, indeed?"
@@ -215,12 +219,6 @@ label minigame1success:
             fin playful 'Besides your parents, that is, Morgan. Do I know this mystery person?'
 
             morg tense 'I’d hope not.'
-            scene black with fade
-            show image "gui/demoscene.jpg" with dissolve
-            $ renpy.pause()
-            scene black with fade
-            jump act3
-
 
         "Oh, you wish.":
 
@@ -239,9 +237,16 @@ label minigame1success:
             fin happy "Savor it. You too, my friend; such compliments about her are secrets you take to your grave."
 
     scene black with fade
-    jump act3
+    show image "gui/demoscene.jpg" with dissolve
+    $ renpy.pause()
+    return
+
+    # jump act3
 
 label minigame1failure:
+
+    $ act2_finn_success = False
+
     fin inthought "We're going round in circles here."
     fin tense "You want me to engage in a day of folly, but I want to hold tight for the better part of a week to secure my entire future."
     fin default "Are there any other observations you have yet to make clear to me yet?"
@@ -292,6 +297,11 @@ label minigame1failure:
     "So it was just the three of us for the day."
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone."
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
+
     stop music fadeout 10.0
     scene black with fade
-    jump withoutfinn
+    show image "gui/demoscene.jpg" with dissolve
+    $ renpy.pause()
+    return
+
+    #jump act3
