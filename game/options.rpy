@@ -200,6 +200,7 @@ init python:
 
     build.classify('game/script/act_3.rpyc', None)
     build.classify('game/script/act_3_finless.rpyc', None)
+    build.classify('game/script/act_4.rpyc', None)
     build.classify('game/**.rpyc', 'archive')
 
     build.classify('game/**.rpy', None)
