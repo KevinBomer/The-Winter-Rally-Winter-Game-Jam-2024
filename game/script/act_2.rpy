@@ -50,8 +50,8 @@ label act2:
     morg sad "Your breaks of... what, ten minutes each, I'm guessing?"
     ter inthought "Yeah, that's gonna fry your brain no matter how ya look at it! You need some'a that crisp winter air in your lungs."
     ter "Which you definitely shoulda known, mister doctor."
-    $ Failstate = 'finnlament'
-    menu:
+
+    menu(timeout_label="finnlament"):
         "So, what, you don't do friends anymore?":
             jump coldshoulder
         "We’ll study with you, then.":
@@ -62,13 +62,17 @@ label act2:
 label coldshoulder:
     fin default "Not during work hours, as has been the case since high school, anyway!"
     fin upset "If you all are so desperate for my company, try waiting several hours!"
+    jump finnlament
+
 label studydate:
     fin tense "Would you {i}really?{/i} On the one day you all have the time for each other?"
     ter default "And for you, Finn. That always includes you."
+    jump finnlament
+
 label sick:
     fin inthought "But I'm not ailing currently, am I? I wouldn't take offense from you trying to get by."
     morg playful "Density is not a good look on you, Finn."
-
+    jump finnlament
 
 label finnlament:
     fin inthought "...Even with everything said and done, it's far from that simple, I fear."
@@ -87,14 +91,18 @@ label finnlament:
     fin tense "After which I shall still need to study... and you will still remain sickly."
     ter tense "Oh, for God's sake, Finn, this girl stood up for the first time in months to come say hi to us!"
     ter "You should have seen it! Or is it gonna take more to convince you, huh?"
-    $ play_music(finn_minigame,3)
+
+    jump minigame1q1
+
     #MINIGAME START
 
 label minigame1q1:
+
+    $ play_music(finn_minigame,3)
+
     $ Minigame1 = True
-    ###Defined at script.rpy, this is where you go if you fail to select a choice before the timer expires
-    $ Failstate = 'minigame1q2'
-    menu:
+
+    menu(timeout_label='minigame1q2'):
         "What will you be doing today that absolutely needs me to be there?"
 
         "No idea... BUT, nobody has an eye for putting together a plan like you, Finn.":
@@ -106,8 +114,8 @@ label minigame1q1:
             jump minigame1q2
 
 label minigame1q2:
-    $ Failstate = 'minigame1q3'
-    menu:
+
+    menu(timeout_label='minigame1q3'):
         "Why aren’t you out having fun already?"
 
         "Wherever we think you’d like to go isn’t open yet.":
@@ -119,9 +127,8 @@ label minigame1q2:
             jump minigame1q3
 
 label minigame1q3:
-    $ Failstate = 'minigame1q4'
 
-    menu:
+    menu(timeout_label='minigame1q4'):
         "If I fail, how will you repay me?"
 
         "You’re not going to fail, you’re a genius!":
@@ -133,9 +140,8 @@ label minigame1q3:
             jump minigame1q4
 
 label minigame1q4:
-    $ Failstate = 'minigame1q5'
 
-    menu:
+    menu(timeout_label='minigame1q5'):
         "How are you going to scare me out of the dorm?"
 
         "Make him jump":
@@ -148,49 +154,23 @@ label minigame1q4:
 
 label minigame1q5:
 
-    if morgan_relationship < 3:
-        $ Failstate = 'minigame1failure'
-    elif morgan_relationship <=3:
-        $ Failstate = 'minigame1success'
-
-    menu:
+    menu(timeout_label='minigame1failure' if morgan_relationship < 3 else 'minigame1success'):
         "What if I simply decide to stay in?"
 
         "One by one, you’re gonna find those bottles on your shelf sloooowly get emptier.":
-
-            if morgan_relationship >= 3:
-                #"DEBUG" "Success"
-                $ Minigame1 = False
-                jump minigame1success
-            else:
-                #"DEBUG" "Failure"
-                $ Minigame1 = False
-                jump minigame1failure
+            pass
 
         "We’ll stay in the common area and act loud and annoying. Can’t study peacefully with the source of the problem, can you?":
-
             $ morgan_relationship += 1
 
-            if morgan_relationship >= 3:
-                #"DEBUG" "Success"
-                $ Minigame1 = False
-                jump minigame1success
-            else:
-                #"DEBUG" "Failure"
-                $ Minigame1 = False
-                jump minigame1failure
-
         "Let’s get the dean on the line. He’d hate to hear that a star student’s got a poor work ethic.":
+            pass
 
-            if morgan_relationship >= 3:
-                #"DEBUG" "Success"
-                $ Minigame1 = False
-                jump minigame1success
-            else:
-                #"DEBUG" "Failure"
-                $ Minigame1 = False
-                jump minigame1failure
-    #"DEBUG" "you have %(Morgan)d points."
+    $ Minigame1 = False
+    if morgan_relationship >= 3:
+        jump minigame1success
+    else:
+        jump minigame1failure
 
     stop music fadeout 1.0
     $ play_music(finn_dorm,3)
@@ -249,11 +229,6 @@ label minigame1success:
             fin melancholy "I would have welcomed an appearance from her alongside you three."
 
             morg happy "Who knows? The day is still young... ish."
-            scene black with fade
-            show image "gui/demoscene.jpg" with dissolve
-            $ renpy.pause()
-            scene black with fade
-            jump act3
 
         "Mina? Who's that? Never heard of her.":
 
@@ -262,12 +237,9 @@ label minigame1success:
             morg playful "A smile from Finn? That should have been on the bucket list."
 
             fin happy "Savor it. You too, my friend; such compliments about her are secrets you take to your grave."
-            scene black with fade
-            show image "gui/demoscene.jpg" with dissolve
-            $ renpy.pause()
-            scene black with fade
-            jump act3
 
+    scene black with fade
+    jump act3
 
 label minigame1failure:
     fin inthought "We're going round in circles here."
@@ -322,8 +294,4 @@ label minigame1failure:
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
     stop music fadeout 10.0
     scene black with fade
-    show image "gui/demoscene.jpg" with dissolve
-    $ renpy.pause()
-    scene black with fade
     jump withoutfinn
-    return

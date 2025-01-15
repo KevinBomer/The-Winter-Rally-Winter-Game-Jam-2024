@@ -132,7 +132,11 @@ screen say(who, what):
                 style "namebox"
                 text who id "who"
 
-        text what id "what"
+        text what id "what":
+            if persistent.text_font_size == "large":
+                size 36
+            else:
+                size 33
 
     ### Icons
     hbox:
@@ -222,6 +226,8 @@ style say_dialogue:
     xsize gui.dialogue_width
     ypos gui.dialogue_ypos
 
+    size gui.text_size
+
     adjust_spacing False
 
 ## Input screen ################################################################
@@ -297,10 +303,13 @@ transform snowflakeblowing:
 transform minigame1background_transform:
     blend "normal"
 
-screen choice(items, timed_choice=False, choice_timer=5, timeout_label="minigame1failure"):
+screen choice(items, choice_timer=5, timeout_label=""):
 
-    if timed_choice:
-        timer choice_timer action Jump(timeout_label)
+    if timeout_label:
+        if persistent.longer_choice_timers:
+            timer choice_timer*2 action Jump(timeout_label)
+        else:
+            timer choice_timer action Jump(timeout_label)
 
     add "minigamebg" align (0.5, 0.5) at minigame1background_transform
 
@@ -310,7 +319,11 @@ screen choice(items, timed_choice=False, choice_timer=5, timeout_label="minigame
         for i in items:
             textbutton i.caption action i.action at choiceappear
 
-    add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(choice_timer), snowflakeblowing
+    if timeout_label:
+        if persistent.longer_choice_timers:
+            add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(choice_timer*2), snowflakeblowing
+        else:
+            add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(choice_timer), snowflakeblowing
 
     if Minigame1:
         if morgan_relationship <= 1:
@@ -319,6 +332,7 @@ screen choice(items, timed_choice=False, choice_timer=5, timeout_label="minigame
             add 'fin chibi neutral' at finchibi_transform
         elif morgan_relationship >= 3:
             add 'fin chibi happy' at finchibi_transform
+
 
 style choice_vbox is vbox
 style choice_button is button
@@ -506,7 +520,8 @@ screen quick_menu():
     if quick_menu:
         imagebutton:
             focus_mask True
-            idle "images/gui/phone.png" at phonemenu_idle hover_sound "audio/sfx/ui_click.ogg" action ShowMenu()
+            idle "images/gui/phone.png" at phonemenu_idle hover_sound "audio/sfx/ui_click.ogg"
+            action Show("phone_menu")
 
 
 ################################################################################
@@ -765,6 +780,11 @@ transform settingscaling:
         matrixcolor TintMatrix('ffffff')
         matrixcolor ContrastMatrix(.5)
         additive 0
+
+transform mute_button_foreground:
+    matrixcolor TintMatrix('ddffdd')
+    matrixcolor ContrastMatrix(1.5)
+    additive .2
 
 screen game_menu(title, scroll=None, yinitial=0.0):
 
@@ -1051,6 +1071,11 @@ transform sliderhover:
     on idle:
         additive 0
 
+init python:
+    if not persistent._set_preferences:
+        persistent.text_font_size = "default"
+        persistent.longer_choice_timers = False
+
 screen preferences():
 
     zorder 102
@@ -1087,22 +1112,22 @@ screen preferences():
             spacing 10
             imagebutton auto "images/GUI/settings/windowed_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "window") xanchor .5 yanchor 1 at settingscaling selected not preferences.fullscreen
 
-            imagebutton auto "images/GUI/settings/default_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/default_%s.png" hover_sound "audio/sfx/ui_click.ogg" action SetField(persistent, "text_font_size", "default") xanchor .5 yanchor 1 at settingscaling
 
             imagebutton auto "images/GUI/settings/alltext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "all") xanchor .5 yanchor 1 at settingscaling
 
-            imagebutton auto "images/GUI/settings/on_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/on_%s.png" hover_sound "audio/sfx/ui_click.ogg" action SetField(persistent, "longer_choice_timers", True) xanchor .5 yanchor 1 at settingscaling
 
         vbox:
             xpos 250
             spacing 10
             imagebutton auto "images/GUI/settings/fullscreen_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("display", "fullscreen")  xanchor .5 yanchor 1 at settingscaling
 
-            imagebutton auto "images/GUI/settings/large_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/large_%s.png" hover_sound "audio/sfx/ui_click.ogg" action SetField(persistent, "text_font_size", "large") xanchor .5 yanchor 1 at settingscaling
 
             imagebutton auto "images/GUI/settings/readtext_%s.png" hover_sound "audio/sfx/ui_click.ogg" action Preference("skip", "seen") xanchor .5 yanchor 1 at settingscaling
 
-            imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action NullAction() xanchor .5 yanchor 1 at settingscaling
+            imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action SetField(persistent, "longer_choice_timers", False) xanchor .5 yanchor 1 at settingscaling
 
     hbox at saveloadslide:
         style_prefix "slider"
@@ -1126,9 +1151,7 @@ screen preferences():
                         at sliderhover
                         xsize 240
                         ysize 48
-    ###################
-    #Removed to align voice acting
-    ###################
+
             #label _("Auto-Forward Time"):
             #    xalign .5
             #bar value Preference("auto-forward time"):
@@ -1146,8 +1169,8 @@ screen preferences():
                         at sliderhover
                         xsize 240
                         ysize 48
-                    if config.sample_sound:
-                        textbutton _("Test") action Play("sound", config.sample_sound)
+                    # if config.sample_sound:
+                    #     textbutton _("Test") action Play("sound", config.sample_sound)
 
 
             if config.has_voice:
@@ -1157,8 +1180,8 @@ screen preferences():
                         at sliderhover
                         xsize 240
                         ysize 48
-                    if config.sample_voice:
-                        textbutton _("Test") action Play("voice", config.sample_voice)
+                    # if config.sample_voice:
+                    #     textbutton _("Test") action Play("voice", config.sample_voice)
 
             if config.has_music or config.has_sound or config.has_voice:
                 null height gui.pref_spacing
@@ -1166,7 +1189,6 @@ screen preferences():
                 textbutton _("Mute All"):
                     action Preference("all mute", "toggle")
                     style "mute_all_button"
-
 
 
 style pref_label is gui_label
@@ -1193,7 +1215,10 @@ style slider_button_text is gui_button_text
 style slider_pref_vbox is pref_vbox
 
 style mute_all_button is check_button
-style mute_all_button_text is check_button_text
+style mute_all_button_text:
+    color "#61709E"
+    size 30
+    yalign 0.5
 
 style pref_label:
     top_margin gui.pref_spacing
@@ -1220,7 +1245,10 @@ style check_vbox:
 
 style check_button:
     properties gui.button_properties("check_button")
-    foreground "gui/button/check_[prefix_]foreground.png"
+    hover_foreground At("gui/slider/horizontal_hover_thumb.png", mute_button_foreground)
+    selected_idle_foreground "gui/slider/horizontal_hover_thumb.png"
+    selected_hover_foreground At("gui/slider/horizontal_hover_thumb.png", mute_button_foreground)
+    padding (50, 0)
 
 style check_button_text:
     properties gui.button_text_properties("check_button")
@@ -1249,14 +1277,14 @@ style slider_vbox:
 ## https://www.renpy.org/doc/html/history.html
 
 screen history():
-    zorder 100
-    tag menu
+
+    zorder 102
+    tag phone_menu_screen
 
     ## Avoid predicting this screen, as it can be very large.
     predict False
-    use phone_menu
-    $ close_action = Return()
-    key config.keymap["game_menu"] action close_action
+
+    key "game_menu" action Hide(transition=dissolve)
 
     fixed:
         add "images/gui/history.png" at saveloadslide
