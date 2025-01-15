@@ -237,7 +237,6 @@ label minigame1success:
             fin happy "Savor it. You too, my friend; such compliments about her are secrets you take to your grave."
 
     scene black with fade
-    show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
     jump act3
 
@@ -298,6 +297,5 @@ label minigame1failure:
 
     stop music fadeout 10.0
     scene black with fade
-    show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
     jump act3
