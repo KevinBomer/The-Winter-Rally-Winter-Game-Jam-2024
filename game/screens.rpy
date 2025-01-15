@@ -416,6 +416,14 @@ transform phonemenu_idle:
 
 define config.game_menu_action = Show("phone_menu")
 
+init python:
+    def already_viewing_phone_menu():
+        for scrn in ["save", "load", "preferences", "history"]:
+            if renpy.get_screen(scrn):
+                return True
+        return False
+
+
 screen phone_menu():
 
     zorder 101
@@ -445,16 +453,25 @@ screen phone_menu():
                     style_prefix "phone_nav"
                     button:
                         text _("Save") at phone_nav_text_effect
-                        action Show("save")
+                        if already_viewing_phone_menu():
+                            action Show("save", skip_entry_anim=True)
+                        else:
+                            action Show("save")
                         sensitive not main_menu
 
                     button:
                         text _("Load") at phone_nav_text_effect
-                        action Show("load")
+                        if already_viewing_phone_menu():
+                            action Show("load", skip_entry_anim=True)
+                        else:
+                            action Show("load")
 
                     button:
                         text _("Settings") at phone_nav_text_effect
-                        action Show("preferences")
+                        if already_viewing_phone_menu():
+                            action Show("preferences", skip_entry_anim=True)
+                        else:
+                            action Show("preferences")
 
         if not main_menu:
             hbox:
@@ -466,7 +483,10 @@ screen phone_menu():
 
                 button:
                     text _("History") at phone_nav_text_effect
-                    action Show("history")
+                    if already_viewing_phone_menu():
+                        action Show("history", skip_entry_anim=True)
+                    else:
+                        action Show("history")
 
                 button:
                     text _("Menu") at phone_nav_text_effect
@@ -910,26 +930,30 @@ transform from_right:
             linear 0.1 zoom 1.1
             linear 0.5 zoom 0
 
-screen save():
+screen save(skip_entry_anim=False):
 
     zorder 102
     tag phone_menu_screen
 
-    use file_slots(_("Save"))
+    use file_slots(_("Save"), skip_entry_anim = skip_entry_anim)
 
-    add "gui/saveload/save.png" xpos .09 ypos .09 at saveloadslide:
+    add "gui/saveload/save.png" xpos .09 ypos .09:
+        if not skip_entry_anim:
+            at saveloadslide
         at transform:
             alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
             spring3 1 alpha 1 additive 0 matrixcolor BrightnessMatrix(0.0)
 
-screen load():
+screen load(skip_entry_anim=False):
 
     zorder 102
     tag phone_menu_screen
 
-    use file_slots(_("Load"))
+    use file_slots(_("Load"), skip_entry_anim = skip_entry_anim)
 
-    add "gui/saveload/load.png" xpos .09 ypos .09 at saveloadslide:
+    add "gui/saveload/load.png" xpos .09 ypos .09:
+        if not skip_entry_anim:
+            at saveloadslide
         at transform:
             alpha 0 additive 1 matrixcolor BrightnessMatrix(1.0)
             spring3 1 alpha 1 additive 0 matrixcolor BrightnessMatrix(0.0)
@@ -939,7 +963,7 @@ transform saveloadslide:
     xoffset 1000 alpha 0 additive 1
     easein .5 xoffset 0 alpha 1 additive 0
 
-screen file_slots(title):
+screen file_slots(title, skip_entry_anim):
 
     zorder 102
 
@@ -947,7 +971,9 @@ screen file_slots(title):
 
     default page_name_value = FilePageNameInputValue(pattern=_("Page {}"), auto=_("Autosaves"), quick=_("Quick saves"))
 
-    add "gui/saveload/saveloadbg.png" at saveloadslide
+    add "gui/saveload/saveloadbg.png":
+        if not skip_entry_anim:
+            at saveloadslide
     if main_menu:
         button:
             xysize (1920, 1080)
@@ -955,7 +981,9 @@ screen file_slots(title):
         use phone_menu()
 
     ## The page name, which can be edited by clicking on a button.
-    button at saveloadslide:
+    button:
+        if not skip_entry_anim:
+            at saveloadslide
         style "page_label"
         key_events True
         xalign 0.10
@@ -979,7 +1007,9 @@ screen file_slots(title):
 
             $ slot = i + 1
 
-            button at saveloadslide:
+            button:
+                if not skip_entry_anim:
+                    at saveloadslide
                 action FileAction(slot)
 
                 has vbox
@@ -997,7 +1027,9 @@ screen file_slots(title):
                 key "save_delete" action FileDelete(slot)
 
     ## Buttons to access other pages.
-    vbox at saveloadslide:
+    vbox:
+        if not skip_entry_anim:
+            at saveloadslide
 
         xalign 0.3
         yalign 0.88
@@ -1086,7 +1118,7 @@ init python:
         persistent.text_font_size = "default"
         persistent.longer_choice_timers = False
 
-screen preferences():
+screen preferences(skip_entry_anim=False):
 
     zorder 102
     tag phone_menu_screen
@@ -1094,7 +1126,9 @@ screen preferences():
     key "game_menu" action Hide(transition=dissolve)
 
     # use game_menu('preferences')
-    add gui.game_menu_background at saveloadslide
+    add "gui/saveload/saveloadbg.png":
+        if not skip_entry_anim:
+            at saveloadslide
 
     if main_menu:
         button:
@@ -1102,7 +1136,9 @@ screen preferences():
             action NullAction()
         use phone_menu()
 
-    hbox at saveloadslide:
+    hbox:
+        if not skip_entry_anim:
+            at saveloadslide
         xpos 250
         ypos 190
         vbox:
@@ -1139,7 +1175,9 @@ screen preferences():
 
             imagebutton auto "images/GUI/settings/off_%s.png" hover_sound "audio/sfx/ui_click.ogg" action SetField(persistent, "longer_choice_timers", False) xanchor .5 yanchor 1 at settingscaling
 
-    hbox at saveloadslide:
+    hbox:
+        if not skip_entry_anim:
+            at saveloadslide
         style_prefix "slider"
         xpos 100
         ypos 0.5
@@ -1286,7 +1324,7 @@ style slider_vbox:
 ##
 ## https://www.renpy.org/doc/html/history.html
 
-screen history():
+screen history(skip_entry_anim=False):
 
     zorder 102
     tag phone_menu_screen
@@ -1297,9 +1335,13 @@ screen history():
     key "game_menu" action Hide(transition=dissolve)
 
     fixed:
-        add "images/gui/history.png" at saveloadslide
+        add "images/gui/history.png":
+            if not skip_entry_anim:
+                at saveloadslide
 
-        vpgrid at saveloadslide:
+        vpgrid:
+            if not skip_entry_anim:
+                at saveloadslide
             # background None
             # padding (0, 0)
             # margin (0, 0)
