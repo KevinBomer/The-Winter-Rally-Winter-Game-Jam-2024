@@ -239,9 +239,7 @@ label minigame1success:
     scene black with fade
     show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
-    return
-
-    # jump act3
+    jump act3
 
 label minigame1failure:
 
@@ -302,6 +300,4 @@ label minigame1failure:
     scene black with fade
     show image "gui/demoscene.jpg" with dissolve
     $ renpy.pause()
-    return
-
-    #jump act3
+    jump act3
