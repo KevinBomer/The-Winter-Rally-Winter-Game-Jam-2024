@@ -1,4 +1,5 @@
 default act4_focus_minigame_success = False
+default act4_focus_minigame_points = 0
 
 label act4:
 
@@ -171,7 +172,152 @@ label act4:
     "Her blades kicked ice powder into the air as she started her dance, and the rest was history."
 
     # MINIGAME START
-    # TODO minigame...?
+
+    jump act4_minigame_start
+
+label act4_minigame_start:
+
+    menu(timeout_label="act4_minigame_both_q2"):
+        "Take a deep breath.":
+            $ act4_focus_minigame_points += 1
+        "Am I doing this now of all times?":
+            pass
+        "Are they watching?":
+            pass
+
+label act4_minigame_both_q2:
+
+    menu(timeout_label="act4_minigame_both_q3"):
+        "When was the last time I did this?":
+            pass
+        "Let muscle memory take over.":
+            $ act4_focus_minigame_points += 1
+        "Notice your heart rate is picking up.":
+            pass
+
+label act4_minigame_both_q3:
+
+    menu(timeout_label="act4_minigame_both_q4"):
+        "It's like I never left the ice.":
+            $ act4_focus_minigame_points += 1
+        "It’s been so long…":
+            pass
+        "Is my form alright?":
+            pass
+
+label act4_minigame_both_q4:
+
+    menu(timeout_label="act4_minigame_both_q5"):
+        "Are they watching?":
+            pass
+        "Wait, is it getting quiet?":
+            pass
+        "My body is moving on its own…":
+            $ act4_focus_minigame_points += 1
+
+label act4_minigame_both_q5:
+
+    menu(timeout_label="act4_minigame_both_q6"):
+        "Hold on, are we going for it??":
+            pass
+        "I think I’m getting sick.":
+            pass
+        "Bend your knees.":
+            $ act4_focus_minigame_points += 1
+
+label act4_minigame_both_q6:
+
+    menu(timeout_label="act4_minigame_both_q7"):
+        "I’m not ready!":
+            pass
+        "Hesitate.":
+            pass
+        "Jump!":
+            $ act4_focus_minigame_points += 1
+
+label act4_minigame_both_q7:
+
+    menu(timeout_label="act4_minigame_with_finn_q8" if act2_finn_success else "act4_minigame_without_finn_q8"):
+        "Oh god, it’s happening.":
+            pass
+        "Spin!":
+            $ act4_focus_minigame_points += 1
+        "Did someone say something?":
+            pass
+
+label act4_minigame_with_finn_q8:
+
+    menu(timeout_label="act4_minigame_with_finn_q9"):
+        "Soar!":
+            $ act4_focus_minigame_points += 1
+        "Notice a flash from the corner of your eye.":
+            pass
+        "Did someone take a picture?":
+            pass
+
+label act4_minigame_with_finn_q9:
+
+    menu(timeout_label="act4_minigame_with_finn_q10"):
+        "Time to finish strong!":
+            $ act4_focus_minigame_points += 1
+        "I hope they got my good side…":
+            pass
+        "Did I make a weird face doing that??":
+            pass
+
+label act4_minigame_with_finn_q10:
+
+    menu(timeout_label="act4_minigame_result"):
+        "Land awkwardly.":
+            pass
+        "Land eventually.":
+            pass
+        "Land with a purpose.":
+            $ act4_focus_minigame_points += 1
+
+    jump act4_minigame_result
+
+
+label act4_minigame_without_finn_q8:
+
+    menu(timeout_label="act4_minigame_without_finn_q9"):
+        "Where’s Finn?":
+            pass
+        "Notice a flash from the corner of your eye.":
+            pass
+        "Did someone take a picture?":
+            pass
+
+label act4_minigame_without_finn_q9:
+
+    menu(timeout_label="act4_minigame_without_finn_q10"):
+        "Where’s Mina?":
+            pass
+        "I hope they got my good side…":
+            pass
+        "Did I make a weird face doing that??":
+            pass
+
+label act4_minigame_without_finn_q10:
+
+    menu(timeout_label="act4_minigame_result"):
+        "Land awkwardly.":
+            pass
+        "Land eventually.":
+            pass
+        "Land knowing you don’t have much time left.":
+            pass
+
+    jump act4_minigame_result
+
+label act4_minigame_result:
+
+    if act4_focus_minigame_points == 10:
+        $ act4_focus_minigame_success = True
+        jump act4_minigame_success
+    else:
+        $ act4_focus_minigame_success = False
+        jump act4_minigame_failure
 
 
 label act4_minigame_success:
