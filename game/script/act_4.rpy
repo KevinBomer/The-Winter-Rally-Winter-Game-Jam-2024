@@ -3,11 +3,17 @@ default act4_focus_minigame_points = 0
 
 label act4:
 
+    scene icerink with dissolve
+
     "The ice rink sounded like a good idea on paper, we all thought."
 
     "A quintessentially wintry pastime where all of your friends hit the ice, then skate like a pro or look good trying."
 
     "And whilst some of us couldn't walk straight with blades on the soles of our feet..."
+
+    show ter aha at centerstage:
+        yoffset 1000
+        spring3 .5 yoffset 0
 
     ##Suddenly enter TERRIE from screen middle
 
@@ -15,159 +21,261 @@ label act4:
 
     ##Enter MORGAN from screen left.
 
+    show morg hospital default at centerstage with easeinleft:
+        xpos 0.15
+
     morg "Give me your hand, Terr."
 
     morg "It's like riding a bike; the faster you move, the less you wobble."
 
+    show morg hospital default at centerstage:
+        xpos 0.5
+
+    show ter hospital happy at centerstage:
+        xpos .75
+
+    with ease
+
     "...others moved like they were raised on ice."
 
-    morg "Isn't this just the life, everyone? The speed, the wind, the chill all over again." # content sigh
+    morg happy "Isn't this just the life, everyone? The speed, the wind, the chill all over again." # content sigh
 
     morg "Oh, it's just so... so freeing..."
 
     if act2_finn_success:
 
+        show fin tense at centerstage:
+
+            xpos 0.25
+            yoffset 1000
+            spring3 .5 yoffset 0
+
         ##Pop-in FINN.
 
         fin "I have yet to be the judge of that!" # anxious
 
-        fin "Excuse me, friend, would you care to provide me with a boost off the wall?"
+        fin happy "Excuse me, friend, would you care to provide me with a boost off the wall?"
 
         menu:
             "Gently push him":
 
-                fin "Maybe with somewhat more oomph next time— I mean, whee…"
+                show fin tense:
 
-                ter "Ooh, look out, attempting to break the land speed record we have FINN at a BLISTERING 2 kilometers an hour!" # like a commentator
+                    ease 0.2 xoffset 25
+                    ease 0.2 xoffset -25
+                    ease 0.2 xoffset 0
+            
 
-                morg "Oh, how will he and his pit crew ever hope to topple the current defending champion?" # fake gasp
+                fin happy "Maybe with somewhat more oomph next time— I mean, whee…"
+
+                ter playful "Ooh, look out, attempting to break the land speed record we have FINN at a BLISTERING 2 kilometers an hour!" # like a commentator
+
+                morg playful  "Oh, how will he and his pit crew ever hope to topple the current defending champion?" # fake gasp
 
                 fin "When the defending champion talks like that, perhaps she should let her actions speak instead."
 
+                jump paths
+
             "Link arms and pull him along":
 
-                fin "YIKES! Bold today, are we?!"
+                show fin aha:
 
-                morg "You'll both bring yourselves down with technique like that!"
+                    ease 0.1 xoffset 50
+                    ease 0.1 xoffset -50
+                    ease 0.2 xoffset 0
+                    ease 0.1 xoffset 50
+                    ease 0.1 xoffset -50
+                    ease 0.2 xoffset 0
 
-                morg "Oop...and there it is. Do you guys need a pair of hands?"
+                fin aha "YIKES! Bold today, are we?!"
 
-                fin "Like we need air to breathe." # groans
+                morg playful "You'll both bring yourselves down with technique like that!"
+
+                hide fin with dissolve
+
+                morg aha "Oop...and there it is. Do you guys need a pair of hands?"
+
+                show fin hospital tense at centerstage with dissolve:
+
+                    xpos 0.25
+
+                fin tense "Like we need air to breathe." # groans
 
                 #beat
+                pause 0.5
 
-                "Thank you. Now you try zipping forward with such velocity."
+                fin default "Thank you. Now you try zipping forward with such velocity."
+
+                jump paths
 
             "You're a great friend and you'll kick ass on the ice!":
 
-                fin "Enthusiasm appreciated, but wrong kind of boost. I suppose it'll suffice... and we're off."
+                fin happy "Enthusiasm appreciated, but wrong kind of boost. I suppose it'll suffice... and we're off."
 
-                ter "Attaboy, Finn! Come join me and… Wow, never mind, Morgan's skatin' circles around us already."
+                ter playful "Attaboy, Finn! Come join me and… Wow, never mind, Morgan's skatin' circles around us already."
 
                 fin "Oh, really? I think she could do better."
 
+                jump paths
+
         #Paths converge
 
-        "Morgan developed a keen smirk."
+        label paths:
 
-        ter "Uh, dudes, I think you just declared war."
+            show morg hospital playful with dissolve:
+                xpos 0.5
 
-        morg "They most certainly did. Hold my gloves, Terrie."
+            "Morgan developed a keen smirk."
 
-        ##Exit MORGAN.
+            ter aha "Uh, dudes, I think you just declared war."
 
-        ter "I don't think you realize just what you're about to witness."
+            morg happy "They most certainly did. Hold my gloves, Terrie."
 
-        ter "Remember how much of a beast she was on the ice before... before the—"
+            hide morg with dissolve
 
-        fin "I never forgot, don't panic."
+            show fin hospital default:
+                xpos 0.35
 
-        ter "Yeah. I'm pretty sure she spent two hours by herself here for every hour we visited as the gang!"
+            show ter hospital tense:
+                xpos 0.65
+
+            with ease
+
+            ##Exit MORGAN.
+
+            ter tense "I don't think you realize just what you're about to witness."
+
+            ter aha "Remember how much of a beast she was on the ice before... before the—"
+
+            fin aha "I never forgot, don't panic."
+
+            ter "Yeah. I'm pretty sure she spent two hours by herself here for every hour we visited as the gang!"
 
     else:
+
+        show morg hospital sad at centerstage:
+            xpos 0.35
+
+        show ter hospital sad at centerstage:
+            xpos .65
+
+        with ease
 
         morg "Just me and you and Terrie and not—not a lot of other people to judge you or cheer you or— or..."
 
         ##TERRIE shares a let-down expression very briefly.
 
-        morg "Hey! I have an old routine I used to practice for ages."
+        morg happy "Hey! I have an old routine I used to practice for ages."
 
-        morg "It's an old one, but it's... it's coming back to me, I think. Care to watch?"
+        morg inthought "It's an old one, but it's... it's coming back to me, I think. Care to watch?"
 
-        ter "Hey, s'long as I'm not falling down and you're in your zone, I'm game!"
+        ter playful "Hey, s'long as I'm not falling down and you're in your zone, I'm game!"
 
         morg "Right. Okay. This is it. This is really happening. Hold my gloves, Terrie."
 
         ##Exit MORGAN.
 
-        ter "Oh, she really needs this, doesn't she?"
+        ter tense "Oh, she really needs this, doesn't she?"
 
-        ter "Between this whole thing and then us being down two friends, I really wouldn't blame her if we spent the rest of the night here."
+        ter aha "Between this whole thing and then us being down two friends, I really wouldn't blame her if we spent the rest of the night here."
 
-        ter "And y'know? I wouldn't mind. Morgan's an ice queen out here!"
+        ter playful "And y'know? I wouldn't mind. Morgan's an ice queen out here!"
 
-    ter "I caught the tail end of one of her routines once when I came to get my skates re-sized. It was... really somethin' else."
+    ter tense "I caught the tail end of one of her routines once when I came to get my skates re-sized. It was... really somethin' else."
 
     if act2_finn_success:
 
-        ter "So prepare for a blown mind with a side of I-told-you-so!"
+        ter happy "So prepare for a blown mind with a side of I-told-you-so!"
 
         menu:
             "We're gonna eat our words, Finn.":
 
-                fin "Much like the sushi we dined on prior, I fear."
+                fin tense "Much like the sushi we dined on prior, I fear."
 
-                ter "Dinner and a show? Sounds like we had the perfect day already!"
+                ter playful "Dinner and a show? Sounds like we had the perfect day already!"
 
-                fin "Time is still on our side, now. Who knows what else we'll see today?"
+                fin happy "Time is still on our side, now. Who knows what else we'll see today?"
 
             "Hey, Morgan's just happy to be here. That's a win.":
 
-                ter "True that! Look at us, cheering our girl on like it's nationals day."
+                ter playful "True that! Look at us, cheering our girl on like it's nationals day."
 
-                fin "She really should consider that level of performance if things improve."
+                fin happy "She really should consider that level of performance if things improve."
 
-                ter "Yeah…" #(awkward pause)
+                ter sad "Yeah…" #(awkward pause)
+
+                pause 0.5
 
             "What if my mind was pre-blown coming into the rink?":
 
-                ter "What, by the whole fact that she can actually skate? Fair!"
+                ter playful "What, by the whole fact that she can actually skate? Fair!"
 
-                ter "That and, uh..."
+                ter tense "That and, uh..."
 
-                ter "You definitely saw it at the hospital, right?" #(whispering directly to player)
+                ter aha "You definitely saw it at the hospital, right?" #(whispering directly to player)
 
     else:
-        ter "Don't forget, you're gonna cheer for her until the roof shatters. At least! She deserves it all."
+        ter tense "Don't forget, you're gonna cheer for her until the roof shatters. At least! She deserves it all."
 
     ##Enter MORGAN again, this time further away from the others.
 
-    morg "I think we're ready! Are you watching, judges?" #(far off)
+    show ter at centerstage:
+        xpos 0.35
 
-    ter "Huh? Hey, that's us, we're judges!"
+    show fin at centerstage:
+        xpos 0.10
 
-    ter "Knock 'em dead, Morgan!"
+    with ease
+
+    show morg at centerstage with dissolve:
+        xpos 0.8
+
+
+
+    morg default "I think we're ready! Are you watching, judges?" #(far off)
+
+    ter inthought "Huh? Hey, that's us, we're judges!"
+
+    ter playful "Knock 'em dead, Morgan!"
+
+    pause 0.5
 
     ##Pause.
 
-    ter "I mean, uh, perform with grace and beauty an' all that!" #(flustered)
+    ter embarassed "I mean, uh, perform with grace and beauty an' all that!" #(flustered)
 
-    morg "I can do both!" #(far off, giggling)
+    morg happy "I can do both!" #(far off, giggling)
 
     if act2_finn_success:
-        fin "Fantastic! Come on, let's give her some space."
+        fin happy "Fantastic! Come on, let's give her some space."
+
+        hide ter
+
+        hide fin
+
+        with dissolve
+
+        show morg at centerstage with ease:
+            xpos 0.5
 
         "As the three of us made our way back towards the walls and gave Morgan the thumbs up, the fire in her eyes could have melted every ice rink between here and Montreal."
 
     else:
-        ter "Alright, other judge - that's you - take your places!"
+        ter playful "Alright, other judge - that's you - take your places!"
+
+        hide ter
+
+        with dissolve
+
+        show morg at centerstage with ease:
+            xpos 0.5
 
         "As the two of us made our way back towards the walls and gave Morgan the thumbs up, there were makings of a fire in her eyes. Weak, fledgling passion, but it was there."
 
 
     "But I wondered, did she still have it in her to push this far?"
 
-    morg "Three, two, one, and..." # (whispering to herself)
+    morg tense "Three, two, one, and..." # (whispering to herself)
 
     "Her blades kicked ice powder into the air as she started her dance, and the rest was history."
 
@@ -322,6 +430,8 @@ label act4_minigame_result:
 
 label act4_minigame_success:
 
+    scene icerink with dissolve
+
     ## INT. ICE RINK - DAY with dissolve
 
     "History for the sports almanacs, that is."
@@ -332,18 +442,35 @@ label act4_minigame_success:
 
     "An angel whose speed sometimes made her struggle to come to a timely Halt."
 
+    show morg aha at centerstage:
+        yoffset 1000
+        spring3 .5 yoffset 0
+
     ##Pop-in MORGAN.
 
     morg "Watch it watch it watch it—!!!!" # (panicky)
 
+    show morg aha at centerstage:
+        ease 0.1 xoffset 25
+        ease 0.1 xoffset -25
+
+        ease 0.1 xoffset 0
+        ease 0.1 xoffset 15
+        ease 0.1 xoffset -15
+
+        ease 0.1 xoffset 0
+
     "And who sometimes relied on me as a crash pad."
 
-    morg "Oh, gosh, you. Two wipeouts in one session? Sorry, I've got you."
+    morg playful "Oh, gosh, you. Two wipeouts in one session? Sorry, I've got you."
 
     menu:
         "You were glowing out there.":
 
-            morg "Aw, you're just being nice."
+            morg happy "Aw, you're just being nice."
+
+            show ter at centerstage with dissolve:
+                xpos .75
 
             ter "Oh c'mon, be less humble; that rink was yours just now!"
 
@@ -352,27 +479,33 @@ label act4_minigame_success:
             morg "I guess I do... you won't always be there to cushion the tough blows, will you?"
 
 
-            morg "Then again, nothing's a hundred percent perfect right?" # (melancholy giggle)
+            morg sad "Then again, nothing's a hundred percent perfect right?" # (melancholy giggle)
 
         "Fancy a partner dance next time?":
 
-            morg "Think you could keep up with me, or will you be waddling like a penguin?" #(sly giggle)
+            morg happy "Think you could keep up with me, or will you be waddling like a penguin?" #(sly giggle)
 
             #Beat.
 
-            morg "Same time, next month. Save the date, and if you flake I'm snowballing your house." # (much softer)  (laughs)
+            morg default "Same time, next month. Save the date, and if you flake I'm snowballing your house." # (much softer)  (laughs)
 
     "Morgan was alive. And it seemed now that she intended to keep it that way."
 
     if act2_finn_success: # TODO can you ever succeed at minigame without Finn being there?
 
+        show fin at centerstage with dissolve:
+            xpos 0.25
+
         fin "Well, there's absolutely no chance of us ever topping that. Stellar performance."
 
-        fin "You must be exhausted now, though — I know I am."
+        fin happy "You must be exhausted now, though — I know I am."
+
+    show ter playful at centerstage with dissolve:
+        xpos .75
 
     ter "Yeah, I'm beat, Morgs. Think you're rinked out for the day too?"
 
-    morg "I guess I am. As for the list, let's change and see what else there is."
+    morg default "I guess I am. As for the list, let's change and see what else there is."
 
     jump act4_end_with_finn
 
@@ -530,39 +663,47 @@ label act4_end_with_finn:
 
     ##Pop-in TERRIE, MORGAN and FINN.
 
-    morg "Alright, next on the agenda."
+    morg inthought "Alright, next on the agenda."
 
-    morg "It's nearly fireworks time."
+    morg happy "It's nearly fireworks time."
 
-    ter "You're kidding! After all these years we're goin' back?!" # (squeals)
+    ter aha "You're kidding! After all these years we're goin' back?!" # (squeals)
 
-    morg "With a twist."
+    morg playful "With a twist."
 
     morg "When was the last time you heard me scream?"
 
-    ter "Huh?"
+    ter default "Huh?"
 
-    fin "Ohhhh, I see. You aim to yell as loud as you can into the valleys and hear its echo?"
+    fin inthought "Ohhhh, I see. You aim to yell as loud as you can into the valleys and hear its echo?"
 
-    morg "You know me so well."
+    morg default "You know me so well."
 
-    ter "Honestly, girl, I'd get it if you just screamed right now outta nowhere."
+    ter tense "Honestly, girl, I'd get it if you just screamed right now outta nowhere."
 
-    morg "Believe me. I've wanted to. That rink nearly never heard the end of it."
+    morg playful "Believe me. I've wanted to. That rink nearly never heard the end of it."
 
-    morg "That's why I thought, why not just do it in a place that matters?"
+    morg inthought "That's why I thought, why not just do it in a place that matters?"
 
-    ter "Okay, we love a bit'a showmanship!"
+    ter playful "Okay, we love a bit'a showmanship!"
 
-    ter "Let's do it, then. Let's see the pretty lights and wreck our throats for the next week."
+    ter happy "Let's do it, then. Let's see the pretty lights and wreck our throats for the next week."
 
-    fin "I would prefer to preserve mine, in all honesty."
+    fin tense "I would prefer to preserve mine, in all honesty."
 
-    ter "Your exam a speaking one?" # (cheeky)
+    ter playful "Your exam a speaking one?" # (cheeky)
 
-    fin "No, but—"
+    fin aha "No, but—"
 
     ter "Then we're good! C'mon!!"
+
+    hide ter
+
+    hide fin
+
+    hide morg
+
+    with dissolve
 
     ##MORGAN laughs, and they all exit.
 
@@ -577,6 +718,8 @@ label act4_end:
     "What our hearts all held onto the most for the longest time."
 
     "Our grand day out would for sure end with a bang."
+
+    scene black with fade
 
     ##FADE TO BLACK
 

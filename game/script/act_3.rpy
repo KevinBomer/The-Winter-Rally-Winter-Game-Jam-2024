@@ -15,32 +15,66 @@ init python:
 
 label act3:
     #EXT. CORRIDOR — THE SPOT
+    #"The next thing on the list was a meal worth dying for. And for that, it would require a restaurant capable of producing such a meal."
+    #"There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
+    #"A quaint, family-run sushi restaurant called Miya’s that we visited frequently during our high school days. It might have been just another restaurant to some, but to us, this was The Spot."
+    #"I can’t remember the last time I was here."
+    #"Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things."
+    #"Despite the wear and tear, color shines through like a flower under rubble."
+    #THE SPOT - DAY
+    #Terrie enters stage left
+    #ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!"
+    #ter "Hope you’re all ready to satisfy both your body, mind, and soul with food from this joint!"
+    #Terrie fades out
+    #Morgan enters stage left
+    #morg "It really has been a while, hasn’t it?"
+    #morg "No time like today to make some new memories."
+
+    scene corridor with dissolve
+    #EXT. CORRIDOR — THE SPOT
     "The next thing on the list was a meal worth dying for. And for that, it would require a restaurant capable of producing such a meal."
     "There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
     "A quaint, family-run sushi restaurant called Miya’s that we visited frequently during our high school days. It might have been just another restaurant to some, but to us, this was The Spot."
     "I can’t remember the last time I was here."
-    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things."
+    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things." 
     "Despite the wear and tear, color shines through like a flower under rubble."
+
+    scene sushishop with paintmask2
     #THE SPOT - DAY
     #Terrie enters stage left
-    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!"
+    show ter hospital playful at centerstage:
+        xpos 0.25
+        yoffset 1000
+        spring3 .5 yoffset 0
+    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!" 
     ter "Hope you’re all ready to satisfy both your body, mind, and soul with food from this joint!"
     #Terrie fades out
     #Morgan enters stage left
+
+    hide ter hospital with dissolve
+    show morg hospital default at centerstage with dissolve
     morg "It really has been a while, hasn’t it?"
-    morg "No time like today to make some new memories."
+    morg hospital happy "No time like today to make some new memories."
+
+    hide morg hospital with dissolve
 
     if act2_finn_success:
         #Enter Finn
         #Morgan fades out
         #Finn enters stage left
+
+        show fin hospital at centerstage with dissolve
         fin "I can’t recall the last time I’ve made time to come here."
-        fin "My work made me forget just how much I missed this place, I wonder just how much has changed."
-        fin "That being said, I quite like what’s been done with the place. The art adds a nice touch."
+        fin melancholy "My work made me forget just how much I missed this place, I wonder just how much has changed."
+        fin happy "That being said, I quite like what’s been done with the place. The art adds a nice touch."
         "It wasn’t a surprise that the artwork was the first thing to stand out. Lining the walls in various frames, hung art pieces that stood out compared to the aging interior of The Spot."
+
+        hide fin hospital with dissolve
         #Finn fades out
     else:
         ##MORGAN fades out
+
+        hide morg hospital with dissolve
         "Morgan’s attitude was to be expected. Finn not being there was weighing on all of our minds."
 
         "However, her smile returned a moment later. She was trying to not let a single setback spoil every memory to come."
@@ -48,53 +82,96 @@ label act3:
         "Looking around, it wasn’t a surprise that the artwork was the first thing to stand out. Lining the walls in various frames, hung art pieces that stood out compared to the aging interior of The Spot."
 
     #CG START
+
+    scene black with dissolve
     "The artwork feels familiar, you’ve seen something like this before. But where?"
 
     #MORGAN fades in
+
+    show morg hospital default at centerstage with dissolve
     morg "You know, I feel like we’ve seen this before."
 
     if act2_finn_success:
+
+        show fin hospital at centerstage with dissolve:
+            xpos 0.25
         fin "What do you mean?"
 
     else:
         #TERRIE enters stage right
+
+        show ter hospital at centerstage with dissolve:
+            xpos .75
         ter "Funny you say that. I wonder why."
 
-    morg "Remember that one time we all almost got busted in senior year?"
+    morg happy "Remember that one time we all almost got busted in senior year?"
     #CG END
     #Choice
     menu:
         "Ah, the infamous {i}Statue Incident.{/i} How could I forget?":
-            #Morgan fades in
+            scene sushishop with dissolve
+
+            show morg hospital happy at centerstage with dissolve
             morg "Yes, that one! It didn’t get on the front page of our school paper for nothing."
         "I’m sure Terr remembers!":
+            scene sushishop with dissolve
             #Terrie fades in
+
+            show ter hospital inthought at centerstage with dissolve:
+                xpos .75
             ter "The statue incident... Right?"
             #Terrie fades out
             #Morgan fades in
+
+            hide ter hospital with dissolve
+
+            show morg hospital happy at centerstage with dissolve
             morg "I knew you’d remember, Terr. It was kind of hard to miss with it making the school paper and all."
         "You’re gonna have to be more specific than that...":
+            scene sushishop with dissolve
+
+            show morg hospital playful at centerstage with dissolve
             morg "Surely it hasn’t been that long. Who could forget the statue incident that made the school paper?"
 
-    morg "Terr was a true mastermind. If it weren’t for them convincing the teacher that we didn’t break their precious statue, who knows what would have happened."
+    morg inthought "Terr was a true mastermind. If it weren’t for them convincing the teacher that we didn’t break their precious statue, who knows what would have happened."
     #TERRIE looks away with a bashful smile on their face.
 
     if act2_finn_success:
-        #Morgan fades out
-        #Finn fades in
-        fin "It’s unthinkable how easily one can be blamed for others' tomfoolery."
-        fin "Wrong place, wrong time, I suppose."
-        #Finn fades out
-        #Terrie fades in
+        hide morg hospital with dissolve
+
+        show fin hospital at centerstage with dissolve
+        fin tense "It’s unthinkable how easily one can be blamed for others' tomfoolery."
+
+        show fin hospital at centerstage:
+            ease 0.4 yoffset 50
+        fin inthought "Wrong place, wrong time, I suppose."
+
+        hide fin hospital at centerstage with dissolve
+    #Finn fades out
+    #Terrie fades in
+
+    show ter hospital aha at centerstage with dissolve
 
     ter "At least we made it here in time for dinner rush! Would’a sucked to be crammed in some lame fast-food chain after all that."
 
     if not act2_finn_success:
-        morg "Oh, you know it. I can already picture how hangry Finn—"
 
-        ter "I’m way more hangry than that guy, I want my good eats now!"
+        show morg hospital inthought at centerstage with ease:
+            xpos 0.25
+        morg inthought "Oh, you know it. I can already picture how hangry Finn—"
+
+        show ter hospital at centerstage with dissolve:
+            xpos 0.75
+
+        ter aha "I’m way more hangry than that guy, I want my good eats now!"
         #TERRIE fades out
         #MORGAN fades out
+
+        hide morg hospital
+
+        hide ter hospital
+
+        with dissolve
 
         "It was hard to watch. Each attempt to reminisce was a dagger. A reminder of Finn and Mina’s lack of attendance."
 
@@ -113,26 +190,56 @@ label act3:
         "After reminiscing about some highschool shenanigans, we all settle in."
         "It isn’t long before we’re met with a familiar face."
 
+        hide ter with dissolve
+
         #Terrie fades in
         #Miya enters stage left
 
+    show miya at centerstage with dissolve:
+        xpos 0.9
     yum "...Morgan?"
+
+    show miya at centerstage with ease:
+        xpos 0.65
     yum "My, how long has it been now? 10 years?"
+
+    show morg hospital playful at centerstage with dissolve:
+        xpos 0.35
     #Morgan enters stage right
     morg "Oh come on now. A measly 10 months could never stop me."
 
     if act2_finn_success:
         #MIYA laughs
 
+        #yum "You look so lively. Radiant, even."
+        #yum "Are my eyes playing tricks on me? Is Finn here as well? It’s been so long! Just where have you been??"
+        #Morgan fades out
+        #Finn enters stage right
+        #fin "It’s nice to see you too."
+        #fin "I’ve been rather occupied with my studies, I apologize for not coming back sooner."
+        #yum "You don’t have to be sorry for anything. You’re working so hard, just like Mina..."
+        #Finn fades out
+        #Morgan fades in
+
         yum "You look so lively. Radiant, even."
         yum "Are my eyes playing tricks on me? Is Finn here as well? It’s been so long! Just where have you been??"
         #Morgan fades out
         #Finn enters stage right
+
+        hide morg hospital with dissolve
+
+        show fin hospital happy at centerstage with dissolve:
+            xpos 0.35
         fin "It’s nice to see you too."
-        fin "I’ve been rather occupied with my studies, I apologize for not coming back sooner."
+        fin tense "I’ve been rather occupied with my studies, I apologize for not coming back sooner."
         yum "You don’t have to be sorry for anything. You’re working so hard, just like Mina..."
         #Finn fades out
         #Morgan fades in
+
+        hide fin hospital with dissolve
+
+        show morg hospital aha at centerstage with dissolve:
+            xpos 0.35
 
     else:
 
@@ -142,12 +249,12 @@ label act3:
 
         yum "Better. You look well, Morgan. But something is troubling you, is it anything I can help with?"
 
-        morg "Thank you, I’m fine. I mean—"
+        morg sad "Thank you, I’m fine. I mean—"
 
         # MORGAN (huffs)
-        morg "Finn couldn’t join us today, and Mina is in a whole other state..."
+        morg tense "Finn couldn’t join us today, and Mina is in a whole other state..."
 
-        morg "I’m beyond grateful that the three of us could come here, I just wish things could be different."
+        morg hurt "I’m beyond grateful that the three of us could come here, I just wish things could be different."
 
         "It ached to hear Morgan so heartbroken over this."
 
@@ -158,14 +265,27 @@ label act3:
     #Morgan fades out
     #Terrie enters stage right
     #TERRIE gives their friends an apologetic smile.
+    hide morg hospital aha with dissolve
+    #Terrie enters stage right
+    #TERRIE gives their friends an apologetic smile.
+
+    show ter hospital happy at centerstage with dissolve:
+        xpos 0.35
     ter "Okay, so. {i}Maybe{/i} I should’a told you guys I work here."
     #Terrie fades out
     #Morgan fades in
+
+    hide ter hospital with dissolve
+
+    show morg hospital playful at centerstage with dissolve:
+        xpos 0.35
     morg "You think?"
 
     if act2_finn_success:
-        #Morgan fades out
-        #Fin fades in
+        hide morg hospital with dissolve
+
+        show fin hospital inthought at centerstage with dissolve:
+            xpos 0.35
         fin "It would have been nice to know."
     else:
         #MIYA enters stage left
@@ -175,6 +295,12 @@ label act3:
 
     "Terrie groaned."
 
+    hide miya 
+
+    hide fin hospital
+    
+    with dissolve
+
     #Miya fades out
     #Morgan enters stage left
 
@@ -183,91 +309,191 @@ label act3:
     else:
         "Morgan lit up a tiny bit."
 
+    show morg hospital happy at centerstage with dissolve:
+        xpos 0.35
+
     morg "Terrie, you did all this?"
+
+    hide morg with dissolve
+
+    show ter hospital tense at centerstage with dissolve
     #Morgan fades out
     #Terrie fades in
     ter "...Yeah."
 
     if act2_finn_success:
         #Finn enters stage right
+
+        show fin hospital aha at centerstage with dissolve:
+            xpos 0.75
         fin "Woah..."
 
-    ter "I’m just an aspiring artist tryin’ to get my stuff out there."
+    ter playful "I’m just an aspiring artist tryin’ to get my stuff out there."
 
     if act2_finn_success:
-        fin "It truly is wonderful, Terrie. You’ve always had a gift for this kind of thing."
+        fin happy "It truly is wonderful, Terrie. You’ve always had a gift for this kind of thing."
     else:
+
+        show morg hospital happy at centerstage with dissolve:
+            xpos 0.25
         morg "It truly is wonderful, Terrie. You’ve always had a gift for this kind of thing."
 
-    ter "What are you talking about?"
-    ter "Please, save the praise for someone who’s actually worth it. "
+    ter aha "What are you talking about?"
+    ter tense "Please, save the praise for someone who’s actually worth it. "
 
     if act2_finn_success:
+
+        hide fin with dissolve
+
+        show morg hospital sad at centerstage with dissolve:
+            xpos 0.75
+
         #Finn fades out
         #Morgan enters stage right
         pass
 
-    morg "You have just as much a right to praise as anyone else. "
-    ter "Is it really worth that much if I’m still {i}stuck{/i} here—"
-    morg "What, you mean in the restaurant?"
+    morg sad "You have just as much a right to praise as anyone else. "
+    ter hurt "Is it really worth that much if I’m still {i}stuck{/i} here—"
+    morg aha "What, you mean in the restaurant?"
     #Morgan fades out
     #Miya enters stage right
+
+    hide morg with dissolve
+    show miya at centerstage with dissolve:
+
+        xpos .75
     yum "Terrie... You can’t really think that, can you?"
-    ter "I guess? Sorry, I know it’s kind of pathetic. If only I worked a little harder, maybe I’d be in art school by now."
+    ter sad "I guess? Sorry, I know it’s kind of pathetic. If only I worked a little harder, maybe I’d be in art school by now."
     #Miya fades out
     #Finn enters stage right
-    fin "It’s not too late, you still have time."
+
+    hide miya with dissolve
+
+    show fin hospital happy at centerstage with dissolve:
+        xpos 0.75
+    fin happy "It’s not too late, you still have time."
     #Finn fades out
     #Morgan fades in
+
+    hide fin hospital with dissolve
+
+    show morg hospital happy at centerstage with dissolve:
+        xpos 0.75
+        subpixel True 
+        yoffset 30 xpos .75
+        spring3 .5 yoffset 0
     morg "You’ve been working your butt off! There’s no way you won’t succeed, Terr."
     #Morgan fades out
     #Miya fades in
+
+    hide morg hospital with dissolve
+    #Morgan fades out
+    #Miya fades in
+
+    show miya at centerstage with dissolve:
+        xpos .75
     yum "Both you and your work is appreciated here. It always will be."
     "Terrie sighed."
+
+    show ter hospital tense at centerstage:
+        ease 0.4 yoffset 0
     ter "You speak too highly of me, really."
-    ter "My stuff just isn’t “woah” material, you know?"
+    ter sad "My stuff just isn’t “woah” material, you know?"
     yum "Oh, that’s not true at all. I think you’re blind to the admiration surrounding you."
     yum "You work too hard, you’re nearly just as bad as Finn."
 
     if not act2_finn_success:
         #MIYA fades out
         #TERRIE fades out
+
+        hide miya
+        hide ter
+
+        with dissolve
         "The room seemed to freeze for a second. Despite one less person being there, their lack of presence was being felt the whole time."
         #TERRIE enters stage right
+
+        show ter hospital hurt at centerstage:
+
+            xpos .75
         ter "Hey! I’m {i}way{/i} better than Finn, at least I’m actually here."
-        ter "I’ve been good about giving myself time off, unlike those two."
+        ter tense "I’ve been good about giving myself time off, unlike those two."
+ 
         #MORGAN enters stage left
 
+        show morg hospital sad at centerstage with dissolve:
+            xpos .25
+
     else:
-        ter "What? Fat chance! I’m {i}way{/i} better than Finnster, here."
-        ter "I’ve been good about giving myself time off, unlike a certain someone."
+        ter aha "What? Fat chance! I’m {i}way{/i} better than Finnster, here."
+        ter tense "I’ve been good about giving myself time off, unlike a certain someone."
+
+        hide miya with dissolve
+
+        show ter hospital tense at centerstage with ease:
+            xpos .65
+
+        show morg hospital sad at centerstage with dissolve:
+            xpos .35
 
     #Miya fades out
     #Morgan fades in
+
     "Morgan looked distant."
 
     if act2_finn_success:
-        morg "I wish she could be here."
+        morg sad "I wish she could be here."
+
+        hide ter with dissolve
+
+        show morg hospital sad at centerstage with ease:
+            xpos .65
         #Terrie fades out
         #Finn enters stage left
+
+        show fin hospital melancholy at centerstage with dissolve:
+            xpos .35
         fin "I’m sure she wishes that too."
         #Morgan fades out
         #Finn fades out
         #Miya fades in
+
+        hide fin with dissolve
+
+        show miya at centerstage with dissolve:
+            xpos .35
         yum "You’re all such hard workers, Mina’s out here making a living just by being her authentic self. I’m sure you’ll do just the same."
         #Terrie enters stage right
+
+        hide miya with dissolve
+
+        show ter hospital inthought at centerstage with dissolve:
+            xpos .35
         ter "I’m doing my best."
         yum "Yet despite all of that, you work harder than almost anyone else I know. That’s why you’re here, right?"
 
     else:
-        morg "I wish both could be here."
+        morg sad "I wish both could be here."
+
+        hide ter with dissolve
+
+        show morg hospital sad at centerstage with ease:
+            xpos .65
         #TERRIE fades out
         #MIYA enters stage right
+
+        show miya at centerstage with dissolve:
+            xpos .35
         yum "Morgan. You’re all such hard workers, Mina’s out here making a living just by being her authentic self. Finn as well. I’m sure you’ll get that chance to be together again."
 
         yum"And Terrie."
+
+        hide morg with dissolve
         #MORGAN fades out
         #TERRIE enters stage right
+
+        show ter hospital tense at centerstage with dissolve:
+            xpos .65
 
         ter "I’m doing my best, but clearly it isn’t good enough. Most would’ve called it quits by now."
 
@@ -290,6 +516,8 @@ label act3:
     if act2_finn_success:
         "A tense silence filled the room, the once cheerful mood gone. Just then, Morgan stood up from her seat."
         #Morgan fades in
+
+        show morg at centerstage with dissolve
         morg "I have a brilliant idea!"
         morg "Why don’t we have Mina pull some strings to reel in some customers? We can even help with the dinner rush!"
     else:
@@ -308,10 +536,25 @@ label act3:
     morg "Let’s give her a ring."
     #Morgan fades out
 
+    hide fin
+
+    hide ter
+
+    hide morg
+
+    with dissolve
+
     #Finn fades out or Terrie fades out if Finn not there
 
     if act2_finn_success:
         "We waited in anticipation as Finn dialed her number. It only took a single ring before an all-too familiar voice came out through the phone’s speaker."
+
+        show screen minaphone
+        show mina_chibi default at minachibi_transform, minaphone_pos with dissolve:
+            xoffset 10
+            additive .1
+            matrixcolor ContrastMatrix(1.2)
+            pause .15
         #Mina enters stage right
         mina "At long last, my precious brother has finally gotten in contact with me after {i}years{/i} of neglect..."
         #Finn enters stage left
@@ -380,6 +623,15 @@ label act3:
         morg "Mina, thank you. {i}Truly.{/i}"
 
     mina "Make it count, you guys got this in the bag. See you later, lots of love!"
+
+    show mina_chibi at minachibi_transform, minaphone_pos:
+        xzoom 1 yzoom 1 alpha 1 matrixcolor BrightnessMatrix(0.0)
+        easeout .2 xzoom 0 yzoom 1.2 matrixcolor BrightnessMatrix(0.3)
+        parallel:
+            easeout .2 alpha 0
+    pause .1
+    hide screen minaphone with dissolve
+    pause .25
     #Mina fades out
     "The moment Mina hung up, the group turned to Morgan, who was now brimming with excitement."
     morg "Alright, we’ve got work to do. But before we do anything, we need to pick out jobs!"
@@ -405,14 +657,20 @@ label act3:
     ter "You better be. If those dishes pile up, we’re screwed. We believe in you, dude!"
     ter "Thanks for being on top of things, everyone. Any questions before we get trampled by Mina’s fans?"
     morg "Nope, I’m ready to go. I’ll give it my all!"
+
+    hide ter with dissolve
     #Terrie fades out
 
     if act2_finn_success:
         #Finn fades in
         fin "I’ll do my best to utilize my skills to get customers situated."
+
+        hide fin with dissolve
         #Finn fades out
 
     #Morgan fades out
+
+    hide morg with dissolve
     "With no questions on my end, Morgan responded with a firm nod."
     "Perhaps my job of washing dishes was simple, but every cog in this machine was important."
     "Thus began a service like no other."
@@ -834,6 +1092,8 @@ label act3_customer_minigame_group2_result:
                 fin "Hey, unjust competitive ruleset!"
 
                 "And so, by the power vested in me…"
+
+                scene black with dissolve
 
                 "I pronounced myself ‘Not Coming in Last’ and got the heck out of there."
 
