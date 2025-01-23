@@ -6,6 +6,8 @@ label act5:
 
     # Ferris Wheel
 
+    #$ play_music(hospital,3)
+
     scene ferriswheel with dissolve
 
     "Passing through the gates, we entered a world of entertainment."

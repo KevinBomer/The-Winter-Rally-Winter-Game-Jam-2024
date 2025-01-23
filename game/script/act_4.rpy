@@ -15,6 +15,8 @@ label act4:
         yoffset 1000
         spring3 .5 yoffset 0
 
+    #$ play_music(hospital,3)
+
     ##Suddenly enter TERRIE from screen middle
 
     ter "ACK! Too frozen, too frozen!!"
@@ -265,6 +267,8 @@ label act4:
 
         hide ter
 
+        hide fin
+
         with dissolve
 
         show morg at centerstage with ease:
@@ -469,7 +473,7 @@ label act4_minigame_success:
 
             morg happy "Aw, you're just being nice."
 
-            show ter at centerstage with dissolve:
+            show ter hospital at centerstage with dissolve:
                 xpos .75
 
             ter "Oh c'mon, be less humble; that rink was yours just now!"
@@ -485,6 +489,8 @@ label act4_minigame_success:
 
             morg happy "Think you could keep up with me, or will you be waddling like a penguin?" #(sly giggle)
 
+            pause 1.0
+
             #Beat.
 
             morg default "Same time, next month. Save the date, and if you flake I'm snowballing your house." # (much softer)  (laughs)
@@ -493,7 +499,7 @@ label act4_minigame_success:
 
     if act2_finn_success: # TODO can you ever succeed at minigame without Finn being there?
 
-        show fin at centerstage with dissolve:
+        show fin hospital at centerstage with dissolve:
             xpos 0.25
 
         fin "Well, there's absolutely no chance of us ever topping that. Stellar performance."
@@ -512,6 +518,8 @@ label act4_minigame_success:
 
 label act4_minigame_failure:
 
+    show morg tense at centerstage with dissolve
+
     "Unfortunately, it was the kind of history you pray never repeats itself."
 
     "As free as she wanted things to flow, she stumbled and struggled through her routine, like she was chained and puppeteered by something we could never hope to see."
@@ -520,30 +528,38 @@ label act4_minigame_failure:
 
     "She was off her feet, and at our knees."
 
-    morg "Ow..." # (weakly)
+    morg hurt "Ow..." # (weakly)
 
     if act2_finn_success:
 
-        morg "Oh God, everyone saw that, didn't they?"
+        morg sad "Oh God, everyone saw that, didn't they?"
 
         menu:
             "It was a good effort. Well done.":
 
-                morg "Yeah, but... what happened?"
+                morg tense "Yeah, but... what happened?"
 
-                morg "I mean, I know what happened, but, just... to me?"
+                morg sad "I mean, I know what happened, but, just... to me?"
 
                 morg "I thought I'd gotten better enough to do this again, but I guess everyone has their limits, right? Yeah."
 
             "Far better than any of us could do, at least!":
 
-                morg "Thanks."
+                morg default "Thanks."
 
-                morg "It feels like they're all staring at me. Do you think they think I'm a tryhard?"
+                morg tense "It feels like they're all staring at me. Do you think they think I'm a tryhard?"
 
-                morg "Oh, this sucks. This sucks and my butt is frozen and I'm calling time."
+                morg sad "Oh, this sucks. This sucks and my butt is frozen and I'm calling time."
 
         "Morgan looked like she was about to cry."
+
+        show ter playful at centerstage:
+            xpos .75
+
+        show fin at centerstage with dissolve:
+            xpos 0.25
+
+        with dissolve
 
         ##Pop-in FINN and TERRIE.
 
@@ -551,23 +567,23 @@ label act4_minigame_failure:
 
         ter "Vamoose! Don't make me call the resurfacer!"
 
-        fin "Can you remain standing?"
+        fin tense "Can you remain standing?"
 
-        morg "Fortunately yes. Now come on, we have a list to complete."
+        morg happy "Fortunately yes. Now come on, we have a list to complete."
 
-        morg "Full time, or whatever."
+        morg default "Full time, or whatever."
 
-        fin "For what it was worth, I loved the routine in spite of, uh..."
+        fin inthought"For what it was worth, I loved the routine in spite of, uh..."
 
         "Morgan looked disappointed."
 
-        fin "Okay, right, never mind, going with haste."
+        fin upset "Okay, right, never mind, going with haste."
 
         jump act4_end_with_finn
 
     else:
 
-        morg "Not again, not again...!" # (through gritted teeth)
+        morg tense "Not again, not again...!" # (through gritted teeth)
 
         ##SCENE ICE RINK - DAY
 
@@ -578,11 +594,11 @@ label act4_minigame_failure:
 
                 morg "I guess I just skated too close to the sun, and then that's that!"
 
-                morg "I guess I kind of deserve it."
+                morg sad"I guess I kind of deserve it."
 
             "Wordlessly help her up":
 
-                morg "Much appreciated."
+                morg sad "Much appreciated."
 
                 morg "They're all staring at me now. I can feel it. Can you see it?"
 
@@ -592,9 +608,12 @@ label act4_minigame_failure:
 
                 #MORGAN (angry sigh)
 
-                morg "Just help me up, please."
+                morg tense "Just help me up, please."
 
         "Morgan looked like she was about to cry."
+
+        show ter playful at centerstage:
+            xpos .75
 
         # Pop-in TERRIE.
 
@@ -602,49 +621,67 @@ label act4_minigame_failure:
 
         ter "Vamoose! Don't make me call the resurfacer!"
 
-        ter "That should do it. You okay?" # (softens, to Morgan)
+        ter default "That should do it. You okay?" # (softens, to Morgan)
 
         "Morgan looked disappointed."
 
-        ter "Don't pay any mind to the world, I thought you kicked ass."
+        ter tense "Don't pay any mind to the world, I thought you kicked ass."
 
         "The disappointment persists."
 
-        ter "Okay. Alright. I get it. All iced out for today, huh?"
+        ter melancholy "Okay. Alright. I get it. All iced out for today, huh?"
 
         ter "I cleared a path for us, so let's blow this popsicle stand. You too, dude."
+
+        hide ter
+
+        hide morg
+
+        with easeoutright
 
         ##Exit MORGAN and TERRIE from screen-right.
 
         ##FADE TO BLACK
 
+        scene black with dissolve
+
+        scene corridor day with dissolve
+
         ##SCENE STREET - DAY with dissolves
 
         ##Pop-in TERRIE and MORGAN.
 
+        show ter default at centerstage:
+            xpos .75
+
+        show morg default at centerstage:
+            xpos 0.25
+
+        with dissolve
+
         morg "The fireworks. That's what's next."
 
-        morg "We're going to go to that pretty hill, the one with the view, and then watch the fireworks go off, and then..." # (unsure of herself)
+        morg sad "We're going to go to that pretty hill, the one with the view, and then watch the fireworks go off, and then..." # (unsure of herself)
 
-        ter "And then...?"
+        ter tense "And then...?"
 
         morg "I'm not sure."
 
-        ter "One step at a time, Morgan. I mean, hey, it's OUR secret spot."
+        ter happy "One step at a time, Morgan. I mean, hey, it's OUR secret spot."
 
-        ter "No way anyone or anything can get through into that place, right?"
+        ter aha "No way anyone or anything can get through into that place, right?"
 
-        ter "Just the three of us, and that's it. We're here for you, Morgs."
+        ter happy "Just the three of us, and that's it. We're here for you, Morgs."
 
         morg "Three of us. Yeah."
 
-        morg "We just have to make sure we don't miss the starting time."
+        morg default "We just have to make sure we don't miss the starting time."
 
-        ter "Right! What's the hold-up for, then?"
+        ter playful "Right! What's the hold-up for, then?"
 
-        morg "None! None at all."
+        morg aha "None! None at all."
 
-        morg "...If I need help getting up the hill, I'll let you all know."
+        morg sad "...If I need help getting up the hill, I'll let you all know."
 
         "The day was drawing to a close faster than expected."
 
@@ -652,16 +689,35 @@ label act4_minigame_failure:
 
         "I could only hope our grand day out would end with a bang."
 
+        hide morg
+
+        hide ter 
+
+        with dissolve
+
         jump act6
 
 
 label act4_end_with_finn:
+
+    scene black with dissolve
+
+    scene corridor with dissolve
 
     ##FADE TO BLACK
 
     ##FADE IN STREET - DAY with dissolve
 
     ##Pop-in TERRIE, MORGAN and FINN.
+
+    show ter playful at centerstage:
+        xpos .75
+
+    show fin at centerstage with dissolve:
+        xpos 0.25
+
+    show morg playful at centerstage:
+            xpos .75
 
     morg inthought "Alright, next on the agenda."
 
