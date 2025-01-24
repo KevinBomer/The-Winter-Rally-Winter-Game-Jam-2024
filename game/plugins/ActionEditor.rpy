@@ -1033,16 +1033,16 @@ init -997 python in _viewers:
                             del css[p]
             if play:
                 renpy.show("action_preview_"+layer, what=Transform(function=renpy.curry(viewer_transform)(
-                 camera_check_points=camera_check_points, image_check_points=image_check_points, scene_checkpoints=deepcopy(scene_keyframes),
-                 viewer_check_points=viewer_check_points, zorder_list=zorder_list, loop=loop, spline=spline, start_time=0., end_time=get_animation_delay(), layer=layer)))
+                camera_check_points=camera_check_points, image_check_points=image_check_points, scene_checkpoints=deepcopy(scene_keyframes),
+                viewer_check_points=viewer_check_points, zorder_list=zorder_list, loop=loop, spline=spline, start_time=0., end_time=get_animation_delay(), layer=layer)))
             else:
                 renpy.show("action_preview_"+layer, what=Transform(function=renpy.curry(viewer_transform)(
-                 camera_check_points=camera_check_points, image_check_points=image_check_points, scene_checkpoints=deepcopy(scene_keyframes),
-                 viewer_check_points=viewer_check_points, zorder_list=zorder_list, loop=loop, spline=spline, time=current_time, layer=layer)))
+                camera_check_points=camera_check_points, image_check_points=image_check_points, scene_checkpoints=deepcopy(scene_keyframes),
+                viewer_check_points=viewer_check_points, zorder_list=zorder_list, loop=loop, spline=spline, time=current_time, layer=layer)))
 
 
     def viewer_transform(tran, st, at, camera_check_points, image_check_points, scene_checkpoints, viewer_check_points,
-                         zorder_list, loop, spline=None, subpixel=True, time=None, start_time=None, end_time=None, layer=None):
+                        zorder_list, loop, spline=None, subpixel=True, time=None, start_time=None, end_time=None, layer=None):
         global current_time, playing
         if time is None:
             time = st
@@ -1062,19 +1062,19 @@ init -997 python in _viewers:
                 if time - checkpoint >= get_transition_delay(goal[0]):
                     #シーン変移後
                     child = FixedTimeDisplayable(Transform(function=renpy.curry(
-                     camera_transform)(camera_check_points=camera_check_points[i], image_check_points=image_check_points[i],
-                     scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i],
-                     zorder_list=zorder_list, loop=loop[i], spline=spline[i], subpixel=subpixel, time=time, scene_num=i, layer=layer)), time, at)
+                    camera_transform)(camera_check_points=camera_check_points[i], image_check_points=image_check_points[i],
+                    scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i],
+                    zorder_list=zorder_list, loop=loop[i], spline=spline[i], subpixel=subpixel, time=time, scene_num=i, layer=layer)), time, at)
                 else:
                     #シーン変移中
                     old_widget = FixedTimeDisplayable(Transform(function=renpy.curry(
-                     camera_transform)(camera_check_points=camera_check_points[i-1], image_check_points=image_check_points[i-1],
-                     scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i-1],
-                     zorder_list=zorder_list, loop=loop[i-1], spline=spline[i-1], subpixel=subpixel, time=time, scene_num=i-1, layer=layer)), time, at)
+                    camera_transform)(camera_check_points=camera_check_points[i-1], image_check_points=image_check_points[i-1],
+                    scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i-1],
+                    zorder_list=zorder_list, loop=loop[i-1], spline=spline[i-1], subpixel=subpixel, time=time, scene_num=i-1, layer=layer)), time, at)
                     new_widget = FixedTimeDisplayable(Transform(function=renpy.curry(
-                     camera_transform)(camera_check_points=camera_check_points[i], image_check_points=image_check_points[i],
-                     scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i],
-                     zorder_list=zorder_list, loop=loop[i], spline=spline[i], subpixel=subpixel, time=time, scene_num=i, layer=layer)), time, at)
+                    camera_transform)(camera_check_points=camera_check_points[i], image_check_points=image_check_points[i],
+                    scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[i],
+                    zorder_list=zorder_list, loop=loop[i], spline=spline[i], subpixel=subpixel, time=time, scene_num=i, layer=layer)), time, at)
                     transition = renpy.python.py_eval("renpy.store."+goal[0])
                     during_transition_displayable = DuringTransitionDisplayble(transition, old_widget, new_widget, time - checkpoint, 0)
                     child = during_transition_displayable
@@ -1083,9 +1083,9 @@ init -997 python in _viewers:
         else:
             #スタートシーン
             child = Transform(function=renpy.curry(camera_transform)(
-             camera_check_points=camera_check_points[-len(scene_checkpoints)], image_check_points=image_check_points[-len(scene_checkpoints)],
-             scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[-len(scene_checkpoints)],
-             zorder_list=zorder_list, loop=loop[-len(scene_checkpoints)], spline=spline[-len(scene_checkpoints)], subpixel=subpixel, time=time, scene_num=-len(scene_checkpoints), layer=layer))
+            camera_check_points=camera_check_points[-len(scene_checkpoints)], image_check_points=image_check_points[-len(scene_checkpoints)],
+            scene_checkpoints=scene_checkpoints, viewer_check_points=viewer_check_points[-len(scene_checkpoints)],
+            zorder_list=zorder_list, loop=loop[-len(scene_checkpoints)], spline=spline[-len(scene_checkpoints)], subpixel=subpixel, time=time, scene_num=-len(scene_checkpoints), layer=layer))
         if not persistent._viewer_legacy_gui:
             if aspect_16_9:
                 box.add(Transform(zoom=preview_size, xpos=(1 - preview_size)/2)(child))
@@ -1158,14 +1158,14 @@ init -997 python in _viewers:
                     image_loop[p+"_loop"] = loops[scene_num][(None, layer, p)]
                     image_spline[p+"_spline"] = splines[scene_num][(None, layer, p)]
                 image_box.add(Transform(function=renpy.curry(transform)(
-                 check_points=image_check_points[tag],
-                 loop=image_loop, spline=image_spline,
-                 subpixel=subpixel, time=time, scene_num=scene_num, scene_checkpoints=scene_checkpoints, layer=layer)))
+                check_points=image_check_points[tag],
+                loop=image_loop, spline=image_spline,
+                subpixel=subpixel, time=time, scene_num=scene_num, scene_checkpoints=scene_checkpoints, layer=layer)))
 
                 if persistent._viewer_sideview and len(scene_keyframes)+scene_num == current_scene and perspective_enabled(layer, scene_num) and not persistent._viewer_legacy_gui:
                     sideview_image_box.add(Transform(function=renpy.curry(transform)(
-                     check_points=image_check_points[tag], loop=image_loop, spline=image_spline, subpixel=subpixel,
-                     time=time, scene_num=scene_num, scene_checkpoints=scene_checkpoints, side_view=True, layer=layer)))
+                    check_points=image_check_points[tag], loop=image_loop, spline=image_spline, subpixel=subpixel,
+                    time=time, scene_num=scene_num, scene_checkpoints=scene_checkpoints, side_view=True, layer=layer)))
 
         camera_loop = {key[2]+"_loop": loop[key] for key in loop if key[1] == layer}
         camera_spline = {key[2]+"_spline": spline[key] for key in spline if key[1] == layer}
@@ -1205,8 +1205,8 @@ init -997 python in _viewers:
         camera_box = renpy.display.layout.MultiBox(layout='fixed')
         #camera position doesn't have effect whithout box
         camera_box.add(Transform(function=renpy.curry(transform)(
-         check_points=camera_check_points, loop=camera_loop, spline=camera_spline,
-         subpixel=subpixel, time=time, camera=True, scene_num=scene_num, scene_checkpoints=scene_checkpoints, layer=layer))(image_box))
+        check_points=camera_check_points, loop=camera_loop, spline=camera_spline,
+        ubpixel=subpixel, time=time, camera=True, scene_num=scene_num, scene_checkpoints=scene_checkpoints, layer=layer))(image_box))
         tran.set_child(camera_box)
         return 0
 
