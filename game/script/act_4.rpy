@@ -11,9 +11,7 @@ label act4:
 
     "And whilst some of us couldn't walk straight with blades on the soles of our feet..."
 
-    show ter aha at centerstage:
-        yoffset 1000
-        spring3 .5 yoffset 0
+    show ter aha at centerstage with dissolve
 
     #$ play_music(hospital,3)
 
@@ -46,11 +44,9 @@ label act4:
 
     if act2_finn_success:
 
-        show fin tense at centerstage:
+        show fin tense at centerstage with dissolve:
 
             xpos 0.25
-            yoffset 1000
-            spring3 .5 yoffset 0
 
         ##Pop-in FINN.
 
@@ -446,9 +442,7 @@ label act4_minigame_success:
 
     "An angel whose speed sometimes made her struggle to come to a timely Halt."
 
-    show morg aha at centerstage:
-        yoffset 1000
-        spring3 .5 yoffset 0
+    show morg aha at centerstage with dissolve
 
     ##Pop-in MORGAN.
 

@@ -44,10 +44,7 @@ label act3:
     scene sushishop with paintmask2
     #THE SPOT - DAY
     #Terrie enters stage left
-    show ter hospital playful at centerstage:
-        xpos 0.25
-        yoffset 1000
-        spring3 .5 yoffset 0
+    show ter hospital playful at centerstage with dissolve
     ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!" 
     ter "Hope you’re all ready to satisfy both your body, mind, and soul with food from this joint!"
     #Terrie fades out
@@ -385,9 +382,6 @@ label act3:
 
     show morg hospital happy at centerstage with dissolve:
         xpos 0.75
-        subpixel True 
-        yoffset 30 xpos .75
-        spring3 .5 yoffset 0
     morg "You’ve been working your butt off! There’s no way you won’t succeed, Terr."
     #Morgan fades out
     #Miya fades in
