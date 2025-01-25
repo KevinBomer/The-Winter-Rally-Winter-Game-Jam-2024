@@ -1,5 +1,7 @@
 default act4_focus_minigame_success = False
 default act4_focus_minigame_points = 0
+default act4_focus_minigame_stage = 1
+default act4_focus_minigame_chibi = "skating"
 
 label act4:
 
@@ -62,7 +64,7 @@ label act4:
                     ease 0.2 xoffset 25
                     ease 0.2 xoffset -25
                     ease 0.2 xoffset 0
-            
+
 
                 fin happy "Maybe with somewhat more oomph next time— I mean, whee…"
 
@@ -282,111 +284,142 @@ label act4:
     # MINIGAME START
 
     jump act4_minigame_start
-
 label act4_minigame_start:
+
+    show screen act4_focus_minigame_progress_bar()
 
     menu(timeout_label="act4_minigame_both_q2"):
         "Take a deep breath.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Am I doing this now of all times?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Are they watching?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q2:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q3"):
         "When was the last time I did this?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Let muscle memory take over.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Notice your heart rate is picking up.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q3:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_both_q4"):
         "It's like I never left the ice.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "It’s been so long…":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Is my form alright?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q4:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q5"):
         "Are they watching?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Wait, is it getting quiet?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "My body is moving on its own…":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q5:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q6"):
         "Hold on, are we going for it??":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "I think I’m getting sick.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Bend your knees.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q6:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q7"):
         "I’m not ready!":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Hesitate.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Jump!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q7:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_with_finn_q8" if act2_finn_success else "act4_minigame_without_finn_q8"):
         "Oh god, it’s happening.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Spin!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Did someone say something?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q8:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_with_finn_q9"):
         "Soar!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Notice a flash from the corner of your eye.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Did someone take a picture?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q9:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_with_finn_q10"):
         "Time to finish strong!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "I hope they got my good side…":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Did I make a weird face doing that??":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q10:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_result"):
         "Land awkwardly.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Land eventually.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Land with a purpose.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
     jump act4_minigame_result
 
 
 label act4_minigame_without_finn_q8:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_without_finn_q9"):
         "Where’s Finn?":
@@ -396,7 +429,11 @@ label act4_minigame_without_finn_q8:
         "Did someone take a picture?":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
 label act4_minigame_without_finn_q9:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_without_finn_q10"):
         "Where’s Mina?":
@@ -406,7 +443,11 @@ label act4_minigame_without_finn_q9:
         "Did I make a weird face doing that??":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
 label act4_minigame_without_finn_q10:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_result"):
         "Land awkwardly.":
@@ -416,9 +457,13 @@ label act4_minigame_without_finn_q10:
         "Land knowing you don’t have much time left.":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
     jump act4_minigame_result
 
 label act4_minigame_result:
+
+    hide screen act4_focus_minigame_progress_bar
 
     if act4_focus_minigame_points == 10:
         $ act4_focus_minigame_success = True
@@ -685,7 +730,7 @@ label act4_minigame_failure:
 
         hide morg
 
-        hide ter 
+        hide ter
 
         with dissolve
 

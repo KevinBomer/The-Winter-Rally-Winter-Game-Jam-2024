@@ -120,6 +120,7 @@ transform say_titlebox_animate_transform:
 
 screen say(who, what):
 
+    zorder 1
     style_prefix "say"
 
     window:
@@ -304,7 +305,7 @@ transform snowflakeblowing:
 transform minigame1background_transform:
     blend "normal"
 
-screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=False):
+screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=False, use_overlay=True):
 
     if timeout_label:
         if persistent.longer_choice_timers:
@@ -315,7 +316,8 @@ screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=Fals
     if special_multi_choice:
         timer 1 action IncrementVariable("act5_minigame_timer", -1) repeat True
 
-    add "minigamebg" align (0.5, 0.5) at minigame1background_transform
+    if use_overlay:
+        use choice_screen_overlay()
 
     style_prefix "choice"
 
@@ -337,12 +339,33 @@ screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=Fals
         elif morgan_relationship >= 3:
             add 'fin_chibi good' at finchibi_transform
 
+screen choice_screen_overlay():
+
+    zorder 0
+    add "minigamebg" align (0.5, 0.5) at minigame1background_transform
+
 screen act5_vow_choice_snowflake():
     zorder 97
     if persistent.longer_choice_timers:
         add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer*2), snowflakeblowing
     else:
         add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer), snowflakeblowing
+
+screen act4_focus_minigame_progress_bar():
+
+    zorder 97
+
+    fixed:
+        xysize (1920, 1080)
+        at transform:
+            alpha 0.0
+            pause 0.1
+            ease 0.5 alpha 1.0
+
+        add "minigame_snowflake_counter" xalign 0.5 ypos 0.86
+
+        add "morg_chibi_[act4_focus_minigame_chibi]" xsize 190 fit "contain" yanchor 1.0 ypos 0.9 xpos 360+110*(act4_focus_minigame_stage-1)
+
 
 style choice_vbox is vbox
 style choice_button is button
