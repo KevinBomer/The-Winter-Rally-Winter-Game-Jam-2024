@@ -38,14 +38,14 @@ label act3:
     "There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
     "A quaint, family-run sushi restaurant called Miya’s that we visited frequently during our high school days. It might have been just another restaurant to some, but to us, this was The Spot."
     "I can’t remember the last time I was here."
-    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things." 
+    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things."
     "Despite the wear and tear, color shines through like a flower under rubble."
 
     scene sushishop with paintmask2
     #THE SPOT - DAY
     #Terrie enters stage left
     show ter hospital playful at centerstage with dissolve
-    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!" 
+    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!"
     ter "Hope you’re all ready to satisfy both your body, mind, and soul with food from this joint!"
     #Terrie fades out
     #Morgan enters stage left
@@ -296,10 +296,10 @@ label act3:
 
     "Terrie groaned."
 
-    hide miya 
+    hide miya
 
     hide fin hospital
-    
+
     with dissolve
 
     #Miya fades out
@@ -418,7 +418,7 @@ label act3:
             xpos .65
         ter "Hey! I’m {i}way{/i} better than Finn, at least I’m actually here."
         ter tense "I’ve been good about giving myself time off, unlike those two."
- 
+
         #MORGAN enters stage left
 
         show morg hospital sad at centerstage with dissolve:
@@ -647,7 +647,7 @@ label act3:
     ter "C’mon, Mina! It’s a cozy sushi place that THE Mina used to frequent all the time. There’s no way people won’t jump at the chance to eat here!"
     "Mina hummed in thought."
 
-    hide ter with dissolve 
+    hide ter with dissolve
 
     show fin hospital inthought at centerstage with dissolve:
             xpos .35
@@ -766,11 +766,16 @@ label act3:
     #$ play_music(finn_minigame,3)
 
     show ter hospital default at centerstage with dissolve:
-            xpos .35
+            xpos .2
 
     #Terrie enters stage left
     #Group 1
+    show minigame_silhouette_1 at centerstage, silhouette_transform
+    with dissolve
     "Customer 1" "Can I get the Yummy Yam Roll?"
+
+    show minigame_silhouette_2 at rightstage, silhouette_transform
+    with dissolve
     "Customer 2" "I would like the Dragon Roll. I’m also allergic to shellfish."
 
 label act3_customer_minigame_group1_q1:
@@ -790,7 +795,14 @@ label act3_customer_minigame_group1_q2:
     if "q1" not in act3_customer_minigame_group1.keys():
         $ act3_customer_minigame_group1["q1"] = False
 
+    if act3_customer_minigame_group1["q1"]:
+        show yamroll as sushi at sushi_transform with dissolve
+    else:
+        show badsushi as sushi at sushi_transform with dissolve
+
     yum "What did customer two want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group1_q3"):
         "Dragon Roll":
@@ -805,13 +817,23 @@ label act3_customer_minigame_group1_q3:
     if "q2" not in act3_customer_minigame_group1.keys():
         $ act3_customer_minigame_group1["q2"] = False
 
+    if act3_customer_minigame_group1["q2"]:
+        show dragonroll as sushi at sushi_transform with dissolve
+    else:
+        show badsushi as sushi at sushi_transform with dissolve
+
     yum "Any allergies?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group1_q4"):
         "Yes":
             $ act3_customer_minigame_group1["q3"] = True
+            jump act3_customer_minigame_group1_q4
         "No":
             $ act3_customer_minigame_group1["q3"] = False
+            $ act3_customer_minigame_group1["q4"] = False
+            jump act3_customer_minigame_group1_result
 
 label act3_customer_minigame_group1_q4:
 
@@ -824,9 +846,9 @@ label act3_customer_minigame_group1_q4:
         "Customer one has a shellfish allergy.":
             $ act3_customer_minigame_group1["q4"] = False
         "Customer one has a ginger allergy.":
-            $ act3_customer_minigame_group1["q4"] =False
+            $ act3_customer_minigame_group1["q4"] = False
         "Customer two has a shellfish allergy.":
-            $ act3_customer_minigame_group1["q4"] =False
+            $ act3_customer_minigame_group1["q4"] = True
 
 label act3_customer_minigame_group1_result:
 
@@ -848,12 +870,33 @@ label act3_customer_minigame_group1_result:
     else:
         "Customer 2" "Is that shellfish? I said I was allergic. Take it back."
 
+    hide minigame_silhouette_1
+    hide minigame_silhouette_2
+    with dissolve
+
+    pause 0.5
+
+
 label act3_customer_minigame_group2:
     #Group 2
+
+    show minigame_silhouette_3 at centerstage, silhouette_transform:
+        xpos 0.45
+    with dissolve
+
     "Customer 3" "Can I get the Shrimp Tempura roll? Also, I’m allergic to ginger."
     #Customer four
+
+    show minigame_silhouette_2 at centerstage, silhouette_transform:
+        xpos 0.7
+    with dissolve
+
     "Customer 4" "I would like the BC Roll."
+
     # Customer five
+    show minigame_silhouette_1 at centerstage, silhouette_transform:
+        xpos 0.9
+    with dissolve
     "Customer 5" "The Yummy Yam Roll please!"
 
 label act3_customer_minigame_group2_q1:
@@ -873,7 +916,14 @@ label act3_customer_minigame_group2_q2:
     if "q1" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q1"] = False
 
+    if act3_customer_minigame_group2["q1"]:
+        show shrimptempuraroll as sushi at sushi_group2_transform with dissolve
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve
+
     yum "What did customer four want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group2_q3"):
         "Dragon Roll":
@@ -889,7 +939,14 @@ label act3_customer_minigame_group2_q3:
     if "q2" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q2"] = False
 
+    if act3_customer_minigame_group2["q2"]:
+        show bcroll as sushi at sushi_group2_transform with dissolve
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve
+
     yum "What did customer five want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group2_q4"):
         "BC Roll":
@@ -904,13 +961,23 @@ label act3_customer_minigame_group2_q4:
     if "q3" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q3"] = False
 
+    if act3_customer_minigame_group2["q3"]:
+        show yamroll as sushi at sushi_group2_transform with dissolve
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve
+
     yum "Any allergies?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group2_q5"):
         "Yes":
             $ act3_customer_minigame_group2["q4"] = True
+            jump act3_customer_minigame_group2_q5
         "No":
             $ act3_customer_minigame_group2["q4"] = False
+            $ act3_customer_minigame_group2["q5"] = False
+            jump act3_customer_minigame_group2_result
 
 label act3_customer_minigame_group2_q5:
 
@@ -949,9 +1016,15 @@ label act3_customer_minigame_group2_result:
     else:
         "Customer 5" "Uh… I’m pretty sure I ordered the Yummy Yam Roll. Can you take it back?"
 
+
     #Mini Game End
 
-    hide ter with dissolve
+    hide ter
+
+    hide minigame_silhouette_1
+    hide minigame_silhouette_2
+    hide minigame_silhouette_3
+    with dissolve
 
     #terrie fades out
     "With the hustle and bustle of the evening fading away, what was left was the fruits of our labor."
@@ -1038,7 +1111,7 @@ label act3_customer_minigame_group2_result:
             #FINN enters stage left
             fin "I’ll… apologize to my sister later for wasting her effort."
 
-            hide fin with dissolve 
+            hide fin with dissolve
             #FINN fades out
 
         else:
@@ -1262,9 +1335,9 @@ label act3_customer_minigame_group2_result:
         #FINN enters stage left
         fin "I’m certain this can only go well."
 
-        hide fin 
+        hide fin
 
-        hide morg 
+        hide morg
 
         hide ter
 
@@ -1356,7 +1429,7 @@ label act3_customer_minigame_group2_result:
 
         hide ter
 
-        hide morg 
+        hide morg
 
         with dissolve
 
