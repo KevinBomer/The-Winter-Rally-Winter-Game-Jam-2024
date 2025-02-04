@@ -17,7 +17,13 @@ label act6:
     else:
         $ locked_in_ending = "neutral"
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene hilltop with paintmask2
+
+    play background "audio/new/Market-Far-Away.ogg" fadein 3.0
+
+    #$ play_music(hospital,3)
 
     show death black cropped at centerstage with paintmask:
         subpixel True
@@ -32,7 +38,7 @@ label act6:
 
     "That night, when we were about to see the fireworks, we briefly lost track of Morgan."
 
-    show morg hospital default at centerstage with dissolve:
+    show morg default at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -82,6 +88,8 @@ label act6:
 
     ##SCENE FINN'S DORM - DAY with dissolve
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene dorm with dissolve
 
     if locked_in_ending == "bad":
@@ -98,7 +106,7 @@ label act6:
 
         scene sushishop with dissolve
 
-        show morg hospital tense at centerstage with dissolve:
+        show morg spot tense at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -110,9 +118,11 @@ label act6:
 
         ##SCENE EXT. ICE RINK - NIGHT with dissolve
 
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
+
         scene icerink with dissolve
 
-        show morg hospital default at centerstage with dissolve:
+        show morg icerink default at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -121,6 +131,8 @@ label act6:
         morg hurt "It turns out I just... don't have it in me anymore." # (O.S.)
 
         ##SCENE EXT. HILL WITH A VIEW - NIGHT with dissolve
+
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
 
         scene hilltop with dissolve
 
@@ -132,7 +144,7 @@ label act6:
             zoom .72
             easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (0.0) zoom .75 blur 0 xpos .65
 
-        show morg hospital tense at centerstage with dissolve:
+        show morg tense at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -194,9 +206,11 @@ label act6:
 
         ##SCENE MIYA'S - EVENING with dissolve
 
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
+
         scene sushishop with dissolve
 
-        show morg hospital happy at centerstage with dissolve:
+        show morg spot happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -209,11 +223,13 @@ label act6:
         else:
             morg sad "If only we could've handled their clientelle..."
 
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
+
         scene icerink with dissolve
 
         ##SCENE ICE RINK - NIGHT with dissolve
 
-        show morg hospital default at centerstage with dissolve:
+        show morg icerink default at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -230,9 +246,11 @@ label act6:
 
         ##SCENE EXT. FAIRGROUND - NIGHT with dissolve
 
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
+
         scene ferriswheel with dissolve
 
-        show morg hospital happy at centerstage with dissolve:
+        show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -247,6 +265,8 @@ label act6:
 
         ##SCENE EXT. HILL WITH A VIEW - NIGHT with dissolve
 
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
+
         scene hilltop with dissolve
 
         show death black cropped at centerstage with paintmask:
@@ -257,7 +277,7 @@ label act6:
             zoom .72
             easein_cubic 1 alpha 1.0 matrixcolor BrightnessMatrix (0.0) zoom .75 blur 0 xpos .65
 
-        show morg hospital inthought at centerstage with dissolve:
+        show morg inthought at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -270,7 +290,7 @@ label act6:
 
         pause 0.5
 
-        show morg hospital tense at centerstage with dissolve:
+        show morg tense at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -356,11 +376,11 @@ label act6:
 
     morg aha "Huh—? Oh— yeah, I'm here! I'm okay!"
 
-    show morg hospital sad at centerstage with dissolve:
+    show morg sad at centerstage with dissolve:
 
                 xpos 0.35
 
-    show ter hospital playful at centerstage with dissolve:
+    show ter playful at centerstage with dissolve:
 
                 xpos 0.65
 
@@ -396,7 +416,7 @@ label act6:
     else:
         #Beat, as the smile on TERRIE's face very briefly falters before picking back up again.
 
-        show ter hospital melancholy at centerstage:
+        show ter melancholy at centerstage:
 
                 xpos 0.65
 
@@ -418,6 +438,10 @@ label act6:
 
             "At the end of the day, she dreamed big. And suddenly Finn and I had to prepare her for the fact that, somehow, the biggest of those dreams had come true."
 
+            stop background fadeout 1.0
+
+            play sound "audio/ui/UI-Background-Fade-Out.ogg"
+
             scene black with dissolve
 
         elif locked_in_ending == "neutral":
@@ -425,6 +449,10 @@ label act6:
             "I waited at the top of the hill with Finn. It really was our spot reclaimed once again."
 
             "Despite the empty Mina-shaped space in between us, this would be a night to remember."
+
+            stop background fadeout 1.0
+
+            play sound "audio/ui/UI-Background-Fade-Out.ogg"
 
             scene black with dissolve
 

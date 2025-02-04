@@ -5,10 +5,14 @@ default act2_finn_success = False
 #NARRATOR FADE IN:
 
 label act2:
+
+    play sound "audio/new/School Bell.ogg"
+
+    queue music [ "audio/new/Music-Finn-Room-Start.ogg", "audio/new/Music-Finn-Room-Loop.ogg" ] fadein 3.0
     scene dorm with dissolve
     show fin hospital default at centerstage with dissolve
 
-    $ play_music(finn_dorm,3)
+    #$ play_music(finn_dorm,3)
     "Believe it or not, Finn's living space was in surprisingly good shape for a struggling college student."
     "Really nice place. Not a single cup, can or bottle in sight."
     "Well, in the common area, at least. Who knew what things were hiding on the other side of the door?"
@@ -20,8 +24,12 @@ label act2:
     ter "Believe me, you give that man a thick textbook and a pair of headphones and he could miss the end of the world."
     ter "Love that guy, personally, but I wouldn't put it past him."
     ter "Unless, maybe..."
+
+    play sound "audio/new/Knocking-Door.ogg"
     show fin aha at centerstage with dissolve
     ter "PIZZA'S HERE, DUDE!"
+
+    play background "audio/new/Background-Ambiance-Finns-Room_LOOP.ogg" fadein 1.0
     show ter hospital happy at centerstage with moveinleft
     show fin default at centerstage:
         xpos .5
@@ -179,6 +187,10 @@ label minigame1q5:
 
 
 label minigame1success:
+
+    stop music fadeout 2.0
+
+    queue music [ "audio/new/Music-Finn-Room-Start.ogg", "audio/new/Music-Finn-Room-Loop.ogg" ] fadein 3.0
     $ act2_finn_success = True
 
     fin melancholy "Alright, I yield."
@@ -242,6 +254,10 @@ label minigame1success:
 
 label minigame1failure:
 
+    stop music fadeout 2.0
+
+    queue music [ "audio/new/Music-Finn-Room-Start.ogg", "audio/new/Music-Finn-Room-Loop.ogg" ] fadein 3.0
+
     $ act2_finn_success = False
 
     fin inthought "We're going round in circles here."
@@ -294,6 +310,8 @@ label minigame1failure:
     "So it was just the three of us for the day."
     "Finn not being there left a foul taste in my mouth, of course. I think it did for everyone."
     "But, we hoped, we could wash down the bitter pill with a delicious, fresh banquet of sushi."
+
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
 
     stop music fadeout 10.0
     scene black with fade

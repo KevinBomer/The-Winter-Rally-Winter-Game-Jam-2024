@@ -6,6 +6,8 @@ label act7:
 
     #$ play_music(hospital,3)
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene hilltop with dissolve
 
     # IF GOOD ENDING
@@ -17,11 +19,11 @@ label act7:
     # ELSE IF BAD ENDING
     ##MORGAN and TERRIE are already present.
 
-    show ter hospital melancholy at centerstage:
+    show ter melancholy at centerstage:
 
                 xpos 0.65
 
-    show morg hospital melancholy at centerstage:
+    show morg melancholy at centerstage:
 
                 xpos 0.35
 
@@ -32,25 +34,27 @@ label act7:
     ter tense "Last item of order comin' right up —how we feelin'?"
 
     if locked_in_ending != "bad":
-        call act7_bad
+        call act7_bad from _call_act7_bad
     else:
 
-        show fin hospital melancholy at centerstage with dissolve:
+        show fin melancholy at centerstage with dissolve:
 
                 xpos 0.75
 
-        show morg hospital melancholy at centerstage:
+        show morg melancholy at centerstage:
 
                 xpos 0.25
 
-        show ter hospital melancholy at centerstage:
+        show ter melancholy at centerstage:
 
                 xpos 0.5
 
         with ease
-        call act7_good_neutral
+        call act7_good_neutral from _call_act7_good_neutral
 
     ##FADE TO BLACK
+
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
 
     scene black with dissolve
 
@@ -238,13 +242,13 @@ label act7:
 
 label act7_good_neutral:
 
-    show morg hospital sad at centerstage:
+    show morg sad at centerstage:
 
                 xpos 0.35
 
     "Morgan took a deep, calm breath."
 
-    show morg hospital default at centerstage:
+    show morg default at centerstage:
 
                 xpos 0.35
 
@@ -262,7 +266,7 @@ label act7_good_neutral:
 
     morg aha "Calling it now: it was Doctor Finn, with the number 2 pencil, in the open field."
 
-    show morg hospital happy at centerstage:
+    show morg happy at centerstage:
 
                 xpos 0.35
 
@@ -296,9 +300,13 @@ label act7_good_neutral:
 
         "Morgan squealed extremely loudly!"
 
+        play sound "audio/ui/UI-Background-Fade-Out.ogg"
+
         scene black with dissolve
 
         pause 0.5
+
+        play sound "audio/ui/UI-Background-Fade-In.ogg"
 
         scene hilltop with dissolve
 
@@ -328,7 +336,7 @@ label act7_good_neutral:
 
         mina "Oh, yeah, that whole thing! Morgan, you better tell me all about what's been goin' on today."
 
-        show morg hospital happy at centerstage:
+        show morg happy at centerstage:
 
                 xpos 0.35
 
@@ -350,6 +358,9 @@ label act7_good_neutral:
             morg "You guys, too! Mina has to hear all about my recent marriage first things first!" # (teary laugh)
 
         ter playful "Oooh, yeah, that stuff was juicy! Don't 'chu dare skimp on the details!"
+
+        scene fireworkscg with dissolve:
+            zoom 0.5
 
         ##The fireworks begin!
 
@@ -387,7 +398,7 @@ label act7_good_neutral:
 
         fin aha "Oh, you saw that thing too?"
 
-        show morg hospital aha at centerstage:
+        show morg aha at centerstage:
 
                 xpos 0.35
 
@@ -397,7 +408,7 @@ label act7_good_neutral:
 
         fin "The only monster in my life is academia. That alone is inspiration."
 
-        show morg hospital sad at centerstage:
+        show morg sad at centerstage:
 
                 xpos 0.35
 
@@ -411,14 +422,18 @@ label act7_good_neutral:
 
         mortis "On one, two, three..."
 
-        show morg hospital happy at centerstage:
+        show morg happy at centerstage:
 
                 xpos 0.35
 
         "Morgan took a deep breath and let out a mighty
         enthusiastic scream that echoed through the night."
 
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
+
     scene black with dissolve
+
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
 
     scene hilltop with dissolve
 
@@ -429,7 +444,7 @@ label act7_good_neutral:
 
     "The fireworks were ending, and the general mood here was more relaxed."
 
-    show morg hospital sad at centerstage:
+    show morg sad at centerstage:
 
                 xpos 0.25
 
@@ -589,7 +604,7 @@ label act7_good_neutral:
 
                 ##Awkward silence.
 
-        show morg hospital default at centerstage:
+        show morg default at centerstage:
 
                 xpos 0.35
 
@@ -601,7 +616,7 @@ label act7_good_neutral:
 
         ter happy "We're gonna do one of these days again soon, right, Morgan?"
 
-        show morg hospital sad at centerstage:
+        show morg sad at centerstage:
 
                 xpos 0.35
 
@@ -660,7 +675,7 @@ label act7_good_neutral:
 
         ##Fade out FINN and TERRIE. TERRIE exits much slower than fin
 
-    show morg hospital happy at centerstage with ease:
+    show morg happy at centerstage with ease:
 
                 xpos 0.5
 
@@ -755,7 +770,7 @@ label act7_good_neutral:
 
         ##MORGAN smiles, regardless of the outcome.
 
-        show morg hospital happy at centerstage:
+        show morg happy at centerstage:
 
                 xpos 0.35
 
@@ -770,7 +785,7 @@ label act7_good_neutral:
 
 label act7_bad:
 
-    show morg hospital hurt at centerstage:
+    show morg hurt at centerstage:
 
                 xpos 0.35
 
@@ -830,6 +845,8 @@ label act7_bad_epilogue:
 
     #Years Later
     ##SCENE EXT. CORRIDOR - THE SPOT with dissolve
+
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
 
     scene sushishop with dissolve 
     "Entering the Spot, the emptiness of the place gave off a familiar sadness."
@@ -947,6 +964,8 @@ label act7_bad_epilogue:
 
     "I stood up and thanked Miya for the kind words."
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene corridor day with dissolve 
 
     ##SCENE EXT. CORRIDOR — THE SPOT with dissolve
@@ -955,6 +974,8 @@ label act7_bad_epilogue:
     "I’d try as many times as I could to make things better."
 
     "Only after that would I be able to accept whatever outcome there was to come."
+
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
 
     scene black with slowerdissolve
 

@@ -8,6 +8,10 @@ label act5:
 
     #$ play_music(hospital,3)
 
+    play background "audio/new/Market-Far-Away.ogg" fadein 3.0
+
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene ferriswheel with dissolve
 
     "Passing through the gates, we entered a world of entertainment."
@@ -16,18 +20,18 @@ label act5:
     "Combined with the aura of fun and happiness, this was truly a magical world in one spot."
     "If this was any other night, we’d be enjoying it all. However…"
 
-    show morg hospital default at centerstage with easeinleft:
+    show morg fireworks default at centerstage with easeinleft:
         xpos 0.15
     #Enter Morgan
     #Morgan enters stage left
     morg happy "Wow… I can't tell how long it’s been since we’ve been here as well." # (overjoyed)
 
-    show morg hospital happy at centerstage with ease:
+    show morg fireworks happy at centerstage with ease:
         xpos 0.25
     morg playful"I would have loved to ride the rollercoaster. Probably one of the best parts of being here." # (happy)
     #Terrie enters stage right"
 
-    show ter hospital happy at centerstage with dissolve:
+    show ter fireworks happy at centerstage with dissolve:
         xpos 0.75
     ter "Personally, I love just riding the Ferris wheel." # (happy)
     ter playful "Best to see it all! The beauty of the city at night? Can’t be beaten." # (happy)
@@ -40,7 +44,7 @@ label act5:
 
         "Roller coasters are more exciting!":
 
-            show morg hospital happy at centerstage:
+            show morg fireworks happy at centerstage:
 
                 xpos 0.25
                 ease 0.4 yoffset 50
@@ -50,7 +54,7 @@ label act5:
 
         "The view of the Ferris Wheel is unmatched.":
 
-            show ter hospital happy at centerstage:
+            show ter fireworks happy at centerstage:
 
                 xpos 0.75
                 ease 0.4 yoffset 50
@@ -68,7 +72,7 @@ label act5:
     hide ter
     hide morg
     with dissolve
-    show fin hospital default at centerstage with dissolve:
+    show fin fireworks default at centerstage with dissolve:
 
         xpos 0.25
     #Morgan fades out
@@ -82,7 +86,7 @@ label act5:
 
     hide fin with dissolve
 
-    show ter hospital happy at centerstage with dissolve:
+    show ter fireworks happy at centerstage with dissolve:
 
                 xpos 0.75
     #Finn fades out
@@ -90,7 +94,7 @@ label act5:
     ter "So, who are you marrying Morgan?"
     #Terrie enters stage left
 
-    show morg hospital happy at centerstage with dissolve:
+    show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.25
     morg "I’ll let you know once we reach the Ferris wheel." # (smiling)
@@ -98,11 +102,11 @@ label act5:
     morg "I mean… marriage is a bond of love after all." # (smiling)
     morg happy "I’d want to make sure to pick the right person." # (smiling)
 
-    show morg hospital happy at centerstage:
+    show morg fireworks happy at centerstage:
 
                 xpos 0.35
 
-    show ter hospital happy at centerstage:
+    show ter fireworks happy at centerstage:
 
                 xpos 0.65
 
@@ -122,7 +126,7 @@ label act5:
     #Terrie fades out
     "Eventually, we reached the base of the Ferris wheel, where Finn gave a loud audible sigh of relief."
 
-    show fin hospital happy at centerstage with easeinleft:
+    show fin fireworks happy at centerstage with easeinleft:
 
                 xpos 0.35
     #Finn enters stage left
@@ -130,7 +134,7 @@ label act5:
 
     hide fin with dissolve
 
-    show ter hospital inthought at centerstage with dissolve:
+    show ter fireworks inthought at centerstage with dissolve:
 
                 xpos 0.35
 
@@ -140,7 +144,7 @@ label act5:
 
     hide ter with dissolve
 
-    show morg hospital inthough at centerstage with dissolve:
+    show morg fireworks inthough at centerstage with dissolve:
 
                 xpos 0.35
     #Terrie fades out
@@ -166,7 +170,7 @@ label act5:
 
 label act5_marriage_mc:
 
-    show mor hospital default at centerstage with ease:
+    show mor fireworks default at centerstage with ease:
 
                 xpos 0.5
 
@@ -181,7 +185,7 @@ label act5_marriage_mc:
 
     hide morg with dissolve
 
-    show ter hospital happy at centerstage with dissolve:
+    show ter fireworks happy at centerstage with dissolve:
 
                 xpos 0.35
     #Morgan fades out
@@ -192,7 +196,7 @@ label act5_marriage_mc:
 
     hide ter with dissolve
 
-    show fin hospital happy at centerstage with dissolve:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.75
 
@@ -206,14 +210,14 @@ label act5_marriage_mc:
     "It didn’t take too long before we were all seated in the Ferris Wheel."
     "As we began our slow ascent to the top, the beauty of the carnival and city became more and more apparent."
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.35
     #Morgan enters stage left
     morg "You know… Looking out the window and seeing this Ferris Wheel… I always imagined getting to ride it." # (smiling)
     morg happy "Even if it wasn’t for this marriage… I did want to see the view from it at least one more time…" # (smiling)
 
-    show ter hospital default at centerstage with dissolve:
+    show ter fireworks default at centerstage with dissolve:
 
                 xpos 0.65
     #Terrie enters stage right
@@ -222,7 +226,7 @@ label act5_marriage_mc:
 
     hide morg with dissolve
 
-    show fin hospital default at centerstage with dissolve:
+    show fin fireworks default at centerstage with dissolve:
 
                 xpos 0.35
     #Morgan fades out
@@ -239,14 +243,14 @@ label act5_marriage_mc:
     #Terrie fades out
     menu:
         "Perfect for a marriage, right?":
-            show morg hospital happy at centerstage with dissolve:
+            show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
             morg "Absolutely." # (smiling)
         "This will truly be a night to remember":
 
-            show morg hospital happy at centerstage with dissolve:
+            show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
             morg "Without question." # (smiling)
@@ -260,14 +264,14 @@ label act5_marriage_mc:
     #Morgan fades out
     #Finn fades in
 
-    show fin hospital inthought at centerstage with dissolve:
+    show fin fireworks inthought at centerstage with dissolve:
 
                 xpos 0.35
     fin "We’ll have to skip a lot of the whole process and move on to the vows. Are you ready?"
 
     hide fin with dissolve
 
-    show morg hospital happy at centerstage with dissolve:
+    show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
     #Finn fades out
@@ -346,7 +350,7 @@ label act5_vow_minigame:
 
 label act5_vow_minigame_success:
 
-    show fin hospital happy at centerstage with dissolve:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -354,18 +358,20 @@ label act5_vow_minigame_success:
     #Finn fades out
     #Morgan fades in
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.5
     "I found myself closing my eyes, ready for the kiss."
     morg happy "Hey…"
     #Morgan fades out
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene topofferriswheel with dissolve
     # Scene Change – Ferris Wheel Top
     #Morgan fades in
 
-    show morg hospital happy at centerstage with dissolve:
+    show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
     "When my eyes opened, I felt it."
@@ -375,7 +381,7 @@ label act5_vow_minigame_success:
 
 label act5_vow_minigame_failure:
 
-    show fin hospital happy at centerstage with dissolve:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -383,7 +389,7 @@ label act5_vow_minigame_failure:
 
     hide fin with dissolve
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.5
     #Finn fades out
@@ -394,11 +400,13 @@ label act5_vow_minigame_failure:
     # Pause
     #Morgan fades out
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
+
     scene topofferriswheel with dissolve
     # Scene Change – Ferris Wheel Top
     #Morgan fades in
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.5
     "My eyes open, with me feeling the side of my cheek."
@@ -411,11 +419,11 @@ label act5_marriage_terrie:
 
     #Terrie enters stage right
 
-    show morg hospital happy at centerstage:
+    show morg fireworks happy at centerstage:
 
                 xpos 0.35
 
-    show ter hospital default at centerstage with dissolve:
+    show ter fireworks default at centerstage with dissolve:
 
                 xpos 0.65
     "Morgan got onto one knee, facing Terr."
@@ -433,7 +441,7 @@ label act5_marriage_terrie:
     #Terrie fades out
     #Finn fades in
 
-    show fin hospital happy at centerstage:
+    show fin fireworks happy at centerstage:
 
                 xpos 0.5
 
@@ -448,7 +456,7 @@ label act5_marriage_terrie:
     "It didn’t take too long before we were all seated in the Ferris Wheel."
     "As we began our slow ascent to the top, the beauty of the carnival and city became more and more apparent."
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.35
     #Morgan enters stage left
@@ -456,7 +464,7 @@ label act5_marriage_terrie:
     morg happy "Even if it wasn’t for this marriage… I did want to see the view from it at least one more time…" # (smiling)
     #Terrie enters stage right
 
-    show ter hospital default at centerstage with dissolve:
+    show ter fireworks default at centerstage with dissolve:
 
                 xpos 0.65
     ter default "Yeah… it's totally something everyone should do at least once." # (happy)
@@ -471,7 +479,7 @@ label act5_marriage_terrie:
 
     with dissolve
 
-    show fin hospital inthought at centerstage with dissolve:
+    show fin fireworks inthought at centerstage with dissolve:
 
                 xpos 0.35
     fin inthought "They say that memories are significantly easier to retain when one is in an ideal state of mind." # (happy)
@@ -484,7 +492,7 @@ label act5_marriage_terrie:
         "Perfect for a marriage, right?":
             #Morgan fades in
 
-            show morg hospital happy at centerstage with dissolve:
+            show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
             morg "Absolutely." # (smiling)
@@ -494,7 +502,7 @@ label act5_marriage_terrie:
         "This will truly be a night to remember":
             #Morgan fades in
 
-            show morg hospital happy at centerstage with dissolve:
+            show morg fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
             morg "Without question." # (smiling)
@@ -508,11 +516,11 @@ label act5_marriage_terrie:
     #Morgan enters stage left
     #Terrie enters stage right
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.35
 
-    show ter hospital tense at centerstage with dissolve:
+    show ter fireworks tense at centerstage with dissolve:
 
                 xpos 0.65
     "Looking at the two of them, I could tell both were mentally preparing themselves for the marriage."
@@ -527,7 +535,7 @@ label act5_marriage_terrie:
 
     with dissolve
 
-    show fin hospital inthought at centerstage with dissolve:
+    show fin fireworks inthought at centerstage with dissolve:
 
                 xpos 0.5
     #Terrie fades out
@@ -539,14 +547,14 @@ label act5_marriage_terrie:
     #Finn fades out
     #Morgan enters stage left
 
-    show morg hospital happy at centerstage with easeinleft:
+    show morg fireworks happy at centerstage with easeinleft:
 
                 xpos 0.35
     morg "Yes." # (smiling)
     #Finn fades out
     #Terrie enters stage right
 
-    show ter hospital happy at centerstage with easeinright:
+    show ter fireworks happy at centerstage with easeinright:
 
                 xpos 0.75
     ter "You know it!"
@@ -576,7 +584,7 @@ label act5_marriage_terrie:
 
     with dissolve
 
-    show fin hospital happy at centerstage with dissolve:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
     #Finn fades in
@@ -587,15 +595,16 @@ label act5_marriage_terrie:
 
     #Scene Change – Ferris Wheel Top
 
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
     scene topofferriswheel with dissolve
     #Morgan enters stage left
     #Terrie enters stage right
 
-    show morg hospital happy at centerstage:
+    show morg fireworks happy at centerstage:
 
                 xpos 0.40
 
-    show ter hospital happy at centerstage:
+    show ter fireworks happy at centerstage:
 
                 xpos 0.60
 
@@ -623,7 +632,7 @@ label act5_vow_minigame_end:
     with dissolve
     #Finn fades in
 
-    show fin hospital happy at centerstage with dissolve:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -633,13 +642,13 @@ label act5_vow_minigame_end:
     #Finn fades out
     #Morgan enters stage left
 
-    show morg hospital default at centerstage with dissolve:
+    show morg fireworks default at centerstage with dissolve:
 
                 xpos 0.35
     morg "Honestly… I’m thankful we did this." # (smiling)
     morg happy "I will never forget this moment." # (smiling)
 
-    show ter hospital playful at centerstage with dissolve:
+    show ter fireworks playful at centerstage with dissolve:
 
                 xpos 0.65
     #Terrie enters stage right
@@ -652,7 +661,7 @@ label act5_vow_minigame_end:
     menu:
         "Let’s finish off the day strong":
 
-            show morg hospital happy at centerstage:
+            show morg fireworks happy at centerstage:
 
                 xpos 0.35
 
@@ -662,7 +671,7 @@ label act5_vow_minigame_end:
             morg "Oh you know it!" # (smiling)
         "I’m so ready for that rollercoaster ride":
 
-            show morg hospital playful at centerstage:
+            show morg fireworks playful at centerstage:
 
                 xpos 0.35
 
@@ -684,6 +693,8 @@ label act5_vow_minigame_end:
 
     "With that, we began our slow descent."
     "We were close to finishing off the list and nothing would stop us now."
+
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
 
     scene black with dissolve
     # Fade Black
