@@ -1,4 +1,6 @@
 #####Set the automatic dissolve between expressions to dissolve
+image white = "#ffff"
+
 define config.say_attribute_transition = dissolve
 
 default Minigame1 = False
@@ -7,7 +9,10 @@ default morgan_relationship = 0
 label start:
 
     scene black
+
+    play sound "audio/ui/UI-Background-Fade-In.ogg"
     scene nightsky with slowerdissolve
+    play background "audio/new/Ambiance-Night-Fireworks_LOOP.ogg" fadein 3.0
     play music introduction fadein 3.0 volume .4
     "We always loved going to see the fireworks."
     "It was the one tradition we could always count on."
@@ -26,10 +31,14 @@ label start:
     show fin sky default at centerstage with dissolve
     "Wise, wild workaholic Finn..."
     hide fin with dissolve
+
+    play sound "audio/new/memory-Morgans-Laugh.ogg"
     show morg sky happy at centerstage with dissolve
     "And, of course, Morgan."
 
     "The five of us as a group ran like a clock, but life, as always..."
+
+    play sound "audio/ui/UI-Background-Fade-Out.ogg"
     show fadetoblack behind morg with slowerdissolve
     pause .5
     show morg at centerstage:
@@ -41,6 +50,10 @@ label start:
     "Finn got swallowed whole by the mire of academia, studying for a degree with all the energy he could possibly muster."
     "And Morgan?"
     stop music fadeout 3.0
+
+    play sound "audio/new/Transition-Street-Appears.ogg"
+
+    play background "audio/new/Street-Ambiance_1.ogg" fadein 3.0
     scene corridor with paintmask2:
         zoom .52
         easein_cubic 1 zoom .5
@@ -50,7 +63,10 @@ label start:
     "But I'd make sure it would happen. I promised myself."
     "So, on a chilly January 7th, I went to Nigh Hill Medical Clinic once more for Morgan."
     "Well, not before inviting the only constant presence in our lives, too..."
+
+    play sound "audio/new/Running-Terrie.ogg"
     "Nobody quite like good ol'..."
+
     show ter at centerstage:
         yoffset 1000
         spring3 .5 yoffset 0
@@ -60,7 +76,13 @@ label start:
     ter "Hmmm..."
     ter c-day smile "No time like the present though, right? She's waitin'!"
     ter "C'mon, Nigh Hill's just that way."
-    $ play_music(hospital,3)
+
+    play sound "audio/new/Entering-Hospital.ogg"
+
+    queue music [ "audio/new/Hospital-Music-Start.ogg", "audio/new/Hospital-Music_LOOP.ogg" ] fadein 3.0
+    play background "audio/new/Hospital-Room-Tone_LOOP.ogg" fadein 3.0
+    play background2 "audio/new/Hospital-Bip_LOOP.ogg" fadein 3.0
+    #$ play_music(hospital,3)
     hide ter with easeoutright
     scene purgatory with dissolve
     "As far as we knew, Morgan rarely got visitors aside from me and Terrie."
@@ -108,8 +130,11 @@ label start:
     ter hospital tense "I'm going in. You're coming with, yeah?"
     ter hospital happy "Heyyy, Morgan? It's Terrie. It's us. How're you holding up?"
     #Fade-in MORGAN.
+
+    play sound "audio/new/Morgan-Coughing.ogg"
     "She breathes heavily with a noticeable wheeze and coughs."
     "As she breathes more, the wheezing fades... and then disappears altogether."
+
     show morg hospital inthought at centerstage:
         subpixel True
         zoom .97 alpha 0
@@ -145,6 +170,8 @@ label start:
     #Beat.
     morg "...Hm. Terrie, see that wastepaper over there in the trash?"
     morg "There's something written on it that I want to show you guys."
+
+    play sound "audio/new/Paper-Sound.ogg"
     "The wad of paper that Morgan threw away who knows how long ago was actually a to-do list."
     "Packed with fun activities to pass the  time with alongside friends across Vancouver."
     "It was filled top to bottom. And Morgan, although she almost gave up on it, now..."
@@ -176,6 +203,8 @@ label start:
     #Further beat.
     morg tense "You saw it too, didn't you?"
     "After some feedback and mic bumping on the other side of the phone, Mina picks up."
+
+    play sound "audio/new/Phone-Static.ogg"
     #Pop-in chibi MINA.
     show screen minaphone
     show mina_chibi default at minachibi_transform, minaphone_pos with dissolve:
@@ -224,10 +253,13 @@ label start:
         parallel:
             easeout .2 alpha 0
     pause .1
+
+    play sound "audio/new/Phone-Hang-Up.ogg"
     hide screen minaphone with dissolve
     pause .25
     morg sad "Bye."
-    play sound "audio/sfx/cell_hangup.mp3"
+
+    #play sound "audio/sfx/cell_hangup.mp3"
     #Emphasis on sudden gloom from Morgan. Enter Terrie from the right.
     show ter hospital default at centerstage with dissolve:
         xpos .15
@@ -247,6 +279,9 @@ label start:
     show morg hospital happy at centerstage with dissolve
     ter "EXACTLY! Just like that!"
     ter default "Now, if we're kickin' this mission Off..."
+
+    stop background fadeout 1.0
+    stop background fadeout 1.0
     stop music fadeout 10.0
     ter "We gotta go back to school."
     jump act2
