@@ -120,7 +120,6 @@ transform say_titlebox_animate_transform:
 
 screen say(who, what):
 
-    zorder 1
     style_prefix "say"
 
     window:
@@ -149,6 +148,7 @@ screen say(who, what):
             at quickmenu_hover
             xysize (50, 50) focus_mask True
             background "images/gui/flowcontrol/back.png"
+            activate_sound "audio/ui/UI-Button-Snowflake.ogg"
             action Rollback()
             tooltip "Show Previous."
             alt "Show Previous"
@@ -159,6 +159,7 @@ screen say(who, what):
             xysize (50, 50) focus_mask True
             background "images/gui/flowcontrol/play.png"
             selected_background "images/gui/flowcontrol/stop.png"
+            activate_sound "audio/ui/UI-Button-Snowflake.ogg"
             action Preference("auto-forward", "toggle")
             tooltip "AutoPlay"
             alt "Auto Play"
@@ -168,6 +169,7 @@ screen say(who, what):
             at quickmenu_hover
             xysize (50, 50) focus_mask True
             background "images/gui/flowcontrol/quicksave.png"
+            activate_sound "audio/ui/UI-Button-Snowflake.ogg"
             action QuickSave()
             tooltip "Quick Save."
             alt "Quick Save"
@@ -177,6 +179,7 @@ screen say(who, what):
             at quickmenu_hover
             xysize (50, 50) focus_mask True
             background "images/gui/flowcontrol/fastfoward.png"
+            activate_sound "audio/ui/UI-Button-Snowflake.ogg"
             action Skip() alternate Skip(fast=True, confirm=True)
             tooltip "Fast Forward."
             alt "Fast Forward"
@@ -305,7 +308,7 @@ transform snowflakeblowing:
 transform minigame1background_transform:
     blend "normal"
 
-screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=False, use_overlay=True):
+screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=False):
 
     if timeout_label:
         if persistent.longer_choice_timers:
@@ -316,8 +319,7 @@ screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=Fals
     if special_multi_choice:
         timer 1 action IncrementVariable("act5_minigame_timer", -1) repeat True
 
-    if use_overlay:
-        use choice_screen_overlay()
+    add "minigamebg" align (0.5, 0.5) at minigame1background_transform
 
     style_prefix "choice"
 
@@ -339,33 +341,12 @@ screen choice(items, choice_timer=5, timeout_label="", special_multi_choice=Fals
         elif morgan_relationship >= 3:
             add 'fin_chibi good' at finchibi_transform
 
-screen choice_screen_overlay():
-
-    zorder 0
-    add "minigamebg" align (0.5, 0.5) at minigame1background_transform
-
 screen act5_vow_choice_snowflake():
     zorder 97
     if persistent.longer_choice_timers:
         add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer*2), snowflakeblowing
     else:
         add "minigame1flamemeter" xpos 0.15 ypos 0.2 at snowflakerotation, choiceappear, snowflakefalling(act5_minigame_timer), snowflakeblowing
-
-screen act4_focus_minigame_progress_bar():
-
-    zorder 97
-
-    fixed:
-        xysize (1920, 1080)
-        at transform:
-            alpha 0.0
-            pause 0.1
-            ease 0.5 alpha 1.0
-
-        add "minigame_snowflake_counter" xalign 0.5 ypos 0.86
-
-        add "morg_chibi_[act4_focus_minigame_chibi]" xsize 190 fit "contain" yanchor 1.0 ypos 0.9 xpos 360+110*(act4_focus_minigame_stage-1)
-
 
 style choice_vbox is vbox
 style choice_button is button
@@ -415,6 +396,7 @@ transform phoneappear:
     alpha 0
     pause 0
     easein .5 rotate 0 alpha 1 zoom 1 xpos .8 ypos .5 matrixcolor ContrastMatrix(1.0)
+        
 
 transform phonebackground:
     align (0.5, 0.5)
@@ -455,7 +437,9 @@ screen phone_menu():
     key "game_menu" action Hide()
 
     on "show" action Show('phone_background', transition=paintmask2)
+    on "show" action Play(channel="sound", file= "audio/ui/UI-Phone-Open.ogg")
     on "hide" action Hide('phone_background', transition=paintmask)
+    on "hide" action Play(channel="sound", file= "audio/ui/UI-Sound-Slide_2.ogg")
 
     fixed:
         at transform:
@@ -477,23 +461,29 @@ screen phone_menu():
                     button:
                         text _("Save") at phone_nav_text_effect
                         if already_viewing_phone_menu():
+                            activate_sound "audio/ui/UI-Sound-Slide_2.ogg"
                             action Show("save", skip_entry_anim=True)
                         else:
+                            activate_sound "audio/ui/UI-Phone-Open.ogg"
                             action Show("save")
                         sensitive not main_menu
 
                     button:
                         text _("Load") at phone_nav_text_effect
                         if already_viewing_phone_menu():
+                            activate_sound "audio/ui/UI-Sound-Slide_2.ogg"
                             action Show("load", skip_entry_anim=True)
                         else:
+                            activate_sound "audio/ui/UI-Phone-Open.ogg"
                             action Show("load")
 
                     button:
                         text _("Settings") at phone_nav_text_effect
                         if already_viewing_phone_menu():
+                            activate_sound "audio/ui/UI-Sound-Slide_2.ogg"
                             action Show("preferences", skip_entry_anim=True)
                         else:
+                            activate_sound "audio/ui/UI-Phone-Open.ogg"
                             action Show("preferences")
 
         if not main_menu:
@@ -507,16 +497,20 @@ screen phone_menu():
                 button:
                     text _("History") at phone_nav_text_effect
                     if already_viewing_phone_menu():
+                        activate_sound "audio/ui/UI-Sound-Slide_2.ogg"
                         action Show("history", skip_entry_anim=True)
                     else:
+                        activate_sound "audio/ui/UI-Phone-Open.ogg"
                         action Show("history")
 
                 button:
                     text _("Menu") at phone_nav_text_effect
+                    on "show" action Play(channel="sound", file= "audio/ui/UI-Phone-Open.ogg")
                     action MainMenu()
 
                 button:
                     text _("Quit") at phone_nav_text_effect
+                    on "show" action Play(channel="sound", file= "audio/ui/UI-Phone-Open.ogg")
                     action MainMenu()
 
 
@@ -778,11 +772,11 @@ screen main_menu():
 
     vbox:
         xpos .5 ypos .8 xanchor .5 yanchor .5
-        imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 hover_sound "audio/sfx/ui_click.ogg" action Start()
-        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 hover_sound "audio/sfx/ui_click.ogg" action Show("load")
-        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 hover_sound "audio/sfx/ui_click.ogg" action Show("preferences")
-        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 hover_sound "audio/sfx/ui_click.ogg" action OpenURL("https://eeecee.itch.io/good-morning-morgan")
-        imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 hover_sound "audio/sfx/ui_click.ogg" action Quit(confirm=not main_menu)
+        imagebutton auto "gui/mainmenu/newgame_%s.png" at menubuttons1 hover_sound "audio/ui/UI-Sound-Fly-Over_1.ogg" activate_sound "audio/ui/UI-Sound-Click_1.ogg" action Start()
+        imagebutton auto "gui/mainmenu/loadgame_%s.png" at menubuttons2 hover_sound "audio/ui/UI-Sound-Fly-Over_1.ogg" activate_sound "audio/ui/UI-Sound-Click_1.ogg" action Show("load")
+        imagebutton auto "gui/mainmenu/settings_%s.png" at menubuttons3 hover_sound "audio/ui/UI-Sound-Fly-Over_1.ogg" activate_sound "audio/ui/UI-Sound-Click_1.ogg" action Show("preferences")
+        imagebutton auto "gui/mainmenu/credits_%s.png" at menubuttons4 hover_sound "audio/ui/UI-Sound-Fly-Over_1.ogg" activate_sound "audio/ui/UI-Sound-Click_1.ogg" action OpenURL("https://eeecee.itch.io/good-morning-morgan")
+        imagebutton auto "gui/mainmenu/quit_%s.png" at menubuttons5 hover_sound "audio/ui/UI-Sound-Fly-Over_1.ogg" activate_sound "audio/ui/UI-Sound-Click_1.ogg" action Quit(confirm=not main_menu)
 
 
 
@@ -1226,9 +1220,9 @@ screen preferences(skip_entry_anim=False):
             #label _("Auto-Forward Time"):
             #    xalign .5
             #bar value Preference("auto-forward time"):
-             #   xalign .5
-              #  xsize 240
-              # ysize 48
+            #   xalign .5
+            #  xsize 240
+            # ysize 48
 
         vbox:
             yoffset 160
