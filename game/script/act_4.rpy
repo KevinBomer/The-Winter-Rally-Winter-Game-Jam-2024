@@ -1,11 +1,15 @@
 default act4_focus_minigame_success = False
 default act4_focus_minigame_points = 0
+default act4_focus_minigame_stage = 1
+default act4_focus_minigame_chibi = "skating"
 
 label act4:
 
     play sound "audio/ui/UI-Background-Fade-In.ogg"
 
     play background "audio/new/Ice-Rink-BG-LOOP.ogg" fadein 3.0
+
+    play music "audio/Menu_Music_LOOP.ogg" fadein 3.0
 
     scene icerink with dissolve
 
@@ -15,7 +19,13 @@ label act4:
 
     "And whilst some of us couldn't walk straight with blades on the soles of our feet..."
 
-    show ter icerink aha at centerstage with dissolve
+    show ter icerink aha at centerstage with easeinbottom:
+        pause 0.3
+        ease 0.1 xoffset 10
+        ease 0.1 xoffset -10
+        ease 0.1 xoffset 10
+        ease 0.1 xoffset -10
+        ease 0.1 xoffset 0
 
     #$ play_music(hospital,3)
 
@@ -48,7 +58,7 @@ label act4:
 
     if act2_finn_success:
 
-        show fin icerink tense at centerstage with dissolve:
+        show fin icerink tense at centerstage with moveinleft:
 
             xpos 0.25
 
@@ -151,6 +161,11 @@ label act4:
 
             fin aha "I never forgot, don't panic."
 
+            show ter icerink tense:
+                xpos 0.65
+                ease 0.2 yoffset 50
+                ease 0.1 yoffset 0
+
             ter "Yeah. I'm pretty sure she spent two hours by herself here for every hour we visited as the gang!"
 
     else:
@@ -174,6 +189,11 @@ label act4:
         ter playful "Hey, s'long as I'm not falling down and you're in your zone, I'm game!"
 
         morg "Right. Okay. This is it. This is really happening. Hold my gloves, Terrie."
+
+        show ter icerink sad at centerstage with ease:
+            xpos .5
+
+        hide morg with dissolve
 
         ##Exit MORGAN.
 
@@ -203,8 +223,13 @@ label act4:
                 ter playful "True that! Look at us, cheering our girl on like it's nationals day."
 
                 fin happy "She really should consider that level of performance if things improve."
+                
+                show ter icerink tense:
+                    xpos 0.65
 
-                ter sad "Yeah…" #(awkward pause)
+                play sound "voice/act3_0e7828d5.ogg"
+            
+                ter icerink sad "Yeah…" #(awkward pause)
 
                 pause 0.5
 
@@ -244,7 +269,11 @@ label act4:
 
     ##Pause.
 
-    ter embarassed "I mean, uh, perform with grace and beauty an' all that!" #(flustered)
+    play sound "voice/paths_f0e04c8b.ogg"
+
+
+
+    ter embarrassed "I mean, uh, perform with grace and beauty an' all that!" #(flustered)
 
     morg happy "I can do both!" #(far off, giggling)
 
@@ -281,6 +310,8 @@ label act4:
 
     morg tense "Three, two, one, and..." # (whispering to herself)
 
+    hide morg with easeoutright
+
     "Her blades kicked ice powder into the air as she started her dance, and the rest was history."
 
     scene morganice with dissolve:
@@ -289,111 +320,142 @@ label act4:
     # MINIGAME START
 
     jump act4_minigame_start
-
 label act4_minigame_start:
+
+    show screen act4_focus_minigame_progress_bar()
 
     menu(timeout_label="act4_minigame_both_q2"):
         "Take a deep breath.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Am I doing this now of all times?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Are they watching?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q2:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q3"):
         "When was the last time I did this?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Let muscle memory take over.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Notice your heart rate is picking up.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q3:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_both_q4"):
         "It's like I never left the ice.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "It’s been so long…":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Is my form alright?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_both_q4:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q5"):
         "Are they watching?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Wait, is it getting quiet?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "My body is moving on its own…":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q5:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q6"):
         "Hold on, are we going for it??":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "I think I’m getting sick.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Bend your knees.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q6:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_both_q7"):
         "I’m not ready!":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Hesitate.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Jump!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
 label act4_minigame_both_q7:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_with_finn_q8" if act2_finn_success else "act4_minigame_without_finn_q8"):
         "Oh god, it’s happening.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Spin!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Did someone say something?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q8:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_with_finn_q9"):
         "Soar!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "Notice a flash from the corner of your eye.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Did someone take a picture?":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q9:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_with_finn_q10"):
         "Time to finish strong!":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
         "I hope they got my good side…":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Did I make a weird face doing that??":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
 
 label act4_minigame_with_finn_q10:
 
+    $ act4_focus_minigame_stage += 1
+
     menu(timeout_label="act4_minigame_result"):
         "Land awkwardly.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Land eventually.":
-            pass
+            $ act4_focus_minigame_chibi = "falling"
         "Land with a purpose.":
             $ act4_focus_minigame_points += 1
+            $ act4_focus_minigame_chibi = "skating"
 
     jump act4_minigame_result
 
 
 label act4_minigame_without_finn_q8:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_without_finn_q9"):
         "Where’s Finn?":
@@ -403,7 +465,11 @@ label act4_minigame_without_finn_q8:
         "Did someone take a picture?":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
 label act4_minigame_without_finn_q9:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_without_finn_q10"):
         "Where’s Mina?":
@@ -413,7 +479,11 @@ label act4_minigame_without_finn_q9:
         "Did I make a weird face doing that??":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
 label act4_minigame_without_finn_q10:
+
+    $ act4_focus_minigame_stage += 1
 
     menu(timeout_label="act4_minigame_result"):
         "Land awkwardly.":
@@ -423,9 +493,13 @@ label act4_minigame_without_finn_q10:
         "Land knowing you don’t have much time left.":
             pass
 
+    $ act4_focus_minigame_chibi = "falling"
+
     jump act4_minigame_result
 
 label act4_minigame_result:
+
+    hide screen act4_focus_minigame_progress_bar
 
     if act4_focus_minigame_points == 10:
         $ act4_focus_minigame_success = True
@@ -449,7 +523,13 @@ label act4_minigame_success:
 
     "An angel whose speed sometimes made her struggle to come to a timely Halt."
 
-    show morg icerink aha at centerstage with dissolve
+    show morg icerink aha at centerstage with easeinbottom:
+        pause 0.3
+        ease 0.1 xoffset 10
+        ease 0.1 xoffset -10
+        ease 0.1 xoffset 10
+        ease 0.1 xoffset -10
+        ease 0.1 xoffset 0
 
     ##Pop-in MORGAN.
 
@@ -519,6 +599,8 @@ label act4_minigame_success:
 
 label act4_minigame_failure:
 
+    scene icerink with dissolve
+
     show morg icerink tense at centerstage with dissolve
 
     "Unfortunately, it was the kind of history you pray never repeats itself."
@@ -527,7 +609,11 @@ label act4_minigame_failure:
 
     "And as quickly as she got onto the ice..."
 
+    hide morg with easeoutbottom
+
     "She was off her feet, and at our knees."
+
+    show morg icerink tense at centerstage with easeinbottom
 
     morg hurt "Ow..." # (weakly)
 
@@ -557,14 +643,18 @@ label act4_minigame_failure:
         show ter icerink playful at centerstage:
             xpos .75
 
-        show fin icerink at centerstage with dissolve:
+        show fin icerink at centerstage:
             xpos 0.25
 
         with dissolve
 
         ##Pop-in FINN and TERRIE.
 
+        play sound "voice/act4_minigame_failure_63cd43d4_1 alt.ogg"
+
         ter "Wee-oo, wee-oo, Terrie to the rescue, nothing to see here, people!" # (imitating an ambulance)
+
+        play sound "voice/act4_minigame_failure_63cd43d4_1.ogg"
 
         ter "Vamoose! Don't make me call the resurfacer!"
 
@@ -613,10 +703,12 @@ label act4_minigame_failure:
 
         "Morgan looked like she was about to cry."
 
-        show ter icerink playful at centerstage:
+        show ter icerink playful at centerstage with easeinleft:
             xpos .75
 
         # Pop-in TERRIE.
+
+        play sound "voice/act4_minigame_failure_63cd43d4_1 alt.ogg"
 
         ter "Wee-oo, wee-oo, Terrie to the rescue, nothing to see here, people!" # (imitating an ambulance)"
 
@@ -722,15 +814,22 @@ label act4_end_with_finn:
     show ter cday playful at centerstage:
         xpos .75
 
-    show fin cday at centerstage with dissolve:
+    show fin cday at centerstage:
         xpos 0.25
 
     show morg cday playful at centerstage:
-            xpos .75
+            xpos .5
+
+    with dissolve
 
     morg inthought "Alright, next on the agenda."
 
     morg happy "It's nearly fireworks time."
+
+    show ter cday aha at centerstage:
+        xpos .75
+        ease 0.2 yoffset 100
+        ease 0.1 yoffset 0
 
     ter aha "You're kidding! After all these years we're goin' back?!" # (squeals)
 
@@ -783,6 +882,8 @@ label act4_end:
     "What our hearts all held onto the most for the longest time."
 
     "Our grand day out would for sure end with a bang."
+
+    stop music fadeout 3.0
 
     play sound "audio/ui/UI-Background-Fade-Out.ogg"
 

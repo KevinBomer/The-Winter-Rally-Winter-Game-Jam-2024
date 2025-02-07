@@ -281,7 +281,7 @@ label start:
     ter default "Now, if we're kickin' this mission Off..."
 
     stop background fadeout 1.0
-    stop background fadeout 1.0
+    stop background2 fadeout 1.0
     stop music fadeout 10.0
     ter "We gotta go back to school."
     jump act2

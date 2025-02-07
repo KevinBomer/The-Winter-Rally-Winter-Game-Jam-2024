@@ -60,6 +60,8 @@ label act7:
 
     ##INT./EXT. BLACK SCREEN
 
+    stop music fadeout 3.0
+
     "Then, it was January 8th."
 
     show death black cropped at centerstage with paintmask:
@@ -241,6 +243,8 @@ label act7:
 
 
 label act7_good_neutral:
+
+    play music introduction fadein 3.0 volume .4
 
     show morg sad at centerstage:
 
@@ -785,6 +789,8 @@ label act7_good_neutral:
 
 label act7_bad:
 
+    queue music [ "audio/new/Hospital-Music-Start.ogg", "audio/new/Hospital-Music_LOOP.ogg" ] fadein 3.0
+
     show morg hurt at centerstage:
 
                 xpos 0.35
@@ -799,7 +805,9 @@ label act7_bad:
 
     morg hurt "We're NOT!!"
 
-    mortis "Finn's rotting away in his study, Mina's working on a career in another country, and I couldn't do ANYTHING right today because I'm... I'm..." # (rising hysterics)
+    play sound "voice/Morgan Act 7 bad extra line 1.ogg"
+
+    morg "Finn's rotting away in his study, Mina's working on a career in another country, and I couldn't do ANYTHING right today because I'm... I'm..." # (rising hysterics)
 
     ter sad "No, Morgan... you're not weak, you're not \"not good enough\", you're—" # (cooing)
 
@@ -807,7 +815,9 @@ label act7_bad:
 
     "Terrie was visibly stunned into silence."
 
-    mortis "I'm dying and I dragged you all along just to watch me bumble about all day."
+    play sound "voice/Morgan Act 7 bad extra line 2.ogg"
+
+    morg "I'm dying and I dragged you all along just to watch me bumble about all day."
 
     morg "What have I done?!" # (disgusted)
 
@@ -817,7 +827,9 @@ label act7_bad:
 
     morg sad "It could have been perfect." # (quiet)
 
-    mortis "It could have been so, so perfect."
+    play sound "voice/Morgan Act 7 bad extra line 3.ogg"
+
+    morg "It could have been so, so perfect."
 
     morg "I miss Mina, I— miss Finn... why couldn't I get them to come?"
 
@@ -858,7 +870,15 @@ label act7_bad_epilogue:
     "No one wanted to be associated with this place, nor did anyone want to remember it."
     ##SCENE THE SPOT - DAY with dissolve
     ##Enter Miya
+
+    show miya at centerstage with dissolve:
+        zoom 0.28
+        xpos .65
     yum "Ah. It’s been awhile dear. Please follow me."
+
+    show miya at centerstage with ease:
+        zoom 0.28
+        xpos .5
 
     "Miya led me to one of the empty seats."
     ##MIYA smiles

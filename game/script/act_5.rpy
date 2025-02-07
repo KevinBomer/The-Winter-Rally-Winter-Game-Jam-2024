@@ -27,14 +27,25 @@ label act5:
     morg happy "Wow… I can't tell how long it’s been since we’ve been here as well." # (overjoyed)
 
     show morg fireworks happy at centerstage with ease:
-        xpos 0.25
+        xpos 0.35
     morg playful"I would have loved to ride the rollercoaster. Probably one of the best parts of being here." # (happy)
     #Terrie enters stage right"
 
     show ter fireworks happy at centerstage with dissolve:
-        xpos 0.75
+        xpos 0.65
     ter "Personally, I love just riding the Ferris wheel." # (happy)
+
+    show ter fireworks playful at centerstage:
+        xpos 0.65
+        ease 0.2 yoffset -50
+        ease 0.1 yoffset 0
     ter playful "Best to see it all! The beauty of the city at night? Can’t be beaten." # (happy)
+
+    show morg fireworks inthought at centerstage:
+        xpos 0.35
+        ease 0.2 xoffset 50
+        ease 0.2 xoffset -50
+        ease 0.2 xoffset 0
     morg inthought "But it’s so slow paced. I’m sure the roller coaster would be much better." # (shaking her head)
     ter melancholy "Listen Morgan. A roller coaster is fast paced for sure, but the experience is so short." # (disappointed)
     ter playful "And the lines! Who wants to wait so long in the lines?" # (smiling)
@@ -46,7 +57,7 @@ label act5:
 
             show morg fireworks happy at centerstage:
 
-                xpos 0.25
+                xpos 0.35
                 ease 0.4 yoffset 50
                 ease 0.2 yoffset 0
             morg "Oh I knew we’d be on the same page here." # (happy)
@@ -56,7 +67,7 @@ label act5:
 
             show ter fireworks happy at centerstage:
 
-                xpos 0.75
+                xpos 0.65
                 ease 0.4 yoffset 50
                 ease 0.2 yoffset 0
             ter "Glad we are on the same page." # (happy)
@@ -88,7 +99,7 @@ label act5:
 
     show ter fireworks happy at centerstage with dissolve:
 
-                xpos 0.75
+                xpos 0.65
     #Finn fades out
     #Terrie enters stage right
     ter "So, who are you marrying Morgan?"
@@ -96,7 +107,7 @@ label act5:
 
     show morg fireworks happy at centerstage with dissolve:
 
-                xpos 0.25
+                xpos 0.35
     morg "I’ll let you know once we reach the Ferris wheel." # (smiling)
     morg default "I do need to think about it after all." # (smiling)
     morg "I mean… marriage is a bond of love after all." # (smiling)
@@ -164,8 +175,10 @@ label act5:
             $ act5_marry_morgan = False
 
     if act5_marry_morgan:
+        play music "audio/new/Music-Finn-Room-Loop.ogg"
         jump act5_marriage_mc
     else:
+        play music "audio/new/Music-Finn-Room-Loop.ogg"
         jump act5_marriage_terrie
 
 label act5_marriage_mc:
@@ -173,9 +186,15 @@ label act5_marriage_mc:
     show mor fireworks default at centerstage with ease:
 
                 xpos 0.5
+                ease 0.4 yoffset 50
 
     "Morgan got onto one knee, facing me."
     morg happy "Will you marry me?" # (smiling)
+
+    show mor fireworks happy at centerstage:
+
+                xpos 0.5
+                ease 0.4 yoffset 0
     morg "Don’t worry, it’s only for a day." # (giggle)
     "Yes was all I could say."
     "I felt my heart beat the moment she selected me."
@@ -214,14 +233,21 @@ label act5_marriage_mc:
 
                 xpos 0.35
     #Morgan enters stage left
+
+    play sound "voice/act5_marriage_mc_e457cd4e.ogg"
     morg "You know… Looking out the window and seeing this Ferris Wheel… I always imagined getting to ride it." # (smiling)
+
     morg happy "Even if it wasn’t for this marriage… I did want to see the view from it at least one more time…" # (smiling)
 
     show ter fireworks default at centerstage with dissolve:
 
                 xpos 0.65
     #Terrie enters stage right
+
+    play sound "voice/act5_marriage_mc_5e0da5fb.ogg"
     ter "Yeah… it's totally something everyone should do at least once." # (happy)
+
+    play sound "voice/act5_marriage_mc_30812f1b.ogg"
     ter happy "The view can be so inspiring." # (happy)
 
     hide morg with dissolve
@@ -231,7 +257,11 @@ label act5_marriage_mc:
                 xpos 0.35
     #Morgan fades out
     #Finn enters stage left
+
+    play sound "voice/act5_marriage_mc_126fcd4f.ogg"
     fin "They say that memories are significantly easier to retain– when one is in an ideal state of mind." # (happy)
+
+    play sound "voice/act5_marriage_mc_a6a27393.ogg"
     fin happy "With little interference, these are the ideal conditions to have a matrimony that will last a lifetime." # (happy)
 
     hide fin 
@@ -260,7 +290,7 @@ label act5_marriage_mc:
     "Soon, we were approaching the apex of the Ferris Wheel."
     "As the Ferris Wheel slowed, my heart began to beat faster as Finn began explaining the process."
 
-    hide mor with dissolve
+    hide morg with dissolve
     #Morgan fades out
     #Finn fades in
 
@@ -337,6 +367,8 @@ label act5_vow_minigame:
             pass
         "… until the heat-death of the universe.":
             pass
+
+    hide morg with dissolve
 
     #Morgan fades out
     #Finn fades in
@@ -421,14 +453,26 @@ label act5_marriage_terrie:
 
     show morg fireworks happy at centerstage:
 
-                xpos 0.35
+        xpos 0.35
+        ease 0.5 yoffset 50
 
     show ter fireworks default at centerstage with dissolve:
 
-                xpos 0.65
+            xpos 0.65
     "Morgan got onto one knee, facing Terr."
     morg "Will you marry me Terr?" # (smiling)
+
+    show morg fireworks happy at centerstage:
+
+            xpos 0.35
+            ease 0.4 yoffset 0
     morg "Just for the day though." # (giggle)
+
+    show ter fireworks default at centerstage with dissolve:
+
+            xpos 0.65
+            ease 0.4 yoffset 50
+            ease 0.2 yoffset 0
     ter happy "Ah…I… I won’t let you down Morgan." # (smiling)
     morg "You got this Terr." # (smiling)
 
@@ -441,7 +485,7 @@ label act5_marriage_terrie:
     #Terrie fades out
     #Finn fades in
 
-    show fin fireworks happy at centerstage:
+    show fin fireworks happy at centerstage with dissolve:
 
                 xpos 0.5
 
@@ -460,14 +504,20 @@ label act5_marriage_terrie:
 
                 xpos 0.35
     #Morgan enters stage left
+
+    play sound "voice/act5_marriage_mc_e457cd4e.ogg"
     morg default "You know… Looking out the window and seeing this Ferris Wheel… I always imagined getting to ride it." # (smiling)
     morg happy "Even if it wasn’t for this marriage… I did want to see the view from it at least one more time…" # (smiling)
     #Terrie enters stage right
+
+    play sound "voice/act5_marriage_mc_5e0da5fb.ogg"
 
     show ter fireworks default at centerstage with dissolve:
 
                 xpos 0.65
     ter default "Yeah… it's totally something everyone should do at least once." # (happy)
+
+    play sound "voice/act5_marriage_mc_30812f1b.ogg"
     ter happy "The view can be so inspiring." # (happy)
     #Terrie fades out
     #Morgan fades out
@@ -482,7 +532,11 @@ label act5_marriage_terrie:
     show fin fireworks inthought at centerstage with dissolve:
 
                 xpos 0.35
+
+    play sound "voice/act5_marriage_mc_126fcd4f.ogg"
     fin inthought "They say that memories are significantly easier to retain when one is in an ideal state of mind." # (happy)
+
+    play sound "voice/act5_marriage_mc_a6a27393.ogg"
     fin happy "With little interference, these are the ideal conditions to have a matrimony that will last a lifetime." # (happy)
 
     hide fin with dissolve
@@ -491,6 +545,8 @@ label act5_marriage_terrie:
     menu:
         "Perfect for a marriage, right?":
             #Morgan fades in
+
+            play sound "voice/act5_marriage_mc_61f103cf.ogg"
 
             show morg fireworks happy at centerstage with dissolve:
 
@@ -501,6 +557,8 @@ label act5_marriage_terrie:
             #Morgan fades out
         "This will truly be a night to remember":
             #Morgan fades in
+
+            play sound "voice/act5_marriage_mc_3b630778.ogg"
 
             show morg fireworks happy at centerstage with dissolve:
 
@@ -541,6 +599,8 @@ label act5_marriage_terrie:
     #Terrie fades out
     #Morgan fades out
     #Finn fades in
+
+    play sound "voice/act5_marriage_mc_bc916196.ogg"
     fin "We’ll have to skip a lot of the whole process and move on to the vows. Are you ready?"
 
     hide fin with dissolve
@@ -695,6 +755,8 @@ label act5_vow_minigame_end:
     "We were close to finishing off the list and nothing would stop us now."
 
     play sound "audio/ui/UI-Background-Fade-Out.ogg"
+
+    stop music fadeout 3.0
 
     scene black with dissolve
     # Fade Black

@@ -30,6 +30,8 @@ label act3:
     #morg "It really has been a while, hasn’t it?"
     #morg "No time like today to make some new memories."
 
+    stop music fadeout 3.0
+
     play sound "audio/ui/UI-Background-Fade-In.ogg"
 
     scene corridor with dissolve
@@ -56,13 +58,23 @@ label act3:
     #Terrie enters stage left
     show ter spot playful at centerstage with dissolve
     ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!" 
+
+    show ter spot at centerstage with dissolve:
+        ease 0.4 yoffset 50
+        ease 0.2 yoffset 0
     ter "Hope you’re all ready to satisfy both your body, mind, and soul with food from this joint!"
     #Terrie fades out
     #Morgan enters stage left
 
     hide ter spot with dissolve
-    show morg spot default at centerstage with dissolve
+    show morg spot default at centerstage with dissolve:
+        xpos 0.3
     morg "It really has been a while, hasn’t it?"
+
+    show morg spot happy at centerstage with ease:
+        xpos 0.5
+
+    play sound "voice/act3_3404064d.ogg"
     morg spot happy "No time like today to make some new memories."
 
     hide morg spot with dissolve
@@ -170,6 +182,8 @@ label act3:
         show morg spot inthought at centerstage with dissolve:
             xpos 0.25
         morg inthought "Oh, you know it. I can already picture how hangry Finn—"
+
+        play sound "voice/act3_76c6657b.ogg"
 
         show ter spot at centerstage with dissolve:
             xpos 0.5
@@ -320,10 +334,14 @@ label act3:
 
         show morg spot happy at centerstage with dissolve:
             xpos 0.65
+            ease 0.4 yoffset 50
+            ease 0.2 yoffset 0
         "Morgan and Finn lit up."
     else:
         show morg spot happy at centerstage with dissolve:
             xpos 0.65
+            ease 0.4 yoffset 50
+            ease 0.2 yoffset 0
         "Morgan lit up a tiny bit."
 
     morg "Terrie, you did all this?"
@@ -380,6 +398,8 @@ label act3:
         xpos .75
     yum "Terrie... You can’t really think that, can you?"
 
+    play sound "voice/act3_1e4be506.ogg"
+
     show ter spot sad at centerstage with dissolve
     ter "I guess? Sorry, I know it’s kind of pathetic. If only I worked a little harder, maybe I’d be in art school by now."
     #Miya fades out
@@ -397,6 +417,8 @@ label act3:
 
     show morg spot happy at centerstage with dissolve:
         xpos 0.75
+        ease 0.4 yoffset 50
+        ease 0.2 yoffset 0
     morg "You’ve been working your butt off! There’s no way you won’t succeed, Terr."
     #Morgan fades out
     #Miya fades in
@@ -414,6 +436,8 @@ label act3:
     show ter spot tense at centerstage:
         ease 0.4 yoffset 0
     ter "You speak too highly of me, really."
+
+    play sound "voice/act3_0595eaf0.ogg"
 
     show ter spot sad at centerstage with dissolve
     ter "My stuff just isn’t “woah” material, you know?"
@@ -434,6 +458,11 @@ label act3:
         show ter spot hurt at centerstage with dissolve:
 
             xpos .65
+            ease 0.1 xoffset 10
+            ease 0.1 xoffset -10
+            ease 0.1 xoffset 10
+            ease 0.1 xoffset -10
+            ease 0.1 xoffset 0
         ter "Hey! I’m {i}way{/i} better than Finn, at least I’m actually here."
         ter tense "I’ve been good about giving myself time off, unlike those two."
  
@@ -443,6 +472,14 @@ label act3:
             xpos .35
 
     else:
+        show ter spot aha at centerstage with dissolve:
+
+            xpos .5
+            ease 0.1 xoffset 10
+            ease 0.1 xoffset -10
+            ease 0.1 xoffset 10
+            ease 0.1 xoffset -10
+            ease 0.1 xoffset 0
         ter aha "What? Fat chance! I’m {i}way{/i} better than Finnster, here."
         ter tense "I’ve been good about giving myself time off, unlike a certain someone."
 
@@ -526,6 +563,10 @@ label act3:
     yum "Well, young Terr. Success is something that requires many things. Persistence goes a long way. It is why I continue to endure despite the tough times."
 
     hide ter with dissolve
+
+    show miya at centerstage with dissolve:
+            zoom 0.28
+            xpos .35
 
     show morg spot inthought at centerstage with dissolve:
             xpos .65
@@ -615,12 +656,14 @@ label act3:
         mina "Awww, you’re so mean! You’re still my favorite, even after you totally tr—"
         fin aha "{i}Mina—{/i} You’re on speaker."
         fin upset "I’m with Morgan and the others, we’re at Miya’s."
+
+        play sound "voice/act3_cb4be788_1.ogg"
         mina overjoyed "Oh, for reals? Hello to my favorite people in the whole wide world! How’s it hanging?"
 
         hide fin with dissolve
 
         show morg spot default at centerstage with dissolve:
-            xpos .35
+            xpos .65
         #Finn fades out
     else:
         "We waited in anticipation as I dialed her number. It only took a single ring before an all-too familiar voice came out through the phone’s speaker."
@@ -628,8 +671,8 @@ label act3:
         play sound "audio/new/Phone-Static.ogg"
 
         show screen minaphone
+
         show mina_chibi default at minachibi_transform, minaphone_pos with dissolve:
-            xpos .65
             xoffset 10
             additive .1
             matrixcolor ContrastMatrix(1.2)
@@ -638,7 +681,7 @@ label act3:
         mina "Who would this happen to be? A salesman? Perhaps a long lost relative or oil prince? "
 
         show morg spot playful at centerstage with dissolve:
-            xpos .35
+            xpos .65
         #MORGAN enters stage left
         morg playful "Awww, you’re so mean! How could you forget us?"
         "Mina, you’re on speaker. I’m here with the others."
@@ -650,6 +693,8 @@ label act3:
     mina happy "That place brings back so many memories! It feels like forever ago... I can’t believe I’m missing this nostalgia trip right now!"
 
     if act2_finn_success:
+
+        play sound "voice/act3_b7d0b8cf.ogg"
         mina pained "Ugh, I don’t know if it really fits my brand though..."
     else:
         mina default "Finn probably loves this place more than I do. Where is he anyways?"
@@ -664,7 +709,7 @@ label act3:
     hide morg with dissolve
 
     show ter spot aha at centerstage with dissolve:
-            xpos .35
+            xpos .65
 
     #Morgan fades out
     #Terrie enters stage left
@@ -674,7 +719,7 @@ label act3:
     hide ter with dissolve 
 
     show fin spot inthought at centerstage with dissolve:
-            xpos .35
+            xpos .65
     #Terrie fades out
     #Finn enters stage left
     fin "You don’t have to do anything you don’t want to, Mina."
@@ -694,12 +739,14 @@ label act3:
     mina "You guys just scored a super free and super AWESOME sponsorship from yours truly!"
 
     show morg spot happy at centerstage with dissolve:
-            xpos .35
+            xpos .65
     #Morgan enters stage left
     morg "Really? I’m touched, really. But is it okay?"
     if act2_finn_success:
         mina overjoyed "Oh, stop it. I love my friends and I’m gonna do everything I can to help you guys out! Have fun today, alright?"
     else:
+
+        play sound "voice/act3_be44384d.ogg"
         mina overjoyed "Oh, stop it. I love my friends and I’m gonna do everything I can to help you guys out! Not to mention my no-show brother must be hampering the mood."
 
         mina happy "Just remember. Above all else, make sure you all have fun!"
@@ -727,7 +774,11 @@ label act3:
 
     #Mina fades out
     "The moment Mina hung up, the group turned to Morgan, who was now brimming with excitement."
+
     morg aha "Alright, we’ve got work to do. But before we do anything, we need to pick out jobs!"
+
+    show morg spot aha at centerstage with ease:
+            xpos .5
 
     show ter spot aha at centerstage with dissolve:
             xpos .65
@@ -735,6 +786,8 @@ label act3:
     ter "Oh, oh! Let me be the waiter {i}please.{/i} I’m uber experienced, they’ll give us mad tips thanks to my mad skills."
 
     if act2_finn_success:
+        play sound "voice/act3_76c6657b.ogg"
+
         morg happy "It’s all yours. Finn, how would you feel about manning the front counter and acting as our host?"
 
 
@@ -790,22 +843,38 @@ label act3:
     hide morg with dissolve
     "With no questions on my end, Morgan responded with a firm nod."
     "Perhaps my job of washing dishes was simple, but every cog in this machine was important."
+
+    $ play_music(finn_minigame,3)
     "Thus began a service like no other."
 
     #Order Taking Mini Game Start
-
-    #$ play_music(finn_minigame,3)
 
     show ter spot default at centerstage with dissolve:
             xpos .35
 
     #Terrie enters stage left
+
+    show customer1 with dissolve:
+        zoom 0.28
+        xpos .65
     #Group 1
     "Customer 1" "Can I get the Yummy Yam Roll?"
+
+    hide customer1 with dissolve
+
+    show customer2 with dissolve:
+        zoom 0.28
+        xpos .65
     "Customer 2" "I would like the Dragon Roll. I’m also allergic to shellfish."
+
+    hide customer2
 
 label act3_customer_minigame_group1_q1:
     #Miya enters stage right
+
+    show miya at centerstage with dissolve:
+        zoom 0.28
+        xpos .65
     yum "What did customer one want?"
     #terrie is the one choosing options, their sprite will take priority in this minigame along with miya's.
     menu(timeout_label="act3_customer_minigame_group1_q2"):
@@ -821,7 +890,16 @@ label act3_customer_minigame_group1_q2:
     if "q1" not in act3_customer_minigame_group1.keys():
         $ act3_customer_minigame_group1["q1"] = False
 
+    if act3_customer_minigame_group1["q1"]:
+        show yamroll as sushi at sushi_transform with dissolve:
+            xpos 0.4
+    else:
+        show badsushi as sushi at sushi_transform with dissolve:
+            xpos 0.4
+
     yum "What did customer two want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group1_q3"):
         "Dragon Roll":
@@ -836,13 +914,25 @@ label act3_customer_minigame_group1_q3:
     if "q2" not in act3_customer_minigame_group1.keys():
         $ act3_customer_minigame_group1["q2"] = False
 
+    if act3_customer_minigame_group1["q2"]:
+        show dragonroll as sushi at sushi_transform with dissolve:
+            xpos 0.4
+    else:
+        show badsushi as sushi at sushi_transform with dissolve:
+            xpos 0.4
+
     yum "Any allergies?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group1_q4"):
         "Yes":
             $ act3_customer_minigame_group1["q3"] = True
+            jump act3_customer_minigame_group1_q4
         "No":
             $ act3_customer_minigame_group1["q3"] = False
+            $ act3_customer_minigame_group1["q4"] = False
+            jump act3_customer_minigame_group1_result
 
 label act3_customer_minigame_group1_q4:
 
@@ -855,9 +945,9 @@ label act3_customer_minigame_group1_q4:
         "Customer one has a shellfish allergy.":
             $ act3_customer_minigame_group1["q4"] = False
         "Customer one has a ginger allergy.":
-            $ act3_customer_minigame_group1["q4"] =False
+            $ act3_customer_minigame_group1["q4"] = False
         "Customer two has a shellfish allergy.":
-            $ act3_customer_minigame_group1["q4"] =False
+            $ act3_customer_minigame_group1["q4"] = True
 
 label act3_customer_minigame_group1_result:
 
@@ -865,29 +955,78 @@ label act3_customer_minigame_group1_result:
         $ act3_customer_minigame_group1["q4"] = False
 
     ter "Here's your order!"
+
+    hide miya with dissolve
     #Miya fades out
 
     if act3_customer_minigame_group1["q1"]:
+
+        show customer1 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 1" "Ah this looks great, thanks!"
     else:
+
+        show customer1 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 1" "Wait… I wanted the Yummy Yam Roll! Please take this back."
 
+    hide customer1 with dissolve
+
     if not act3_customer_minigame_group1["q2"]:
+        show customer2 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 2" "Come on. This isn’t the right roll. Take it back."
     elif act3_customer_minigame_group1["q3"] and act3_customer_minigame_group1["q4"]:
+
+        show customer2 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 2" "No shellfish, right? Thank you very much."
     else:
+
+        show customer2 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 2" "Is that shellfish? I said I was allergic. Take it back."
 
+    hide customer2 with dissolve
+
 label act3_customer_minigame_group2:
+
+    show customer3 with dissolve:
+        zoom 0.28
+        xpos .65
     #Group 2
     "Customer 3" "Can I get the Shrimp Tempura roll? Also, I’m allergic to ginger."
+
+    hide customer3 with dissolve
     #Customer four
+
+    hide customer1 with dissolve
+
+    show customer1 with dissolve:
+        zoom 0.28
+        xpos .65
     "Customer 4" "I would like the BC Roll."
+
+    hide customer1 with dissolve
     # Customer five
+
+    show customer2 with dissolve:
+        zoom 0.28
+        xpos .65
     "Customer 5" "The Yummy Yam Roll please!"
 
+    hide customer2 with dissolve
+
 label act3_customer_minigame_group2_q1:
+
+    show miya at centerstage with dissolve:
+        zoom 0.28
+        xpos .65
     #Miya enters stage right
     yum "What did customer three want?"
 
@@ -904,7 +1043,16 @@ label act3_customer_minigame_group2_q2:
     if "q1" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q1"] = False
 
+    if act3_customer_minigame_group2["q1"]:
+        show shrimptempuraroll as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+
     yum "What did customer four want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group2_q3"):
         "Dragon Roll":
@@ -920,7 +1068,16 @@ label act3_customer_minigame_group2_q3:
     if "q2" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q2"] = False
 
+    if act3_customer_minigame_group2["q2"]:
+        show bcroll as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+
     yum "What did customer five want?"
+
+    hide sushi
 
     menu(timeout_label="act3_customer_minigame_group2_q4"):
         "BC Roll":
@@ -935,13 +1092,23 @@ label act3_customer_minigame_group2_q4:
     if "q3" not in act3_customer_minigame_group2.keys():
         $ act3_customer_minigame_group2["q3"] = False
 
+    if act3_customer_minigame_group2["q3"]:
+        show yamroll as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+    else:
+        show badsushi as sushi at sushi_group2_transform with dissolve:
+            xpos 0.4
+
     yum "Any allergies?"
 
     menu(timeout_label="act3_customer_minigame_group2_q5"):
         "Yes":
             $ act3_customer_minigame_group2["q4"] = True
+            jump act3_customer_minigame_group2_q5
         "No":
             $ act3_customer_minigame_group2["q4"] = False
+            $ act3_customer_minigame_group2["q5"] = False
+            jump act3_customer_minigame_group2_result
 
 label act3_customer_minigame_group2_q5:
 
@@ -960,25 +1127,59 @@ label act3_customer_minigame_group2_q5:
 
 label act3_customer_minigame_group2_result:
 
+    hide miya with dissolve
+
     #Miya fades out
     ter "Here’s your orders!"
 
     if not act3_customer_minigame_group2["q1"]:
+
+        show customer3 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 3" "Hey! This isn’t what I ordered! Take it back."
     elif not (act3_customer_minigame_group2["q4"] and act3_customer_minigame_group2["q5"]):
+
+        show customer3 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 3" "What are you doing? I said I have a ginger allergy and there’s ginger on the plate. Take it back. Immediately."
     else:
+
+        show customer3 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 3" "You made sure to remove the ginger, right? Phew. Thank you."
 
+    hide customer3 with dissolve
+
     if act3_customer_minigame_group2["q2"]:
+        show customer1 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 4" "Ah. That looks perfect. Thanks!"
     else:
+        show customer1 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 4" "Eh… This is not what I asked for. Can you take it back?"
 
+    hide customer1 with dissolve
+
     if act3_customer_minigame_group2["q3"]:
+        show customer2 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 5" "This looks like a ten out of ten. Amazing."
     else:
+        show customer2 with dissolve:
+            zoom 0.28
+            xpos .65
         "Customer 5" "Uh… I’m pretty sure I ordered the Yummy Yam Roll. Can you take it back?"
+
+    hide customer2 with dissolve
+
+    stop music fadeout 3.0
 
     #Mini Game End
 
@@ -1055,6 +1256,7 @@ label act3_customer_minigame_group2_result:
             xpos .35
         #Morgan enters stage left
         # Morgan (sad)
+
         morg "I’m so sorry… I know we did our best, but… I guess it was too much for us."
 
         hide morg with dissolve
@@ -1272,6 +1474,10 @@ label act3_customer_minigame_group2_result:
 
         show ter spot tense at centerstage with dissolve:
             xpos .65
+            ease 0.2 yoffset 50
+            ease 0.1 yoffset 0
+            ease 0.2 yoffset 50
+            ease 0.1 yoffset 0
 
         ter "Okay liar liar pants on fire, no need to be a tough guy around us."
 
@@ -1284,7 +1490,7 @@ label act3_customer_minigame_group2_result:
         #MORGAN enters stage right
         #TERRIE fades out
 
-    show morg spot inthought at centerstage with dissolve:
+    show morg spot inthought at centerstage with ease:
             xpos .5
 
     morg "We still have plenty of runway."
@@ -1311,6 +1517,8 @@ label act3_customer_minigame_group2_result:
         with dissolve
         #FINN fades out
         #MORGAN fades out
+
+        stop background fadeout 3.0
 
         play sound "audio/ui/UI-Background-Fade-In.ogg"
 
