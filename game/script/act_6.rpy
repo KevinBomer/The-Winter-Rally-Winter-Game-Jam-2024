@@ -117,8 +117,6 @@ label act6:
 
                 xpos 0.5
 
-
-
         morg "Our first order of action... we wanted to bring another friend with us."
 
         morg sad "He was busy. He told us no... so it was just us three."
@@ -278,51 +276,55 @@ label act6:
 
         play background "audio/new/Ice-Rink-BG-LOOP.ogg" fadein 3.0
 
-        ##SCENE ICE RINK - NIGHT with dissolve
+        if act3_next_action == "performance":
 
-        show morg icerink default at centerstage with easeinleft:
+            ##SCENE ICE RINK - NIGHT with dissolve
 
-                xpos 0.3
+            show morg icerink default at centerstage with easeinleft:
 
-        morg "Then, we all visited the ice rink. Not all of us could skate, but when I touched the ice for the first time again..." # (O.S.)
+                    xpos 0.3
 
-        if act4_focus_minigame_success:
-            show morg icerink happy at centerstage with ease:
+            morg "Then, we all visited the ice rink. Not all of us could skate, but when I touched the ice for the first time again..." # (O.S.)
 
-                xpos 0.5
-            morg happy "It was like I'd never left." # (O.S.)
+            if act4_focus_minigame_success:
+                show morg icerink happy at centerstage with ease:
 
-            morg "I just can't get across how unchaining it felt to dance and sprint and— just— wow! I get giddy thinking about it." # (O.S.)
+                    xpos 0.5
+                morg happy "It was like I'd never left." # (O.S.)
+
+                morg "I just can't get across how unchaining it felt to dance and sprint and— just— wow! I get giddy thinking about it." # (O.S.)
+            else:
+                show morg icerink tense at centerstage with ease:
+
+                    xpos 0.5
+                morg tense "I think my body betrayed me, though."
+
+                morg sad "If I could have just known my limits, I would have NEVER embarrassed myself in front of everyone."
+
         else:
-            show morg icerink tense at centerstage with ease:
 
-                xpos 0.5
-            morg tense "I think my body betrayed me, though."
+            ##SCENE EXT. FAIRGROUND - NIGHT with dissolve
 
-            morg sad "If I could have just known my limits, I would have NEVER embarrassed myself in front of everyone."
+            play sound "audio/ui/UI-Background-Fade-In.ogg"
 
-        ##SCENE EXT. FAIRGROUND - NIGHT with dissolve
+            scene ferriswheel with dissolve
 
-        play sound "audio/ui/UI-Background-Fade-In.ogg"
+            show morg fireworks happy at centerstage with dissolve:
 
-        scene ferriswheel with dissolve
+                    xpos 0.5
+                    ease 0.2 yoffset 50
+                    ease 0.1 yoffset 0
+                    ease 0.2 yoffset 50
+                    ease 0.1 yoffset 0
 
-        show morg fireworks happy at centerstage with dissolve:
+            morg "Oh, but then, but then!! I finally had my dream wedding." # (O.S.)
 
-                xpos 0.5
-                ease 0.2 yoffset 50
-                ease 0.1 yoffset 0
-                ease 0.2 yoffset 50
-                ease 0.1 yoffset 0
+            if act5_marry_morgan:
+                morg "I tied the knot with a special someone under the prettiest open sky we could imagine. A—as friends, of course!" # (O.S.)
+            else:
+                morg "I tied the knot with Terrie under the prettiest open sky we could imagine. A—as friends, of course!" # (O.S.)
 
-        morg "Oh, but then, but then!! I finally had my dream wedding." # (O.S.)
-
-        if act5_marry_morgan:
-            morg "I tied the knot with a special someone under the prettiest open sky we could imagine. A—as friends, of course!" # (O.S.)
-        else:
-            morg "I tied the knot with Terrie under the prettiest open sky we could imagine. A—as friends, of course!" # (O.S.)
-
-        morg playful "But I don't like to kiss and tell, so, that's that on that. (laughs)" # (O.S.)
+            morg playful "But I don't like to kiss and tell, so, that's that on that. (laughs)" # (O.S.)
 
         ##SCENE EXT. HILL WITH A VIEW - NIGHT with dissolve
 
