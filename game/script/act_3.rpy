@@ -1,17 +1,21 @@
 default act3_customer_minigame_group1 = {}
 default act3_customer_minigame_group2 = {}
+default act3_customer_minigame_points = 0
 
 default act3_next_action = "performance"
 
 init python:
     def check_act3_minigame_success():
-        for k, v in store.act3_customer_minigame_group1.items():
-            if not v:
-                return False
-        for k, v in store.act3_customer_minigame_group2.items():
-            if not v:
-                return False
-        return True
+        if store.act3_customer_minigame_points >= 3:
+            return True
+        return False
+        # for k, v in store.act3_customer_minigame_group1.items():
+        #     if not v:
+        #         return False
+        # for k, v in store.act3_customer_minigame_group2.items():
+        #     if not v:
+        #         return False
+        # return True
 
 label act3:
     #EXT. CORRIDOR — THE SPOT
@@ -46,7 +50,7 @@ label act3:
     "There was only one place that could have food that was worthy of such a title. One Morgan had listed specifically on the list due to its sheer importance to everyone."
     "A quaint, family-run sushi restaurant called Miya’s that we visited frequently during our high school days. It might have been just another restaurant to some, but to us, this was The Spot."
     "I can’t remember the last time I was here."
-    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things." 
+    "Long forgotten memories come flooding back to when this place was full of life. However, time was not kind to it, like many things."
     "Despite the wear and tear, color shines through like a flower under rubble."
 
     play sound "audio/new/restaurant-bell.ogg"
@@ -57,7 +61,7 @@ label act3:
     #THE SPOT - DAY
     #Terrie enters stage left
     show ter spot playful at centerstage with dissolve
-    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!" 
+    ter "And without further ado, I present to you {i}The Spot!{/i} A place we should all be familiar with!"
 
     show ter spot at centerstage with dissolve:
         ease 0.4 yoffset 50
@@ -321,10 +325,10 @@ label act3:
 
     "Terrie groaned."
 
-    hide miya 
+    hide miya
 
     hide fin spot
-    
+
     with dissolve
 
     #Miya fades out
@@ -465,7 +469,7 @@ label act3:
             ease 0.1 xoffset 0
         ter "Hey! I’m {i}way{/i} better than Finn, at least I’m actually here."
         ter tense "I’ve been good about giving myself time off, unlike those two."
- 
+
         #MORGAN enters stage left
 
         show morg spot sad at centerstage with dissolve:
@@ -716,7 +720,7 @@ label act3:
     ter "C’mon, Mina! It’s a cozy sushi place that THE Mina used to frequent all the time. There’s no way people won’t jump at the chance to eat here!"
     "Mina hummed in thought."
 
-    hide ter with dissolve 
+    hide ter with dissolve
 
     show fin spot inthought at centerstage with dissolve:
             xpos .65
@@ -960,6 +964,7 @@ label act3_customer_minigame_group1_result:
     #Miya fades out
 
     if act3_customer_minigame_group1["q1"]:
+        $ act3_customer_minigame_points += 1
 
         show customer1 with dissolve:
             zoom 0.28
@@ -980,13 +985,12 @@ label act3_customer_minigame_group1_result:
             xpos .65
         "Customer 2" "Come on. This isn’t the right roll. Take it back."
     elif act3_customer_minigame_group1["q3"] and act3_customer_minigame_group1["q4"]:
-
+        $ act3_customer_minigame_points += 1
         show customer2 with dissolve:
             zoom 0.28
             xpos .65
         "Customer 2" "No shellfish, right? Thank you very much."
     else:
-
         show customer2 with dissolve:
             zoom 0.28
             xpos .65
@@ -1145,7 +1149,7 @@ label act3_customer_minigame_group2_result:
             xpos .65
         "Customer 3" "What are you doing? I said I have a ginger allergy and there’s ginger on the plate. Take it back. Immediately."
     else:
-
+        $ act3_customer_minigame_points += 1
         show customer3 with dissolve:
             zoom 0.28
             xpos .65
@@ -1154,6 +1158,7 @@ label act3_customer_minigame_group2_result:
     hide customer3 with dissolve
 
     if act3_customer_minigame_group2["q2"]:
+        $ act3_customer_minigame_points += 1
         show customer1 with dissolve:
             zoom 0.28
             xpos .65
@@ -1167,6 +1172,7 @@ label act3_customer_minigame_group2_result:
     hide customer1 with dissolve
 
     if act3_customer_minigame_group2["q3"]:
+        $ act3_customer_minigame_points += 1
         show customer2 with dissolve:
             zoom 0.28
             xpos .65
@@ -1273,7 +1279,7 @@ label act3_customer_minigame_group2_result:
             #FINN enters stage left
             fin "I’ll… apologize to my sister later for wasting her effort."
 
-            hide fin with dissolve 
+            hide fin with dissolve
             #FINN fades out
 
         else:
@@ -1508,9 +1514,9 @@ label act3_customer_minigame_group2_result:
         #FINN enters stage left
         fin "I’m certain this can only go well."
 
-        hide fin 
+        hide fin
 
-        hide morg 
+        hide morg
 
         hide ter
 
@@ -1608,7 +1614,7 @@ label act3_customer_minigame_group2_result:
 
         hide ter
 
-        hide morg 
+        hide morg
 
         with dissolve
 
